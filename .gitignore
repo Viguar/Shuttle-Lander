@@ -28,3 +28,16 @@ Library/Bee/
 *.mdb
 *.opendb
 *.VC.db
+Library/Search/
+
+Library/ShaderCache/
+
+Library/ArtifactDB
+
+Library/ilpp.pid
+
+Library/SceneVisibilityState.asset
+
+Library/SourceAssetDB
+
+Library/EditorInstance.json
