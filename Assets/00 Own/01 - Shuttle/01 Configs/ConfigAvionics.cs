@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
-using Viguar.EditorTooling.GUITools.OverrideLabels;
-using Viguar.EditorTooling.GUITools.ConditionalPropertyDisplay;
+using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 
 [Serializable]
 public class ConfigAvionics

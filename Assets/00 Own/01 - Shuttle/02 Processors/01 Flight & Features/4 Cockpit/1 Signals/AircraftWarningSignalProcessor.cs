@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Viguar.EditorTooling.GUITools.ConditionalPropertyDisplay;
+using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 
 namespace Viguar.Aircraft
 {

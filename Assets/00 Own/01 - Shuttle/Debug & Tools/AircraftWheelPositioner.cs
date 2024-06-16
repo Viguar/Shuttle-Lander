@@ -1,5 +1,5 @@
 using UnityEngine;
-using Viguar.EditorTooling.GUITools.ConditionalPropertyDisplay;
+using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 using Viguar.Aircraft;
 
 public class AircraftWheelPositioner : MonoBehaviour

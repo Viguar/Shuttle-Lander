@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using Viguar.EditorTooling.GUITools.ConditionalPropertyDisplay;
-using Viguar.EditorTooling.GUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
+using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
 
 [Serializable]
 public class ConfigControlSurfaceAnimations

@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-using Viguar.EditorTooling.GUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
 
 [System.Serializable]
 public class ConfigConstraintsStateValues
