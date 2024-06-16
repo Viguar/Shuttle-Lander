@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Viguar.EditorTooling.DataContainers.Curve;
 [System.Serializable]
 
 public class ConfigControlSurfaces
@@ -22,8 +23,8 @@ public class ConfigControlSurfaces
     public int[] _cFlapSteps;
     public AnimationCurve _cFlapLiftOverSpeed = AnimationCurve.Linear(0f, 1f, 1f, 0f);
     public AnimationCurve _cFlapDragOverSpeed = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    public Viguar.Tooling.CurveContainer _cOverrideFlapLiftCurve;
-    public Viguar.Tooling.CurveContainer _cOverrideFlapDragCurve;
+    public CurveContainer _cOverrideFlapLiftCurve;
+    public CurveContainer _cOverrideFlapDragCurve;
 
 
     public float _cThrottleLeverResponse;

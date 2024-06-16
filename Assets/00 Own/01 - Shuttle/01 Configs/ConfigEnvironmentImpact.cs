@@ -1,4 +1,5 @@
 using UnityEngine;
+using Viguar.EditorTooling.DataContainers.Curve;
 [System.Serializable]
 
 public class ConfigEnvironmentImpact
@@ -15,9 +16,9 @@ public class ConfigEnvironmentImpact
     public AnimationCurve _cAltitudeResponseEfficiency;
     public AnimationCurve _cTemperatureResponseEfficiency;
     public AnimationCurve _cDensityResponseEfficiency;
-    public Viguar.Tooling.CurveContainer _cOverrideAltiCurve;
-    public Viguar.Tooling.CurveContainer _cOverrideTempCurve;
-    public Viguar.Tooling.CurveContainer _cOverrideDensityCurve;
+    public CurveContainer _cOverrideAltiCurve;
+    public CurveContainer _cOverrideTempCurve;
+    public CurveContainer _cOverrideDensityCurve;
 
     public int _cFallbackSeaLevelAirTemperature = 15;
     public int _cFallbackSeaLevelAirPressure = 1013;

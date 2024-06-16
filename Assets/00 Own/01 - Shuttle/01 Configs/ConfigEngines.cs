@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
+using Viguar.EditorTooling.DataContainers.Curve;
 
 [System.Serializable]
 public class ConfigEngines
@@ -13,7 +14,7 @@ public class ConfigEngines
     public float _cMaxEngineThrust;
     public float _cMaxTogaThrust;
     public AnimationCurve _cEngineSpoolCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    public Viguar.Tooling.CurveContainer _cOverrideSpoolCurve;
+    public CurveContainer _cOverrideSpoolCurve;
 
     public Transform _cSingleEnginePosition;
     public _configVarMultiEngineProperty[] _cMultiEngineProperties;

@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
+using Viguar.EditorTooling.DataContainers.Curve;
 
 #if UNITY_EDITOR
 using UnityEditor;
 using System.Net;
+using Viguar.EditorTooling.DataContainers.Curve;
 #endif
 
 namespace Viguar.Aircraft
@@ -66,13 +68,13 @@ namespace Viguar.Aircraft
         }
         void ConfigApplyControlSurfaces()
         {
-            if(_cControlSurfaces._cOverrideFlapLiftCurve != null) { _cControlSurfaces._cFlapLiftOverSpeed = _cControlSurfaces._cOverrideFlapLiftCurve.Value; } //Override if the field is not empty.
-            if (_cControlSurfaces._cOverrideFlapDragCurve != null) { _cControlSurfaces._cFlapDragOverSpeed = _cControlSurfaces._cOverrideFlapDragCurve.Value; }
+            if(_cControlSurfaces._cOverrideFlapLiftCurve != null) { _cControlSurfaces._cFlapLiftOverSpeed = _cControlSurfaces._cOverrideFlapLiftCurve.Curve; } //Override if the field is not empty.
+            if (_cControlSurfaces._cOverrideFlapDragCurve != null) { _cControlSurfaces._cFlapDragOverSpeed = _cControlSurfaces._cOverrideFlapDragCurve.Curve; }
             _configBaseProcessor.ProcessControlSurfaceConfiguration(_cControlSurfaces._cHasSurfaceElevator, _cControlSurfaces._cElevatorResponse, _cControlSurfaces._cHasSurfaceRudder, _cControlSurfaces._cRudderResponse, _cControlSurfaces._cHasSurfaceAilerons, _cControlSurfaces._cAileronResponse, _cControlSurfaces._cBankingTurnResponse, _cControlSurfaces._cHasSurfaceAirbrakes, _cControlSurfaces._cAirbrakeResponse, _cControlSurfaces._cHasSurfaceFlaps, _cControlSurfaces._cFlapResponse, _cControlSurfaces._cFlapSteps, _cControlSurfaces._cFlapLiftOverSpeed, _cControlSurfaces._cFlapDragOverSpeed);
         }
         void ConfigApplyEngines()
         {
-            if (_cEngines._cOverrideSpoolCurve != null) { _cEngines._cEngineSpoolCurve = _cEngines._cOverrideSpoolCurve.Value; } //Override if the field is not empty.
+            if (_cEngines._cOverrideSpoolCurve != null) { _cEngines._cEngineSpoolCurve = _cEngines._cOverrideSpoolCurve.Curve; } //Override if the field is not empty.
             if (_cEngines._cEngineConfig == ConfigEngines._cEngineConfiguration.SingleEngine)
             {
                 _configBaseProcessor.ProcessSingleEngineConfiguration(_cEngines._cEngineConfig, _cEngines._cPropulsion, _cEngines._cMaxEngineThrust, _cEngines._cMaxTogaThrust, _cEngines._cEngineSpoolCurve, _cEngines._cSingleEnginePosition);
@@ -84,7 +86,7 @@ namespace Viguar.Aircraft
         }
         void ConfigApplyFuel()
         {
-            if (_cFuel._cOverrideFuelBurnCurve != null) { _cFuel._cFuelBurnAtEngineThrust = _cFuel._cOverrideFuelBurnCurve.Value; } //Override if the field is not empty.
+            if (_cFuel._cOverrideFuelBurnCurve != null) { _cFuel._cFuelBurnAtEngineThrust = _cFuel._cOverrideFuelBurnCurve.Curve; } //Override if the field is not empty.
             _configBaseProcessor.ProcessFuelConfiguration(_cFuel._cEnginesBurnFuel, _cFuel._cMaximumFuelCapacity, _cFuel._cFuelBurnAtEngineThrust);
         }
         void ConfigApplyLandingGear()
@@ -93,9 +95,9 @@ namespace Viguar.Aircraft
         }
         void ConfigApplyEnvironment()
         {
-            if(_cEnvironment._cOverrideAltiCurve != null) { _cEnvironment._cAltitudeResponseEfficiency = _cEnvironment._cOverrideAltiCurve.Value; }
-            if (_cEnvironment._cOverrideTempCurve != null) { _cEnvironment._cTemperatureResponseEfficiency = _cEnvironment._cOverrideTempCurve.Value; }
-            if (_cEnvironment._cOverrideDensityCurve != null) { _cEnvironment._cDensityResponseEfficiency = _cEnvironment._cOverrideDensityCurve.Value; }
+            if(_cEnvironment._cOverrideAltiCurve != null) { _cEnvironment._cAltitudeResponseEfficiency = _cEnvironment._cOverrideAltiCurve.Curve; }
+            if (_cEnvironment._cOverrideTempCurve != null) { _cEnvironment._cTemperatureResponseEfficiency = _cEnvironment._cOverrideTempCurve.Curve; }
+            if (_cEnvironment._cOverrideDensityCurve != null) { _cEnvironment._cDensityResponseEfficiency = _cEnvironment._cOverrideDensityCurve.Curve; }
             _configBaseProcessor.ProcessEnvironmentConfiguration(_configEnvironment, _cEnvironment._cAtmosphericEffect, _cEnvironment._cWindEffect, _cEnvironment._cPrecipitationEffect, _cEnvironment._cTemperatureAltitudeFalloff, _cEnvironment._cHumidityAltitudeFalloff, _cEnvironment._cWindAltitudeIncrease, _cEnvironment._cWindStrengthMultiplier, _cEnvironment._cAltitudeResponseEfficiency, _cEnvironment._cTemperatureResponseEfficiency, _cEnvironment._cDensityResponseEfficiency);
         }
         void ConfigApplyAutoFlightSystem()
@@ -310,11 +312,11 @@ namespace Viguar.Aircraft
                         EditorGUILayout.PropertyField(SerSTS.FindProperty("_cControlSurfaces._cFlapSteps"), true);
                         sts._cControlSurfaces._cFlapLiftOverSpeed = EditorGUILayout.CurveField(new GUIContent("Flap Lift / Speed", "."), sts._cControlSurfaces._cFlapLiftOverSpeed);
                         EditorGUI.indentLevel++;
-                        sts._cControlSurfaces._cOverrideFlapLiftCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cControlSurfaces._cOverrideFlapLiftCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cControlSurfaces._cOverrideFlapLiftCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cControlSurfaces._cOverrideFlapLiftCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                         sts._cControlSurfaces._cFlapDragOverSpeed = EditorGUILayout.CurveField(new GUIContent("Flap Drag / Speed", "."), sts._cControlSurfaces._cFlapDragOverSpeed);
                         EditorGUI.indentLevel++;
-                        sts._cControlSurfaces._cOverrideFlapDragCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cControlSurfaces._cOverrideFlapDragCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cControlSurfaces._cOverrideFlapDragCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cControlSurfaces._cOverrideFlapDragCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                     }                   
                     EditorGUI.indentLevel--;
@@ -338,7 +340,7 @@ namespace Viguar.Aircraft
                     sts._cEngines._cMaxTogaThrust = EditorGUILayout.Slider(new GUIContent("Max. Add. Toga Thrust per Engine", "."), sts._cEngines._cMaxTogaThrust, 0f, 100000f);
                     sts._cEngines._cEngineSpoolCurve = EditorGUILayout.CurveField(new GUIContent("Engine Spoolup Curve", "."), sts._cEngines._cEngineSpoolCurve);
                     EditorGUI.indentLevel++;
-                    sts._cEngines._cOverrideSpoolCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEngines._cOverrideSpoolCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                    sts._cEngines._cOverrideSpoolCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEngines._cOverrideSpoolCurve, typeof(CurveContainer), true) as CurveContainer;
                     EditorGUI.indentLevel--;
                     if (sts._cEngines._cEngineConfig == ConfigEngines._cEngineConfiguration.SingleEngine)
                     {
@@ -354,7 +356,7 @@ namespace Viguar.Aircraft
                         sts._cFuel._cMaximumFuelCapacity = EditorGUILayout.Slider(new GUIContent("Maximum Fuel Capacity", "."), sts._cFuel._cMaximumFuelCapacity, 0f, 100000f);
                         sts._cFuel._cFuelBurnAtEngineThrust = EditorGUILayout.CurveField(new GUIContent("Fuel Burn Over Engine Thrust", "."), sts._cFuel._cFuelBurnAtEngineThrust);
                         EditorGUI.indentLevel++;
-                        sts._cFuel._cOverrideFuelBurnCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cFuel._cOverrideFuelBurnCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cFuel._cOverrideFuelBurnCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cFuel._cOverrideFuelBurnCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                     }
                     EditorGUI.indentLevel--;
@@ -411,17 +413,17 @@ namespace Viguar.Aircraft
                         EditorGUILayout.Space();
                         sts._cEnvironment._cAltitudeResponseEfficiency = EditorGUILayout.CurveField(new GUIContent("Aerodynamic Response / Altitude", "."), sts._cEnvironment._cAltitudeResponseEfficiency);
                         EditorGUI.indentLevel++;
-                        sts._cEnvironment._cOverrideAltiCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideAltiCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cEnvironment._cOverrideAltiCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideAltiCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                         EditorGUILayout.Space();
                         sts._cEnvironment._cTemperatureResponseEfficiency = EditorGUILayout.CurveField(new GUIContent("Aerodynamic Response / Air Temperature", "."), sts._cEnvironment._cTemperatureResponseEfficiency);
                         EditorGUI.indentLevel++;
-                        sts._cEnvironment._cOverrideTempCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideTempCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cEnvironment._cOverrideTempCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideTempCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                         EditorGUILayout.Space();
                         sts._cEnvironment._cDensityResponseEfficiency = EditorGUILayout.CurveField(new GUIContent("Aerodynamic Response / Air Density", "."), sts._cEnvironment._cDensityResponseEfficiency);
                         EditorGUI.indentLevel++;
-                        sts._cEnvironment._cOverrideDensityCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideDensityCurve, typeof(Viguar.Tooling.CurveContainer), true) as Viguar.Tooling.CurveContainer;
+                        sts._cEnvironment._cOverrideDensityCurve = EditorGUILayout.ObjectField(new GUIContent("Override Curve", "."), sts._cEnvironment._cOverrideDensityCurve, typeof(CurveContainer), true) as CurveContainer;
                         EditorGUI.indentLevel--;
                         EditorGUI.indentLevel--;
                         EditorGUILayout.Space();
