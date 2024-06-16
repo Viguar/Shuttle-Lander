@@ -34,11 +34,15 @@ Library/ShaderCache/
 
 Library/ArtifactDB
 
+Library/ArtifactDB-lock
+
 Library/ilpp.pid
 
 Library/SceneVisibilityState.asset
 
 Library/SourceAssetDB
+
+Library/SourceAssetDB-lock
 
 Library/EditorInstance.json
 
