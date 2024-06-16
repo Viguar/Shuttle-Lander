@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c09b84a66963840a803dbbc6583c03, type: 3}
+  m_Name: EngineSpoolCurvePreset 1
+  m_EditorClassIdentifier: 
+  m_Comments: A generic curve for an engine spool-up/-down.
+  m_ReadOnly: 1
+  m_Value:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.018370442
+      outSlope: 0.018370442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.21537197
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.1
+      inSlope: 1.193177
+      outSlope: 1.193177
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20591861
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 1
+      inSlope: -0.0000018681881
+      outSlope: -0.0000018681881
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.25524044
+    - serializedVersion: 3
+      time: 1
+      value: 0.75
+      inSlope: 1.2903972
+      outSlope: 1.2903972
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.71516657
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
