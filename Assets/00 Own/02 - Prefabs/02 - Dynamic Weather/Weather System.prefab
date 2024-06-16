@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &134409655072003540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134409655072003539}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134409655072003539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409655072003540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 134409657024261588}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &134409657024261590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134409657024261588}
+  - component: {fileID: 134409657024261589}
+  - component: {fileID: 134409657024261587}
+  - component: {fileID: 134409657024261585}
+  - component: {fileID: 134409657024261586}
+  m_Layer: 0
+  m_Name: Weather System
+  m_TagString: weatherController
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134409657024261588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409657024261590}
+  m_LocalRotation: {x: 0, y: -0.2896499, z: 0, w: 0.9571327}
+  m_LocalPosition: {x: 1432.6, y: 25.7, z: 1334.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 134409655072003539}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -33.674, z: 0}
+--- !u!182 &134409657024261589
+WindZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409657024261590}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 4.21
+  m_WindTurbulence: 9.9
+  m_WindPulseMagnitude: 3.19
+  m_WindPulseFrequency: 1.51
+--- !u!114 &134409657024261587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409657024261590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad083c815883052488edb288c40422b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AirTemperature: 18
+  m_AirPressure: 1003
+  m_RelativeHumidity: 48
+  m_TemperatureLapse: 1
+  m_HumidityLapse: 0.25
+  m_windStrength: 5
+  m_windTurbulence: 2.4
+  m_windGustStrength: 20
+  m_WindHeading: 0
+  m_WindFactor: 30
+  m_maxCloudsPerZone: 5
+  LowLevelCloudPrefabs:
+  - {fileID: 981865263301011344, guid: 26890d6a067ec684f890cce35659a286, type: 3}
+  - {fileID: 981865263301011344, guid: 06f0b5a0f8db96544be949c585cb7fe4, type: 3}
+  - {fileID: 981865263301011344, guid: a48fabd9161118b42ae0ce357160ea26, type: 3}
+  - {fileID: 981865263301011344, guid: 080746887f52a164b8b36f6486ac6ed0, type: 3}
+  - {fileID: 981865263301011344, guid: 9a6843028f86a7e4ba9f191867f6b5b4, type: 3}
+  m_lowLevelCloudsAltitude: 200
+  m_midLevelCloudsAltitude: 1000
+  m_highLevelCloudsAltitude: 5000
+  pConfig:
+  - precipitation: 0
+    precipitationPrefab: {fileID: 7078917487986676422, guid: e68ec433162707d4695444dd88dd7e89,
+      type: 3}
+    particlesPerUnit: 0
+  - precipitation: 2
+    precipitationPrefab: {fileID: 7078917487986676422, guid: f1480c1c991192c4abfaaef756b0e9ea,
+      type: 3}
+    particlesPerUnit: 25
+  - precipitation: 5
+    precipitationPrefab: {fileID: 7078917487986676422, guid: ee352e19fa28aca43b38928646585850,
+      type: 3}
+    particlesPerUnit: 15
+  - precipitation: 4
+    precipitationPrefab: {fileID: 7078917487986676422, guid: da6919c7ae8b700409dc1ac3e44bdaf5,
+      type: 3}
+    particlesPerUnit: 20
+  m_dynamicWeather: 1
+  m_weatherZonePrefab: {fileID: 4087551722701761761, guid: 44ca444ab62668343a8ef323e4b838f3,
+    type: 3}
+  m_weatherZoneSpawnPrefab: {fileID: 134409655072003540}
+  m_dynWeatherZoneRandomizer: 0.4
+  m_weatherZoneGenerationDistance: 10000
+  m_weatherZoneSize: 1000
+  m_weatherZoneSpeed: 20
+  m_generateCloudFormation: 1
+  m_generateFog: 1
+  m_generatePrecipitation: 1
+  m_generateParticles: 0
+--- !u!54 &134409657024261585
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409657024261590}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &134409657024261586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134409657024261590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
