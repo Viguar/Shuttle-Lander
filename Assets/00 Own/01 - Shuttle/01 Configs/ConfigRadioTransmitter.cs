@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using Viguar.EditorTooling.GUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
 
 [Serializable]
 public class ConfigRadioTransmitter
