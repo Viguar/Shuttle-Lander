@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Viguar.WeatherDynamics; //Line 219-212 needs to be uncommented!! & in aerodynamicsprocessor!!
+using Viguar.WeatherDynamics;
 
 namespace Viguar.Aircraft
 {
@@ -216,9 +216,9 @@ namespace Viguar.Aircraft
         public float _LandingGearTireStress { get; set; }
         #endregion
         #region Runtime Values: Environment
-       // public weatherController _GlobalWeatherController { get; set; }
-       // public weatherZone _CurrentWeatherZone { get; set; }
-       // public weatherWindZone _CurrentWeatherZoneWind { get; set; }
+        public weatherController _GlobalWeatherController { get; set; }
+        public weatherZone _CurrentWeatherZone { get; set; }
+        public weatherWindZone _CurrentWeatherZoneWind { get; set; }
         public bool _AircraftInsideWeatherZone { get; set; }
         public bool _AircraftInsideCloud { get; set; }
         public bool _AircraftInsidePrecipitationArea { get; set; }

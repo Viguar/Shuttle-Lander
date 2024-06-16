@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
+//using UnityEngine.Rendering.HighDefinition;
 using Random = UnityEngine.Random;
 using Viguar.Aircraft;
 
@@ -211,6 +211,7 @@ namespace Viguar.WeatherDynamics
         }
         private void generateFog()
         {
+            /*
             if (m_weather.m_generateFog)
             {
                 if (m_weatherCalculator.ZoneFogPossible)
@@ -227,6 +228,7 @@ namespace Viguar.WeatherDynamics
                     }
                 }
             }
+            */
         }
         private void generateParticles()
         {
@@ -274,6 +276,7 @@ namespace Viguar.WeatherDynamics
 
         void initialiseFog()
         {
+            /*
             zoneFog.zoneVolume = GetComponent<Volume>();
             VolumeProfile zoneProfile = new VolumeProfile();
             zoneFog.zoneVolume.profile = zoneProfile;
@@ -290,14 +293,17 @@ namespace Viguar.WeatherDynamics
 
             zFog.enabled.value = true;
             zFog.enableVolumetricFog.value = true;
+            */
         }
         void calculateFogProperties()
         {
+            /*
             zoneFog.visibilityDistance = Mathf.RoundToInt((int) (Math.Sqrt(10 * (m_weatherCalculator.GlobalFogIntensity * 10) + 1) * (10 * Math.Sqrt(zoneWeather.localSealevelHumidity + 1) * Math.Sqrt((zoneWeather.localSealevelTemperature + 273) / 273))));
             zoneFog.volumetricFogDistance = Mathf.RoundToInt(zoneFog.visibilityDistance / 10);
             zoneFog.denseFogHeight = Mathf.RoundToInt(m_weatherCalculator.GlobalFogIntensity * 0.75f * m_weather.m_midLevelCloudsAltitude / 100);
             zoneFog.denseFogHeight = 0;
             zoneFog.maxFogHeight = Mathf.RoundToInt(m_weather.m_midLevelCloudsAltitude);
+            */
         }
 
         void initialisePrecipitation()
@@ -363,7 +369,7 @@ namespace Viguar.WeatherDynamics
     [Serializable]
     public class FogGenerationProperties
     {
-        public Volume zoneVolume;
+        //public Volume zoneVolume;
         public int visibilityDistance;
         public int denseFogHeight;
         public int maxFogHeight;
