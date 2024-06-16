@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 99
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -323,7 +323,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/00 Main/99 Other
+    - Assets/00 Main
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -333,16 +333,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/00 Main/99 Other
+  - Assets/00 Main
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Projekte\Unity3D\Shuttle-Lander
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0a770000
-    m_LastClickedID: 30474
-    m_ExpandedIDs: 00000000d2760000f276000000ca9a3bffffff7f
+    m_SelectedIDs: ee760000
+    m_LastClickedID: 30446
+    m_ExpandedIDs: 00000000d2760000ee76000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -997,9 +997,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -2.1023853, y: 1.2176204, z: 1.4674251}
+    m_Target: {x: -3.1579962, y: 3.5142527, z: 1.6868925}
     speed: 2
-    m_Value: {x: -2.1023853, y: 1.2176204, z: 1.4674251}
+    m_Value: {x: -3.1579962, y: 3.5142527, z: 1.6868925}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1045,13 +1045,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.09651087, y: 0.8581168, z: -0.17511922, w: -0.47292137}
+    m_Target: {x: -0.06551201, y: 0.85733503, z: -0.11279178, w: -0.4979595}
     speed: 2
-    m_Value: {x: -0.09651086, y: 0.8581167, z: -0.1751192, w: -0.4729213}
+    m_Value: {x: -0.06608766, y: 0.8579104, z: -0.11417688, w: -0.4965742}
   m_Size:
     m_Target: 8.622009
     speed: 2
-    m_Value: 9.028282
+    m_Value: 8.622009
   m_Ortho:
     m_Target: 0
     speed: 2
