@@ -1,18 +1,19 @@
 
-UserSettings/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
-Temp/
-
-Logs/
-
-Library/Artifacts/
-
-Library/Bee/
-
-/MemoryCaptures/
-
+/[Rr]ecordings/
+/[Aa]ssets/Plugins/Editor/JetBrains*
 
 .vs/
+.gradle/
+
+ExportedObj/
 .consulo/
 *.csproj
 *.unityproj
@@ -28,38 +29,17 @@ Library/Bee/
 *.mdb
 *.opendb
 *.VC.db
-Library/Search/
 
-Library/ShaderCache/
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
 
-Library/ArtifactDB
+*.apk
+*.aab
+*.app
 
-Library/ArtifactDB-lock
+crashlytics-build.properties
 
-Library/ilpp.pid
-
-Library/SceneVisibilityState.asset
-
-Library/SourceAssetDB
-
-Library/SourceAssetDB-lock
-
-Library/EditorInstance.json
-
-Library/TempArtifacts/
-
-Library/InspectorExpandedItems.asset
-
-Library/UIElements/
-
-Library/expandedItems
-
-Library/ShaderCache.db
-
-Library/StateCache/
-
-Library/ScriptAssemblies/
-
-Library/APIUpdater/ConfigurationCache/
-
-Library/LastSceneManagerSetup.txt
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
