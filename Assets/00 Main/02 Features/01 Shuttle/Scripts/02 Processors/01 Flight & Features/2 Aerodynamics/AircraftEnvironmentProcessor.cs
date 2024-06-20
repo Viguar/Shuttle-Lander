@@ -140,28 +140,25 @@ namespace Viguar.Aircraft
         }
         private void InitEnvironmentProcessor()
         {
-            if(_configBaseProcessor._EnvironmentAffectsAerodynamics)
+            if(_configBaseProcessor._EnvironmentAffectsAerodynamics && GameObject.FindGameObjectWithTag("weatherController") != null)
             {
-                if(GameObject.FindGameObjectWithTag("weatherController") != null)
-                {
-                    _configBaseProcessor._GlobalWeatherController = GameObject.FindGameObjectWithTag("weatherController").GetComponent<weatherController>();   
-                }
-                else { AssignFallbackEnvironmentValues(); }                
+                    _configBaseProcessor._GlobalWeatherController = GameObject.FindGameObjectWithTag("weatherController").GetComponent<weatherController>();                                 
             }
             else
-            {
+            {                
                 _configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics = false;
                 _configBaseProcessor._EnvironmentPrecipitationAffectsAerodynamics = false;
                 _configBaseProcessor._EnvironmentWindAffectsAerodynamics = false;
+                AssignFallbackEnvironmentValues();
             }
         }
              
         private void AssignFallbackEnvironmentValues()
         {
-                _configBaseProcessor._CurrentSeaLevelAirTemperature = _cEnvironmentConfig._cFallbackSeaLevelAirTemperature;
-                _configBaseProcessor._CurrentSeaLevelAirPressure = _cEnvironmentConfig._cFallbackSeaLevelAirPressure;
-                _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _cEnvironmentConfig._cFallbackSeaLevelRelativeHumidity;
-                _configBaseProcessor._CurrentSeaLevelWindStrength = _cEnvironmentConfig._cFallbackSeaLevelWindStrength;
+            _configBaseProcessor._CurrentSeaLevelAirTemperature = _configBaseProcessor._FallbackSeaLevelAirTemperature;
+            _configBaseProcessor._CurrentSeaLevelAirPressure = _configBaseProcessor._FallbackSeaLevelAirpressure;
+            _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _configBaseProcessor._FallbackSeaLevelRelativeHumidity;
+            _configBaseProcessor._CurrentSeaLevelWindStrength = _configBaseProcessor._FallbackSeaLevelWindStrength;
         }
     }
 }

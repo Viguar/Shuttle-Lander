@@ -53,7 +53,7 @@ namespace Viguar.Aircraft
             if (_configLandingGear) { ConfigApplyLandingGear(); }        
             if (_configEnvironment) { ConfigApplyEnvironment(); }
             if (_configAutomatics) { ConfigApplyAutoFlightSystem(); }
-
+            ConfigApplyEnvironmentFallback();
             ConfigApplyConstraints();
             ConfigApplyConstraintsFlightState();
             ConfigApplyConstraintsFlightStateCategories();
@@ -99,6 +99,10 @@ namespace Viguar.Aircraft
             if (_cEnvironment._cOverrideTempCurve != null) { _cEnvironment._cTemperatureResponseEfficiency = _cEnvironment._cOverrideTempCurve.Curve; }
             if (_cEnvironment._cOverrideDensityCurve != null) { _cEnvironment._cDensityResponseEfficiency = _cEnvironment._cOverrideDensityCurve.Curve; }
             _configBaseProcessor.ProcessEnvironmentConfiguration(_configEnvironment, _cEnvironment._cAtmosphericEffect, _cEnvironment._cWindEffect, _cEnvironment._cPrecipitationEffect, _cEnvironment._cTemperatureAltitudeFalloff, _cEnvironment._cHumidityAltitudeFalloff, _cEnvironment._cWindAltitudeIncrease, _cEnvironment._cWindStrengthMultiplier, _cEnvironment._cAltitudeResponseEfficiency, _cEnvironment._cTemperatureResponseEfficiency, _cEnvironment._cDensityResponseEfficiency);
+        }
+        void ConfigApplyEnvironmentFallback()
+        {
+            _configBaseProcessor.ProcessEnvironmentFallbackConfiguration(_cEnvironment._cFallbackSeaLevelAirTemperature, _cEnvironment._cFallbackSeaLevelAirPressure, _cEnvironment._cFallbackSeaLevelRelativeHumidity, _cEnvironment._cFallbackSeaLevelWindStrength);
         }
         void ConfigApplyAutoFlightSystem()
         {
