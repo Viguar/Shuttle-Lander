@@ -10,8 +10,8 @@ namespace Viguar.Aircraft
     public class AircraftEnvironmentProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
-        private ConfigEnvironmentImpact _cEnvironmentConfig;
         private Rigidbody _aircraftRigidbody;
+        private bool _fallbackMode = false;
 
         private float minDensity = 0.00909935413f;  //Lowest Possible Density of Air at Sea Level
         private float maxDensity = 0.01620037228f;  //Highest Possible Density of Air at Sea Level
@@ -30,12 +30,20 @@ namespace Viguar.Aircraft
 
         public void PerformEnvironmentCalculations()
         {
-            SetWeatherValues();
-            ClampEnvironmentValues();
-            CalculateAltitudeRates();
-            if (_configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics) { ControlEfficiencies(); }
-            if (_configBaseProcessor._EnvironmentPrecipitationAffectsAerodynamics) {  }
-            if (_configBaseProcessor._EnvironmentWindAffectsAerodynamics) { ControlWindEffect(); }
+            if (!_fallbackMode)
+            {
+                SetWeatherValues();
+                ClampEnvironmentValues();
+                CalculateAltitudeRates();
+                if (_configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics) { ControlEfficiencies(); }
+                if (_configBaseProcessor._EnvironmentPrecipitationAffectsAerodynamics) { }
+                if (_configBaseProcessor._EnvironmentWindAffectsAerodynamics) { ControlWindEffect(); }
+            }
+            else
+            {
+                CalculateAltitudeRates();
+                _configBaseProcessor._CurrentWindSpeed = _configBaseProcessor._AltitudeWindStrength;
+            }
         }
 
         private void ClampEnvironmentValues()
@@ -77,12 +85,11 @@ namespace Viguar.Aircraft
             _configBaseProcessor._DragPotential = (_configBaseProcessor._AirTemperatureResponseEfficiency + _configBaseProcessor._AirDensityResponseEfficiency + _configBaseProcessor._AltitudeResponseEfficiency) / 3;
             _configBaseProcessor._TorquePotential = (_configBaseProcessor._AirTemperatureResponseEfficiency + _configBaseProcessor._AirDensityResponseEfficiency + _configBaseProcessor._AltitudeResponseEfficiency) / 3;
             _configBaseProcessor._ThrustPotential = (_configBaseProcessor._AirTemperatureResponseEfficiency + _configBaseProcessor._AirDensityResponseEfficiency + _configBaseProcessor._AltitudeResponseEfficiency) / 3;
-        }
-         
+        }         
         private void ControlWindEffect()
         {
-            CalculateWindSpeed();
-            CalculateWindForces();
+                CalculateWindSpeed();
+                CalculateWindForces();
         }
         private void CalculateWindForces()
         {
@@ -123,45 +130,40 @@ namespace Viguar.Aircraft
         }
         private void CalculateWindSpeed()
         {
-            var localVelocity = transform.InverseTransformDirection(_configBaseProcessor._CurrentWeatherZone.transform.forward * _configBaseProcessor._AltitudeWindStrength); 
-            _configBaseProcessor._CurrentWindSpeed = Mathf.Max(0, localVelocity.z);
+                var localVelocity = transform.InverseTransformDirection(_configBaseProcessor._CurrentWeatherZone.transform.forward * _configBaseProcessor._AltitudeWindStrength);
+                _configBaseProcessor._CurrentWindSpeed = Mathf.Max(0, localVelocity.z);
         }
 
         public void SetWeatherValues()
         {
-            if (_configBaseProcessor._CurrentWeatherZone != null)
-            {
                 _configBaseProcessor._CurrentSeaLevelAirTemperature = _configBaseProcessor._CurrentWeatherZone.zoneWeather.localSealevelTemperature;
                 _configBaseProcessor._CurrentSeaLevelAirPressure = _configBaseProcessor._CurrentWeatherZone.zoneWeather.localSealevelPressure;
                 _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _configBaseProcessor._CurrentWeatherZone.zoneWeather.localSealevelHumidity;
-
-                _configBaseProcessor._CurrentSeaLevelWindStrength = _configBaseProcessor._CurrentWeatherZone.windProperties.localCurrentWindStrengthTotal;
-            }
+                _configBaseProcessor._CurrentSeaLevelWindStrength = _configBaseProcessor._CurrentWeatherZone.windProperties.localCurrentWindStrengthTotal;         
         }
         private void InitEnvironmentProcessor()
         {
-            if(_configBaseProcessor._EnvironmentAffectsAerodynamics)
+            if(_configBaseProcessor._EnvironmentAffectsAerodynamics && GameObject.FindGameObjectWithTag("weatherController") != null)
             {
-                if(GameObject.FindGameObjectWithTag("weatherController") != null)
-                {
-                    _configBaseProcessor._GlobalWeatherController = GameObject.FindGameObjectWithTag("weatherController").GetComponent<weatherController>();   
-                }
-                else { AssignFallbackEnvironmentValues(); }                
+                _configBaseProcessor._GlobalWeatherController = GameObject.FindGameObjectWithTag("weatherController").GetComponent<weatherController>();                                  
             }
-            else
-            {
-                _configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics = false;
-                _configBaseProcessor._EnvironmentPrecipitationAffectsAerodynamics = false;
-                _configBaseProcessor._EnvironmentWindAffectsAerodynamics = false;
+            else 
+            { 
+                AssignFallbackEnvironmentValues(); 
             }
         }
              
         private void AssignFallbackEnvironmentValues()
         {
-                _configBaseProcessor._CurrentSeaLevelAirTemperature = _cEnvironmentConfig._cFallbackSeaLevelAirTemperature;
-                _configBaseProcessor._CurrentSeaLevelAirPressure = _cEnvironmentConfig._cFallbackSeaLevelAirPressure;
-                _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _cEnvironmentConfig._cFallbackSeaLevelRelativeHumidity;
-                _configBaseProcessor._CurrentSeaLevelWindStrength = _cEnvironmentConfig._cFallbackSeaLevelWindStrength;
+            _fallbackMode = true;
+            _configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics = false;
+            _configBaseProcessor._EnvironmentPrecipitationAffectsAerodynamics = false;
+            _configBaseProcessor._EnvironmentWindAffectsAerodynamics = false;
+            _configBaseProcessor._CurrentSeaLevelAirTemperature = _configBaseProcessor._FallbackSeaLevelAirTemperature;
+            _configBaseProcessor._CurrentSeaLevelAirPressure = _configBaseProcessor._FallbackSeaLevelAirpressure;
+            _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _configBaseProcessor._FallbackSeaLevelRelativeHumidity;
+            _configBaseProcessor._CurrentSeaLevelWindStrength = _configBaseProcessor._FallbackSeaLevelWindStrength;
+            _configBaseProcessor._CurrentWindSpeed = _configBaseProcessor._CurrentSeaLevelWindStrength;
         }
     }
 }

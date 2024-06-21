@@ -102,14 +102,14 @@ namespace Viguar.Aircraft
             var rollTurn = Mathf.InverseLerp(0, 2, Mathf.Abs(_configBaseProcessor._RollAngle)); //Accumulate the amount of yaw the aircraft will do.   
             var inputTorque = Vector3.zero; //Accumulate torque from control surfaces into variable.
             var inputTorqueEffect = _configBaseProcessor._LiftSpeedFactorCurve.Evaluate(Mathf.InverseLerp(0, (_configBaseProcessor._MinMaxStableForwardSpeed.x + _configBaseProcessor._MinMaxStableForwardSpeed.x) / 2, _configBaseProcessor._ForwardSpeed));
-            var torque = Vector3.zero; //Accumulate torque forces into variable.       
+            var torque = Vector3.zero; //Accumulate torque forces into variable.         
 
             inputTorque += _configBaseProcessor._CurrentSetElevatorAmount * _configBaseProcessor._ElevatorResponse * transform.right; //Add torque for the pitch based on the elevator setting. 
             inputTorque += _configBaseProcessor._CurrentSetAileronAmount * _configBaseProcessor._AileronResponse * transform.forward; //Add torque for the roll based on the aileron setting.
             inputTorque += _configBaseProcessor._CurrentSetRudderAmount * _configBaseProcessor._RudderResponse * transform.up; //Add torque for the yaw based on the rudder setting.
             inputTorque += Mathf.Sin(_configBaseProcessor._RollAngle) * _configBaseProcessor._BankingTurnResponse * transform.up; //Add torque for the banking turn response.            
             torque += inputTorque * inputTorqueEffect;
-            torque += (_configBaseProcessor._RollAngle == 0 ? Vector3.zero : (transform.up * _configBaseProcessor._RollAngle / (rollTurn * _configBaseProcessor._RudderResponse * Mathf.InverseLerp(_configBaseProcessor._MaximumLiftSpeed, -0.001f, _configBaseProcessor._ForwardSpeed)) / 4)); //Turn the aircraft downwards when it is rolling. The divisor 4 stands for the rudder amount quadrupled. This is to counteract the possibility of being able to coutner steer this effect with the rudder
+            torque += (_configBaseProcessor._RollAngle == 0 ? Vector3.zero : (transform.up * _configBaseProcessor._RollAngle / (rollTurn * _configBaseProcessor._RudderResponse * Mathf.Clamp(Mathf.InverseLerp(_configBaseProcessor._MaximumLiftSpeed, -0.001f, _configBaseProcessor._ForwardSpeed), 0.001f, 1f) / 4))); //Turn the aircraft downwards when it is rolling. The divisor 4 stands for the rudder amount quadrupled. This is to counteract the possibility of being able to coutner steer this effect with the rudder
             torque *= (_configBaseProcessor._EnvironmentAtmosphereAffectsAerodynamics ? _configBaseProcessor._ForwardSpeed * _configBaseProcessor._FcgDirDifFactor * _configBaseProcessor._TorquePotential : _configBaseProcessor._ForwardSpeed * _configBaseProcessor._FcgDirDifFactor); //The total torque is multiplied by the forward speed, so the controls have more effect at high speed, and little effect at low speed, or when not moving in the direction of the nose of the plane (i.e. falling while stalled)
             torque += (_configBaseProcessor._EnvironmentWindAffectsAerodynamics ? transform.forward * _configBaseProcessor._AltitudeWindStrength * Mathf.RoundToInt(Random.Range(-1f, 1f)) : Vector3.zero); //If wind effects aerodynamics, turn the aircraft around the forward axis in a random direction.
 
