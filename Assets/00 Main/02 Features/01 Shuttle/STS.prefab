@@ -59150,7 +59150,7 @@ GameObject:
   - component: {fileID: 882140261644642191}
   - component: {fileID: 4799099497099363588}
   m_Layer: 9
-  m_Name: Canvas
+  m_Name: DebugScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

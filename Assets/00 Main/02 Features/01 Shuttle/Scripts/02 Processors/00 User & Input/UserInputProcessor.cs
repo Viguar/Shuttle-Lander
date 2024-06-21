@@ -27,6 +27,7 @@ namespace Viguar.Aircraft
         private void controlDebugHIDInputs()
         {
             _configBaseProcessor._DebugCursortoggleInput = aInput.Debugcontrols.pDebugDebugcontrolsTogglecursor.triggered;
+            _configBaseProcessor._DebugShutterInput = aInput.Debugcontrols.pDebugDebugcontrolsCloseDebugWindow.triggered;
         }
         private void controlOverrideHIDInputs()
         {

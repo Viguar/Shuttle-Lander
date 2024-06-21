@@ -347,9 +347,11 @@ namespace Viguar.Aircraft
 
         public bool _DebugCursortoggleInput { get; set; }
         public bool _DebugCursorclickInput { get; set; }
+        public bool _DebugShutterInput { get; set; }
         #endregion
         #region Debug Variables
-        public bool _DebugCursorActive { get; set; }
+        public bool _DebugPanelActive { get; set; }
+        public bool _DebugCursorActive { get; set; }        
         public Camera _DebugActiveCamera { get; set; }
         #endregion
 
