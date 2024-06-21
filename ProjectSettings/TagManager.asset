@@ -12,6 +12,8 @@ TagManager:
   - weatherController
   - weatherDynamicTile
   - weatherZone
+  - runwayLocalizer
+  - runwayZone
   layers:
   - Default
   - TransparentFX
