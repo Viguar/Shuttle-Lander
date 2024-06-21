@@ -9,7 +9,7 @@ namespace Viguar.Aircraft
     public class UserInputProcessor : MonoBehaviour
     {
         public HIDInputComputer aInput;
-        public AircraftBaseProcessor _configBaseProcessor;
+        private AircraftBaseProcessor _configBaseProcessor;
         private void Awake()
         {            
             aInput = new HIDInputComputer(); //Initialise the InputActions
@@ -27,6 +27,7 @@ namespace Viguar.Aircraft
         private void controlDebugHIDInputs()
         {
             _configBaseProcessor._DebugCursortoggleInput = aInput.Debugcontrols.pDebugDebugcontrolsTogglecursor.triggered;
+            _configBaseProcessor._DebugShutterInput = aInput.Debugcontrols.pDebugDebugcontrolsCloseDebugWindow.triggered;
         }
         private void controlOverrideHIDInputs()
         {

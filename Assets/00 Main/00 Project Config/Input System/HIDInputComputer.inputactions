@@ -286,6 +286,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "pDebug.Debugcontrols.CloseDebugWindow",
+                    "type": "Button",
+                    "id": "dbc4617c-a8a5-4ecd-a4b4-9acca277a3ea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -308,6 +317,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "pDebug.Debugcontrols.Cursorleftclick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c5354c0-eb46-4738-8f04-e8ec26bd9e85",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pDebug.Debugcontrols.CloseDebugWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

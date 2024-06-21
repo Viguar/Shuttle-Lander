@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Viguar.Aircraft;
 
 public class DebugCommander : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class DebugCommander : MonoBehaviour
                 displayer.DisplayDebugValue();
             }
         }
+        if(GetComponentInParent<AircraftBaseProcessor>()._DebugShutterInput) 
+        {
+            DebugUIActive = false;
+            DebugPanel.SetActive(DebugUIActive);           
+        }
+
     }
 
     public void ToggleDebugUI()

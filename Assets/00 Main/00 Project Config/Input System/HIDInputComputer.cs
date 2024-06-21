@@ -308,6 +308,15 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""pDebug.Debugcontrols.CloseDebugWindow"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbc4617c-a8a5-4ecd-a4b4-9acca277a3ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -332,6 +341,17 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""action"": ""pDebug.Debugcontrols.Cursorleftclick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c5354c0-eb46-4738-8f04-e8ec26bd9e85"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pDebug.Debugcontrols.CloseDebugWindow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -354,6 +374,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
         m_Debugcontrols = asset.FindActionMap("Debugcontrols", throwIfNotFound: true);
         m_Debugcontrols_pDebugDebugcontrolsTogglecursor = m_Debugcontrols.FindAction("pDebug.Debugcontrols.Togglecursor", throwIfNotFound: true);
         m_Debugcontrols_pDebugDebugcontrolsCursorleftclick = m_Debugcontrols.FindAction("pDebug.Debugcontrols.Cursorleftclick", throwIfNotFound: true);
+        m_Debugcontrols_pDebugDebugcontrolsCloseDebugWindow = m_Debugcontrols.FindAction("pDebug.Debugcontrols.CloseDebugWindow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -557,12 +578,14 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     private List<IDebugcontrolsActions> m_DebugcontrolsActionsCallbackInterfaces = new List<IDebugcontrolsActions>();
     private readonly InputAction m_Debugcontrols_pDebugDebugcontrolsTogglecursor;
     private readonly InputAction m_Debugcontrols_pDebugDebugcontrolsCursorleftclick;
+    private readonly InputAction m_Debugcontrols_pDebugDebugcontrolsCloseDebugWindow;
     public struct DebugcontrolsActions
     {
         private @HIDInputComputer m_Wrapper;
         public DebugcontrolsActions(@HIDInputComputer wrapper) { m_Wrapper = wrapper; }
         public InputAction @pDebugDebugcontrolsTogglecursor => m_Wrapper.m_Debugcontrols_pDebugDebugcontrolsTogglecursor;
         public InputAction @pDebugDebugcontrolsCursorleftclick => m_Wrapper.m_Debugcontrols_pDebugDebugcontrolsCursorleftclick;
+        public InputAction @pDebugDebugcontrolsCloseDebugWindow => m_Wrapper.m_Debugcontrols_pDebugDebugcontrolsCloseDebugWindow;
         public InputActionMap Get() { return m_Wrapper.m_Debugcontrols; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -578,6 +601,9 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             @pDebugDebugcontrolsCursorleftclick.started += instance.OnPDebugDebugcontrolsCursorleftclick;
             @pDebugDebugcontrolsCursorleftclick.performed += instance.OnPDebugDebugcontrolsCursorleftclick;
             @pDebugDebugcontrolsCursorleftclick.canceled += instance.OnPDebugDebugcontrolsCursorleftclick;
+            @pDebugDebugcontrolsCloseDebugWindow.started += instance.OnPDebugDebugcontrolsCloseDebugWindow;
+            @pDebugDebugcontrolsCloseDebugWindow.performed += instance.OnPDebugDebugcontrolsCloseDebugWindow;
+            @pDebugDebugcontrolsCloseDebugWindow.canceled += instance.OnPDebugDebugcontrolsCloseDebugWindow;
         }
 
         private void UnregisterCallbacks(IDebugcontrolsActions instance)
@@ -588,6 +614,9 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             @pDebugDebugcontrolsCursorleftclick.started -= instance.OnPDebugDebugcontrolsCursorleftclick;
             @pDebugDebugcontrolsCursorleftclick.performed -= instance.OnPDebugDebugcontrolsCursorleftclick;
             @pDebugDebugcontrolsCursorleftclick.canceled -= instance.OnPDebugDebugcontrolsCursorleftclick;
+            @pDebugDebugcontrolsCloseDebugWindow.started -= instance.OnPDebugDebugcontrolsCloseDebugWindow;
+            @pDebugDebugcontrolsCloseDebugWindow.performed -= instance.OnPDebugDebugcontrolsCloseDebugWindow;
+            @pDebugDebugcontrolsCloseDebugWindow.canceled -= instance.OnPDebugDebugcontrolsCloseDebugWindow;
         }
 
         public void RemoveCallbacks(IDebugcontrolsActions instance)
@@ -623,5 +652,6 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     {
         void OnPDebugDebugcontrolsTogglecursor(InputAction.CallbackContext context);
         void OnPDebugDebugcontrolsCursorleftclick(InputAction.CallbackContext context);
+        void OnPDebugDebugcontrolsCloseDebugWindow(InputAction.CallbackContext context);
     }
 }

@@ -91,6 +91,12 @@ namespace Viguar.Aircraft
         public float _RelativeHumidityAltitudeFalloff { get; set; }
         public float _WindStrengthAltitudeIncrease { get; set; }
         public float _WindStrengthFactor { get; set; }
+        
+        public float _FallbackSeaLevelAirTemperature { get; set; }
+        public float _FallbackSeaLevelAirpressure { get; set; }
+        public float _FallbackSeaLevelRelativeHumidity { get; set; }
+        public float _FallbackSeaLevelWindStrength { get; set; }
+        
         public AnimationCurve _AltitudeResponse { get; set; }
         public AnimationCurve _AirTemperatureResponse { get; set; }
         public AnimationCurve _AirDensityResponse { get; set; }
@@ -341,9 +347,11 @@ namespace Viguar.Aircraft
 
         public bool _DebugCursortoggleInput { get; set; }
         public bool _DebugCursorclickInput { get; set; }
+        public bool _DebugShutterInput { get; set; }
         #endregion
         #region Debug Variables
-        public bool _DebugCursorActive { get; set; }
+        public bool _DebugPanelActive { get; set; }
+        public bool _DebugCursorActive { get; set; }        
         public Camera _DebugActiveCamera { get; set; }
         #endregion
 
@@ -505,6 +513,13 @@ namespace Viguar.Aircraft
             _AirDensityResponse = densEff;
             _EnvironmentConfig = true;
             gameObject.AddComponent(typeof(AircraftEnvironmentProcessor));
+        }
+        public void ProcessEnvironmentFallbackConfiguration(float slTemp, float slPress, float slHum, float slWind)
+        {
+            _FallbackSeaLevelAirTemperature = slTemp;
+            _FallbackSeaLevelAirpressure = slPress;
+            _FallbackSeaLevelRelativeHumidity = slHum;
+            _FallbackSeaLevelWindStrength = slWind;
         }
         public void ProcessAutomaticsConfiguration()
         {
