@@ -345,8 +345,9 @@ namespace Viguar.Aircraft
         public bool _OverrideLandingGearInput { get; set; }
         public float _OverrideThrottleInput { get; set; }
 
+        public bool _PilotKeyboardMouseClickInput { get; set; }
+
         public bool _DebugCursortoggleInput { get; set; }
-        public bool _DebugCursorclickInput { get; set; }
         public bool _DebugShutterInput { get; set; }
         #endregion
         #region Debug Variables

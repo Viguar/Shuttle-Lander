@@ -6,7 +6,7 @@
             "id": "fa5954d5-eaa6-4cee-ac2b-17343a8d989d",
             "actions": [
                 {
-                    "name": "LMB-Interact",
+                    "name": "pCockpit.Mainclick",
                     "type": "Button",
                     "id": "52b884d1-ce6c-480b-8c5c-b99f245c567e",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LMB-Interact",
+                    "action": "pCockpit.Mainclick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -40,22 +40,24 @@ namespace Viguar.Aircraft
         void FixedUpdate()
         {
             if (isMouseResponsive) { handleMouseInteraction(); }
-            if(Input.GetMouseButtonDown(0))
+            
+        }       
+
+        private void handleMouseInteraction()
+        {
+            if (_configBaseProcessor._PilotKeyboardMouseClickInput)
             {
                 Ray ray = _configBaseProcessor._DebugActiveCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, 1000))
+                if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    if(hit.collider.gameObject == gameObject)
-                    {                        
+                    if (hit.collider.gameObject == gameObject)
+                    {
                         OnButtonPressed.Invoke();
                         mouseInteracted = true;
                     }
                 }
             }
-        }       
-        private void handleMouseInteraction()
-        {               
             if (mouseInteracted)
             {
                 mouseActionPushableTarget.y = MouseActionPushableOriginalLocation.y + mouseInteractionPushDepth;

@@ -23,6 +23,7 @@ namespace Viguar.Aircraft
         {
             controlOverrideHIDInputs();
             controlDebugHIDInputs();
+            controlKeyboardMouseCockpitHIDInputs();
         }
         private void controlDebugHIDInputs()
         {
@@ -37,6 +38,10 @@ namespace Viguar.Aircraft
             _configBaseProcessor._OverrideAirbrakeInput = aInput.Aircraftcontrols.aControlsurfacesAirbrakecontrolOverride.ReadValue<float>();
             _configBaseProcessor._OverrideFlapsInput = aInput.Aircraftcontrols.aControlsurfacesFlapcontrolOverride.triggered;
             _configBaseProcessor._OverrideLandingGearInput = aInput.Aircraftcontrols.aAircraftsystemsLandinggearcontrolOverride.triggered;
+        }
+        private void controlKeyboardMouseCockpitHIDInputs()
+        {
+            _configBaseProcessor._PilotKeyboardMouseClickInput = aInput.Pilot.pCockpitMainclick.triggered;
         }
     }
 }

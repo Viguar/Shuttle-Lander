@@ -28,7 +28,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             ""id"": ""fa5954d5-eaa6-4cee-ac2b-17343a8d989d"",
             ""actions"": [
                 {
-                    ""name"": ""LMB-Interact"",
+                    ""name"": ""pCockpit.Mainclick"",
                     ""type"": ""Button"",
                     ""id"": ""52b884d1-ce6c-480b-8c5c-b99f245c567e"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LMB-Interact"",
+                    ""action"": ""pCockpit.Mainclick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -371,7 +371,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
 }");
         // Pilot
         m_Pilot = asset.FindActionMap("Pilot", throwIfNotFound: true);
-        m_Pilot_LMBInteract = m_Pilot.FindAction("LMB-Interact", throwIfNotFound: true);
+        m_Pilot_pCockpitMainclick = m_Pilot.FindAction("pCockpit.Mainclick", throwIfNotFound: true);
         // Aircraftcontrols
         m_Aircraftcontrols = asset.FindActionMap("Aircraftcontrols", throwIfNotFound: true);
         m_Aircraftcontrols_aControlsurfacesPitchcontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Pitchcontrol.Override", throwIfNotFound: true);
@@ -447,12 +447,12 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     // Pilot
     private readonly InputActionMap m_Pilot;
     private List<IPilotActions> m_PilotActionsCallbackInterfaces = new List<IPilotActions>();
-    private readonly InputAction m_Pilot_LMBInteract;
+    private readonly InputAction m_Pilot_pCockpitMainclick;
     public struct PilotActions
     {
         private @HIDInputComputer m_Wrapper;
         public PilotActions(@HIDInputComputer wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LMBInteract => m_Wrapper.m_Pilot_LMBInteract;
+        public InputAction @pCockpitMainclick => m_Wrapper.m_Pilot_pCockpitMainclick;
         public InputActionMap Get() { return m_Wrapper.m_Pilot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -462,16 +462,16 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PilotActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PilotActionsCallbackInterfaces.Add(instance);
-            @LMBInteract.started += instance.OnLMBInteract;
-            @LMBInteract.performed += instance.OnLMBInteract;
-            @LMBInteract.canceled += instance.OnLMBInteract;
+            @pCockpitMainclick.started += instance.OnPCockpitMainclick;
+            @pCockpitMainclick.performed += instance.OnPCockpitMainclick;
+            @pCockpitMainclick.canceled += instance.OnPCockpitMainclick;
         }
 
         private void UnregisterCallbacks(IPilotActions instance)
         {
-            @LMBInteract.started -= instance.OnLMBInteract;
-            @LMBInteract.performed -= instance.OnLMBInteract;
-            @LMBInteract.canceled -= instance.OnLMBInteract;
+            @pCockpitMainclick.started -= instance.OnPCockpitMainclick;
+            @pCockpitMainclick.performed -= instance.OnPCockpitMainclick;
+            @pCockpitMainclick.canceled -= instance.OnPCockpitMainclick;
         }
 
         public void RemoveCallbacks(IPilotActions instance)
@@ -647,7 +647,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     public DebugcontrolsActions @Debugcontrols => new DebugcontrolsActions(this);
     public interface IPilotActions
     {
-        void OnLMBInteract(InputAction.CallbackContext context);
+        void OnPCockpitMainclick(InputAction.CallbackContext context);
     }
     public interface IAircraftcontrolsActions
     {

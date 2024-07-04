@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Viguar.Aircraft.Runways
 {
     public class RunwayLocalizer : MonoBehaviour
     {
+        public int _LocalizerRange;
+        public int _LocalizerRayAmount;
+        public float _LocalizerWidth;
         public LocalizerBeam[] _Localizer;
         [Space(10)]
         [Header("Localizer Colors (Editor)")]
@@ -22,14 +26,14 @@ namespace Viguar.Aircraft.Runways
         {
             foreach (LocalizerBeam localizer in _Localizer)
             {
-                for (int i = 0; i < localizer._LocalizerRayAmount; i++)
+                for (int i = 0; i < _LocalizerRayAmount; i++)
                 {
-                    CreateLocalizer(i, localizer._LocalizerRayAmount, localizer._LocalizerWidth, localizer._LocalizerAngle, localizer._LocalizerRange, localizer);
+                    ShootLocalizerBeam(i, _LocalizerRayAmount, _LocalizerWidth, localizer._LocalizerAngle, _LocalizerRange, localizer);
                 }
             }
         }
 
-        private void CreateLocalizer(int iteration, int rayAmount, float raySpread, float rayAngle, int rayRange, LocalizerBeam beam)
+        private void ShootLocalizerBeam(int iteration, int rayAmount, float raySpread, float rayAngle, int rayRange, LocalizerBeam beam)
         {
             Vector3 localizerOrigin = transform.position; //The Localizer Beams are send from this very gameObject.
             float rayOffsetRotation = ((iteration - (rayAmount - 1) / 2) * raySpread) / (rayAmount - 1); //The spreading angle of the rays based on the amount and maximum spread angle.
@@ -40,55 +44,67 @@ namespace Viguar.Aircraft.Runways
                 case LocalizerBeam._LocalizerTypes.OnGlideSlope:
                     rayColor = _LocalizerColorOnGlideSlope;
                     DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
+                    CheckForLocalizerHit(localizerOrigin, rayDirection);
                     break;
                 case LocalizerBeam._LocalizerTypes.Low:
                     rayColor = _LocalizerColorLow;
                     DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
+                    CheckForLocalizerHit(localizerOrigin, rayDirection);
                     break;
                 case LocalizerBeam._LocalizerTypes.TooLow:
                     rayColor = _LocalizerColorTooLow;
                     DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
+                    CheckForLocalizerHit(localizerOrigin, rayDirection);
                     break;
                 case LocalizerBeam._LocalizerTypes.High:
                     rayColor = _LocalizerColorHigh;
                     DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
+                    CheckForLocalizerHit(localizerOrigin, rayDirection);
                     break;
                 case LocalizerBeam._LocalizerTypes.TooHigh:
                     rayColor = _LocalizerColorTooHigh;
                     DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
+                    CheckForLocalizerHit(localizerOrigin, rayDirection);
                     break;
             }
-            //FOR LATER:
-            /*
-             *RaycastHit hit;
-                if (Physics.Raycast(origin, direction, out hit, detectionRange))
-                {
-                    // Check the hit point and adjust game elements accordingly
-                    // You may also want to differentiate between rays (center, left, right) for specific adjustments
-                }
-             */
+        }
+
+        private void CheckForLocalizerHit(Vector3 localizerOrigin, Vector3 rayDirection)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(localizerOrigin, rayDirection, out hit, _LocalizerRange) && hit.collider.CompareTag("aircraft"))
+            {
+                print("hit!");
+                // Check the hit point and adjust game elements accordingly
+                // You may also want to differentiate between rays (center, left, right) for specific adjustments
+            }
         }
 
         private void DrawRayGizmo(Vector3 origin, Vector3 direction, float length, Color32 color)
         {
-            Gizmos.color = color;
-            Gizmos.DrawRay(origin, direction * length);
+            if (!Application.IsPlaying(this))
+                {
+                Gizmos.color = color;
+                Gizmos.DrawRay(origin, direction * length);
+            }
+        
         }
+
 
         private void OnDrawGizmos()
         {
-            RunLocalizer(); // Visualize the rays in the Unity Editor scene view
+                RunLocalizer(); // Visualize the rays in the Unity Editor scene view                    
         }
+
     }
+
 
     [System.Serializable]
     public class LocalizerBeam
     {
+        public string LocalizerBeamName;
         public enum _LocalizerTypes { OnGlideSlope, Low, TooLow, High, TooHigh, }
-        public _LocalizerTypes _LocalizerType;
-        public int _LocalizerRayAmount;
-        public int _LocalizerRange;
+        public _LocalizerTypes _LocalizerType;       
         public float _LocalizerAngle;
-        public float _LocalizerWidth;
     }
 }
