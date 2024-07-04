@@ -333,6 +333,17 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f5b521f6-4ed4-4c70-ae9f-c9f148f7af3c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pDebug.Debugcontrols.Togglecursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c4c08e26-b6ed-488b-a0b7-1a65bda55326"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

@@ -37,7 +37,7 @@ namespace Viguar.Aircraft
             _configBaseProcessor = gameObject.GetComponentInParent<AircraftBaseProcessor>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             if (isMouseResponsive) { handleMouseInteraction(); }
             if(Input.GetMouseButtonDown(0))
