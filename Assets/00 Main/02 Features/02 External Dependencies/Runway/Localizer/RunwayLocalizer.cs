@@ -1,110 +1,133 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor;
 
 namespace Viguar.Aircraft.Runways
 {
+    [ExecuteInEditMode]
     public class RunwayLocalizer : MonoBehaviour
-    {
-        public int _LocalizerRange;
-        public int _LocalizerRayAmount;
-        public float _LocalizerWidth;
-        public LocalizerBeam[] _Localizer;
-        [Space(10)]
-        [Header("Localizer Colors (Editor)")]
-        [SerializeField] private Color32 _LocalizerColorOnGlideSlope;
-        [SerializeField] private Color32 _LocalizerColorLow;
-        [SerializeField] private Color32 _LocalizerColorTooLow;
-        [SerializeField] private Color32 _LocalizerColorHigh;
-        [SerializeField] private Color32 _LocalizerColorTooHigh;
+    {                      
+        private AircraftBaseProcessor _configBaseProcessor;
+
+        [Header("Localizer Beam Creator")]
+        public int _LocalizerRange = 1000;
+        public float _LocalizerVerticalWindow = 10;
+        public float _LocalizerWidth = 20;
+        public float _LocalizerAngle = 4;
+        
+        [HideInInspector] public Vector3[] LocalizerConeVertices;
+        private MeshCollider _mc;
+        private Rigidbody _rb;
+
+        private void Start()
+        {
+            _configBaseProcessor = GameObject.FindGameObjectWithTag("aircraft").GetComponent<AircraftBaseProcessor>();
+            InitLocalizer();
+        }
 
         private void Update()
         {
-            RunLocalizer();
+
         }
 
-        private void RunLocalizer()
+        void OnTriggerEnter(Collider other)
         {
-            foreach (LocalizerBeam localizer in _Localizer)
+            if(other.tag == "aircraft") { print("Inside Localizer"); }            
+        }
+
+        private void InitLocalizer()
+        {
+            _mc = GetComponent<MeshCollider>();
+            _rb = GetComponent<Rigidbody>();
+            AssignMeshColliderProperties(_mc);
+            AssignRigidbodyProperties(_rb);
+        }
+        private void AssignMeshColliderProperties(MeshCollider mc)
+        {
+            mc.convex = true;
+            mc.isTrigger = true;
+        }
+        private void AssignRigidbodyProperties(Rigidbody rb)
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
+
+        #region Localizer Mesh Shape Creation
+        private void OnValidate()
+        {
+            if (LocalizerConeVertices == null || LocalizerConeVertices.Length != 8)
             {
-                for (int i = 0; i < _LocalizerRayAmount; i++)
-                {
-                    ShootLocalizerBeam(i, _LocalizerRayAmount, _LocalizerWidth, localizer._LocalizerAngle, _LocalizerRange, localizer);
-                }
+                LocalizerConeVertices = new Vector3[5];
+                LocalizerConeVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
             }
+            UpdateLocalizerCone();
         }
 
-        private void ShootLocalizerBeam(int iteration, int rayAmount, float raySpread, float rayAngle, int rayRange, LocalizerBeam beam)
+        public void UpdateLocalizerCone()
         {
-            Vector3 localizerOrigin = transform.position; //The Localizer Beams are send from this very gameObject.
-            float rayOffsetRotation = ((iteration - (rayAmount - 1) / 2) * raySpread) / (rayAmount - 1); //The spreading angle of the rays based on the amount and maximum spread angle.
-            Vector3 rayDirection = Quaternion.Euler(-rayAngle, rayOffsetRotation, 0) * transform.forward; //The rays align with the direction the attached gameObject is facing with a positive angle upwards.
-            Color32 rayColor;
-            switch (beam._LocalizerType)
+            MeshCollider meshCollider = GetComponent<MeshCollider>();
+            MeshFilter meshFilter = GetComponent<MeshFilter>();
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            if (meshCollider == null) { meshCollider = gameObject.AddComponent<MeshCollider>(); }
+            if (meshFilter == null) { meshFilter = gameObject.AddComponent<MeshFilter>(); }
+            if (meshRenderer == null) { meshRenderer = gameObject.AddComponent<MeshRenderer>(); meshRenderer.material = new Material(Shader.Find("Standard")); }
+            if (rigidbody == null) { rigidbody = gameObject.AddComponent<Rigidbody>(); }
+
+            Mesh mesh = new Mesh();
+            meshFilter.mesh = mesh;
+            float halfVerticalSize = _LocalizerRange * Mathf.Tan(_LocalizerVerticalWindow * Mathf.Deg2Rad / 2);
+            float halfHorizontalSize = _LocalizerRange * Mathf.Tan(_LocalizerWidth * Mathf.Deg2Rad / 2);
+
+            // Define the vertices of a pyramid in local space, inverted along the Z-axis
+            Vector3 baseVertex = new Vector3(0, 0, 0);  // Base vertex at the origin
+            Vector3 bottomLeft = new Vector3(-halfHorizontalSize, -halfVerticalSize, _LocalizerRange); // Bottom-left
+            Vector3 topLeft = new Vector3(-halfHorizontalSize, halfVerticalSize, _LocalizerRange);    // Top-left
+            Vector3 topRight = new Vector3(halfHorizontalSize, halfVerticalSize, _LocalizerRange);    // Top-right
+            Vector3 bottomRight = new Vector3(halfHorizontalSize, -halfVerticalSize, _LocalizerRange); // Bottom-right
+
+
+            Quaternion rotation = Quaternion.Euler(-_LocalizerAngle, 0, 0); // Rotate around the x-axis from the base vertex
+
+            bottomLeft = rotation * (bottomLeft - baseVertex) + baseVertex;
+            topLeft = rotation * (topLeft - baseVertex) + baseVertex;
+            topRight = rotation * (topRight - baseVertex) + baseVertex;
+            bottomRight = rotation * (bottomRight - baseVertex) + baseVertex;
+            
+            Vector3 apex = baseVertex; // Apex at the origin
+
+            Vector3[] vertices = new Vector3[]
             {
-                case LocalizerBeam._LocalizerTypes.OnGlideSlope:
-                    rayColor = _LocalizerColorOnGlideSlope;
-                    DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                    CheckForLocalizerHit(localizerOrigin, rayDirection);
-                    break;
-                case LocalizerBeam._LocalizerTypes.Low:
-                    rayColor = _LocalizerColorLow;
-                    DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                    CheckForLocalizerHit(localizerOrigin, rayDirection);
-                    break;
-                case LocalizerBeam._LocalizerTypes.TooLow:
-                    rayColor = _LocalizerColorTooLow;
-                    DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                    CheckForLocalizerHit(localizerOrigin, rayDirection);
-                    break;
-                case LocalizerBeam._LocalizerTypes.High:
-                    rayColor = _LocalizerColorHigh;
-                    DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                    CheckForLocalizerHit(localizerOrigin, rayDirection);
-                    break;
-                case LocalizerBeam._LocalizerTypes.TooHigh:
-                    rayColor = _LocalizerColorTooHigh;
-                    DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                    CheckForLocalizerHit(localizerOrigin, rayDirection);
-                    break;
-            }
-        }
+                bottomLeft, bottomRight, topLeft,  // Base
+                topLeft, bottomRight, topRight,
+                bottomLeft, topLeft, apex,         // Side 1                
+                topLeft, topRight, apex,           // Side 2                
+                topRight, bottomRight, apex,       // Side 3      
+                bottomRight, bottomLeft, apex      // Side 4
+            };
 
-        private void CheckForLocalizerHit(Vector3 localizerOrigin, Vector3 rayDirection)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(localizerOrigin, rayDirection, out hit, _LocalizerRange) && hit.collider.CompareTag("aircraft"))
+            int[] triangles = new int[]
             {
-                print("hit!");
-                // Check the hit point and adjust game elements accordingly
-                // You may also want to differentiate between rays (center, left, right) for specific adjustments
-            }
+
+                0, 1, 2, // Base
+                3, 4, 5,
+
+                6, 7, 8, // Sides
+                9, 10, 11,
+                12, 13, 14,
+                15, 16, 17
+            };
+            meshCollider.sharedMesh = null; // Reset mesh
+            meshCollider.sharedMesh = mesh; // Assign the updated mesh
+            AssignMeshColliderProperties(meshCollider); //Assign the correct values
+
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
         }
-
-        private void DrawRayGizmo(Vector3 origin, Vector3 direction, float length, Color32 color)
-        {
-            if (!Application.IsPlaying(this))
-                {
-                Gizmos.color = color;
-                Gizmos.DrawRay(origin, direction * length);
-            }
-        
-        }
-
-
-        private void OnDrawGizmos()
-        {
-                RunLocalizer(); // Visualize the rays in the Unity Editor scene view                    
-        }
-
-    }
-
-
-    [System.Serializable]
-    public class LocalizerBeam
-    {
-        public string LocalizerBeamName;
-        public enum _LocalizerTypes { OnGlideSlope, Low, TooLow, High, TooHigh, }
-        public _LocalizerTypes _LocalizerType;       
-        public float _LocalizerAngle;
+        #endregion
     }
 }

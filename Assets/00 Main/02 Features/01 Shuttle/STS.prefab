@@ -2491,6 +2491,44 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &445997360740139318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5807010513751159312}
+  m_Layer: 9
+  m_Name: Localizer Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5807010513751159312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445997360740139318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8495564432472488081}
+  - {fileID: 1114636033737892976}
+  - {fileID: 3857603307495604905}
+  - {fileID: 1734576534627581476}
+  - {fileID: 7682451456746602574}
+  - {fileID: 2868259849898526763}
+  - {fileID: 3397211918440947288}
+  m_Father: {fileID: 8282782410952392035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460792752733157786
 GameObject:
   m_ObjectHideFlags: 0
@@ -27957,6 +27995,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5315203602981095486}
+  - {fileID: 5807010513751159312}
   - {fileID: 2682087188809177755}
   m_Father: {fileID: 2699252657755230605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35570,6 +35609,7 @@ MonoBehaviour:
   _WheelTireState: 0
   _ElectricityState: 0
   _BatteryState: 0
+  _LocalizerRecieverState: 0
 --- !u!114 &6938242102999573399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73914,6 +73954,228 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6474371560586134114, guid: a4e4d6147dd33bc40934cad843a486b9, type: 3}
   m_PrefabInstance: {fileID: 3130495393363600467}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3197537850737713834
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6217
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5152
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &8495564432472488081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 3197537850737713834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3290797561261076433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74258,6 +74520,228 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
   m_PrefabInstance: {fileID: 3559639095568776610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3685120463231588981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58289987
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.40300006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &7682451456746602574 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 3685120463231588981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3804608614153569104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74413,6 +74897,228 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: 5c87a22aff28dd94fa302d2e3b317caa, type: 3}
   m_PrefabInstance: {fileID: 3804608614153569104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4732110338174297119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59279984
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.43160003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &1734576534627581476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 4732110338174297119}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4743833840801110807
 PrefabInstance:
@@ -75011,6 +75717,228 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
   m_PrefabInstance: {fileID: 5647030003691868733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6255036978529402443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight High
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.61229986
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.48800004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &1114636033737892976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 6255036978529402443}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6297175823866680702
 PrefabInstance:
@@ -75862,6 +76790,228 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
   m_PrefabInstance: {fileID: 6738066749493895759}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7796105518761941138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.60249984
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45980003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &3857603307495604905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 7796105518761941138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7907285373014863217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76221,6 +77371,232 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: 5c87a22aff28dd94fa302d2e3b317caa, type: 3}
   m_PrefabInstance: {fileID: 8118201740900231902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8546973724199617635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight TooLow (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3386
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1777
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasAudioSignal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &3397211918440947288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 8546973724199617635}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8551683248895111627
 PrefabInstance:
@@ -76713,6 +78089,228 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: 5c87a22aff28dd94fa302d2e3b317caa, type: 3}
   m_PrefabInstance: {fileID: 8792203616758057849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9112957223270011408
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight TooLow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3386
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1528
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: TooLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &2868259849898526763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 9112957223270011408}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9114010323475233708
 PrefabInstance:

@@ -301,6 +301,11 @@ namespace Viguar.Aircraft
         [HideInInspector] public BatteryStateTypes _BatteryState;
 
         #endregion
+        #region Runtime Values: External Systems
+        public enum LocalizerRecieverStateTypes { Off, Defect, TooLow, Low, OnGlideSlope, High, TooHigh, OutOfRange, }
+
+        [HideInInspector] public LocalizerRecieverStateTypes _LocalizerRecieverState;
+        #endregion
         #endregion
         #region User & Virtual Input            
         public bool _HasSurfaceInputDelay { get; set; }
@@ -763,7 +768,8 @@ namespace Viguar.Aircraft
             DebugStringDict["_WheelTireState"] = _WheelTireState.ToString();
             DebugStringDict["_BatteryState"] = _BatteryState.ToString();
             DebugStringDict["_ElectricityState"] = _ElectricityState.ToString();
-
+            DebugStringDict["_LocalizerRecieverState"] = _LocalizerRecieverState.ToString();
+            
         }
         #endregion
     }
