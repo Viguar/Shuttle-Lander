@@ -32,7 +32,11 @@ namespace Viguar.Aircraft.Runways
 
         void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "aircraft") { print("Inside Localizer"); }            
+            if (other.tag == "aircraft") { print("Captured Localizer"); }
+        }
+        void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "aircraft") { print("Lost Localizer"); }
         }
 
         private void InitLocalizer()
@@ -52,6 +56,7 @@ namespace Viguar.Aircraft.Runways
             rb.useGravity = false;
             rb.isKinematic = true;
         }
+
 
         #region Localizer Mesh Shape Creation
         private void OnValidate()
@@ -109,7 +114,6 @@ namespace Viguar.Aircraft.Runways
 
             int[] triangles = new int[]
             {
-
                 0, 1, 2, // Base
                 3, 4, 5,
 
