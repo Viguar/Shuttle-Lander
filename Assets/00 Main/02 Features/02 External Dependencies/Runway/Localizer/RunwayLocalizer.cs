@@ -11,13 +11,21 @@ namespace Viguar.Aircraft.Runways
 
         [Header("Localizer Beam Creator")]
         public int _LocalizerRange = 1000;
-        public float _LocalizerVerticalWindow = 10;
+        public float _LocalizerGlobalAngle = 15;
+        public float _LocalizerVerticalWindowCenter = 7;
+        public float _LocalizerVerticalWindowOffset = 12;
         public float _LocalizerWidth = 20;
-        public float _LocalizerAngle = 4;
         
-        [HideInInspector] public Vector3[] LocalizerConeVertices;
+        [HideInInspector] public Vector3[] _CenteredLocalizerVertices;
+        [HideInInspector] public Vector3[] _OffsetLocalizerVertices;
+        [HideInInspector] public bool _Centered = false;
+        [HideInInspector] public bool _Offset = false;
         private MeshCollider _mc;
         private Rigidbody _rb;
+        private GameObject _CenteredLocalizerObject;
+        private GameObject _OffsetLocalizerObject;
+        
+
 
         private void Start()
         {
@@ -43,47 +51,60 @@ namespace Viguar.Aircraft.Runways
         {
             _mc = GetComponent<MeshCollider>();
             _rb = GetComponent<Rigidbody>();
-            AssignMeshColliderProperties(_mc);
-            AssignRigidbodyProperties(_rb);
         }
-        private void AssignMeshColliderProperties(MeshCollider mc)
-        {
-            mc.convex = true;
-            mc.isTrigger = true;
-        }
-        private void AssignRigidbodyProperties(Rigidbody rb)
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-        }
+
+
+
+
 
 
         #region Localizer Mesh Shape Creation
         private void OnValidate()
         {
-            if (LocalizerConeVertices == null || LocalizerConeVertices.Length != 8)
+            if(transform.Find("LocalizerCenter") == null)
             {
-                LocalizerConeVertices = new Vector3[5];
-                LocalizerConeVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
+                _CenteredLocalizerObject = new GameObject("LocalizerCenter");
+                _CenteredLocalizerObject.transform.SetParent(transform);
+                _CenteredLocalizerObject.AddComponent<LocalizerZoneDetector>();
+                _CenteredLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Center;
             }
-            UpdateLocalizerCone();
+            if(transform.Find("LocalizerMargin") == null)
+            {
+                _OffsetLocalizerObject = new GameObject("LocalizerMargin");
+                _OffsetLocalizerObject.transform.SetParent(transform);
+                _OffsetLocalizerObject.AddComponent<LocalizerZoneDetector>();
+                _OffsetLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Offset;
+            }
+            if (_CenteredLocalizerVertices == null || _CenteredLocalizerVertices.Length != 5)
+            {
+                _CenteredLocalizerVertices = new Vector3[5];
+                _CenteredLocalizerVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
+            }
+            if(_OffsetLocalizerVertices == null || _OffsetLocalizerVertices.Length != 5)
+            {
+                _OffsetLocalizerVertices = new Vector3[5];
+                _OffsetLocalizerVertices[4] = new Vector3(0,0,0);
+            }
+            UpdateLocalizerCone(_CenteredLocalizerObject, _LocalizerVerticalWindowCenter);
+            UpdateLocalizerCone(_OffsetLocalizerObject, _LocalizerVerticalWindowOffset);
         }
 
-        public void UpdateLocalizerCone()
+        public void UpdateLocalizerCone(GameObject localizerOBJ, float vAngle)
         {
-            MeshCollider meshCollider = GetComponent<MeshCollider>();
-            MeshFilter meshFilter = GetComponent<MeshFilter>();
-            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            if (meshCollider == null) { meshCollider = gameObject.AddComponent<MeshCollider>(); }
-            if (meshFilter == null) { meshFilter = gameObject.AddComponent<MeshFilter>(); }
-            if (meshRenderer == null) { meshRenderer = gameObject.AddComponent<MeshRenderer>(); meshRenderer.material = new Material(Shader.Find("Standard")); }
-            if (rigidbody == null) { rigidbody = gameObject.AddComponent<Rigidbody>(); }
+            MeshCollider meshCollider = localizerOBJ.GetComponent<MeshCollider>();
+            MeshFilter meshFilter = localizerOBJ.GetComponent<MeshFilter>();
+            MeshRenderer meshRenderer = localizerOBJ.GetComponent<MeshRenderer>();
+            Rigidbody rigidbody = localizerOBJ.GetComponent<Rigidbody>();
+            if (meshCollider == null) { meshCollider = localizerOBJ.AddComponent<MeshCollider>(); } meshCollider.convex = true; meshCollider.isTrigger = true; 
+            if (meshFilter == null) { meshFilter = localizerOBJ.AddComponent<MeshFilter>(); }
+            if (meshRenderer == null) { meshRenderer = localizerOBJ.AddComponent<MeshRenderer>(); } meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            if (rigidbody == null) { rigidbody = localizerOBJ.AddComponent<Rigidbody>(); } rigidbody.useGravity = false; rigidbody.isKinematic = true;
 
             Mesh mesh = new Mesh();
             meshFilter.mesh = mesh;
-            float halfVerticalSize = _LocalizerRange * Mathf.Tan(_LocalizerVerticalWindow * Mathf.Deg2Rad / 2);
+            float halfVerticalSize = _LocalizerRange * Mathf.Tan(vAngle * Mathf.Deg2Rad / 2);
             float halfHorizontalSize = _LocalizerRange * Mathf.Tan(_LocalizerWidth * Mathf.Deg2Rad / 2);
+            
 
             // Define the vertices of a pyramid in local space, inverted along the Z-axis
             Vector3 baseVertex = new Vector3(0, 0, 0);  // Base vertex at the origin
@@ -93,7 +114,7 @@ namespace Viguar.Aircraft.Runways
             Vector3 bottomRight = new Vector3(halfHorizontalSize, -halfVerticalSize, _LocalizerRange); // Bottom-right
 
 
-            Quaternion rotation = Quaternion.Euler(-_LocalizerAngle, 0, 0); // Rotate around the x-axis from the base vertex
+            Quaternion rotation = Quaternion.Euler(-_LocalizerGlobalAngle, 0, 0); // Rotate around the x-axis from the base vertex
 
             bottomLeft = rotation * (bottomLeft - baseVertex) + baseVertex;
             topLeft = rotation * (topLeft - baseVertex) + baseVertex;
@@ -121,10 +142,9 @@ namespace Viguar.Aircraft.Runways
                 9, 10, 11,
                 12, 13, 14,
                 15, 16, 17
-            };
+            };                       
             meshCollider.sharedMesh = null; // Reset mesh
-            meshCollider.sharedMesh = mesh; // Assign the updated mesh
-            AssignMeshColliderProperties(meshCollider); //Assign the correct values
+            meshCollider.sharedMesh = mesh; // Assign the updated mesh          
 
             mesh.vertices = vertices;
             mesh.triangles = triangles;
