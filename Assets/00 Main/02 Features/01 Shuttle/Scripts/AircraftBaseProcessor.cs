@@ -607,7 +607,7 @@ namespace Viguar.Aircraft
             AvionicsDict["Compass"] = _Heading;
             AvionicsDict["Barometer"] = _AltitudeAirPressure;
             AvionicsDict["Thermometer"] = _AltitudeAirTemperature;
-
+            AvionicsDict["RollIndicator"] = _BankDegreeAngle;
             AvionicsDict["Flaps Indicator"] = _CurrentFlapDegreeSetting;
 
             AvionicsDict["BrakeTemperature"] = _LandingGearWheelBrakeTemperature;
