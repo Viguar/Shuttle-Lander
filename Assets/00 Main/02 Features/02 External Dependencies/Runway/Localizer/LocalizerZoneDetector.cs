@@ -12,7 +12,10 @@ namespace Viguar.Aircraft.Runways
         private void Start()
         {
             localizer = GameObject.FindGameObjectWithTag("runwayLocalizer").GetComponent<RunwayLocalizer>();
+            GetComponent<MeshCollider>().sharedMesh = null;
+            GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
         }
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.tag == "aircraft")

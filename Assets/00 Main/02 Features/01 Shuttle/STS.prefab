@@ -2520,13 +2520,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8495564432472488081}
   - {fileID: 1114636033737892976}
   - {fileID: 3857603307495604905}
   - {fileID: 1734576534627581476}
-  - {fileID: 7682451456746602574}
-  - {fileID: 2868259849898526763}
-  - {fileID: 3397211918440947288}
+  - {fileID: 5597501837172493947}
+  - {fileID: 1085631405270242772}
   m_Father: {fileID: 8282782410952392035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460792752733157786
@@ -7138,6 +7136,7 @@ GameObject:
   - component: {fileID: 988866076238021186}
   - component: {fileID: 111571593325314466}
   - component: {fileID: 6393677189763461834}
+  - component: {fileID: 6029430672465730551}
   m_Layer: 9
   m_Name: Camera-Cockpit-Pilot-R
   m_TagString: Untagged
@@ -7231,6 +7230,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696694a46438f1945b0841ce2981752d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6029430672465730551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016589506903935361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &1058217392679582262
 GameObject:
   m_ObjectHideFlags: 0
@@ -7852,6 +7983,7 @@ GameObject:
   - component: {fileID: 6413356741174349310}
   - component: {fileID: 4330115051044213266}
   - component: {fileID: 3548996123874777280}
+  - component: {fileID: 5123865015249464930}
   m_Layer: 9
   m_Name: Camera-Vertical-Stabilizer
   m_TagString: Untagged
@@ -7933,6 +8065,138 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100722161885620314}
   m_Enabled: 1
+--- !u!114 &5123865015249464930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100722161885620314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &1109739743943772896
 GameObject:
   m_ObjectHideFlags: 0
@@ -8506,6 +8770,50 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1204682583833610119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8250379626979053678}
+  - component: {fileID: 4816507016874361098}
+  m_Layer: 9
+  m_Name: STS-ControlPanels-Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8250379626979053678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204682583833610119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4289956803416678646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4816507016874361098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204682583833610119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f35819522a79c4c9707ca2fd6b060b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1214027471923545872
 GameObject:
   m_ObjectHideFlags: 0
@@ -8791,6 +9099,7 @@ GameObject:
   - component: {fileID: 2743204982265589726}
   - component: {fileID: 4772393934869697999}
   - component: {fileID: 579127431326948564}
+  - component: {fileID: 4091908695012890634}
   m_Layer: 9
   m_Name: Camera-Cockpit-Wide
   m_TagString: Untagged
@@ -8872,6 +9181,138 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237412812114631923}
   m_Enabled: 1
+--- !u!114 &4091908695012890634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237412812114631923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &1237521834188810125
 GameObject:
   m_ObjectHideFlags: 0
@@ -11747,8 +12188,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5667981821235667176}
-  - {fileID: 94367918348680461}
   - {fileID: 474885678459092242}
+  - {fileID: 94367918348680461}
+  - {fileID: 4902417428782611682}
   m_Father: {fileID: 2699252657755230605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562787179193261243
@@ -21429,6 +21871,7 @@ GameObject:
   - component: {fileID: 554252612682255652}
   - component: {fileID: 3834546931761310740}
   - component: {fileID: 2462822165772384555}
+  - component: {fileID: 8668625688246319709}
   m_Layer: 9
   m_Name: Camera-Cockpit-Pilot-L
   m_TagString: MainCamera
@@ -21522,6 +21965,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696694a46438f1945b0841ce2981752d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8668625688246319709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911822772261461628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &2938776334318210753
 GameObject:
   m_ObjectHideFlags: 0
@@ -29584,6 +30159,7 @@ GameObject:
   - component: {fileID: 5595587012715452850}
   - component: {fileID: 2563501646820960695}
   - component: {fileID: 6926341611944815258}
+  - component: {fileID: 892557731143198112}
   m_Layer: 9
   m_Name: Camera-Follow
   m_TagString: Untagged
@@ -29677,6 +30253,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50628857bd43f48488cdd121fa7a57f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &892557731143198112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122730813382747566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &4140863730257595738
 GameObject:
   m_ObjectHideFlags: 0
@@ -34524,11 +35232,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8250379626979053678}
+  - {fileID: 7635769842725384776}
   - {fileID: 5015499704153555289}
   - {fileID: 2338495183537269807}
   - {fileID: 6200206542696206773}
   - {fileID: 3321131010299316346}
-  - {fileID: 7635769842725384776}
   - {fileID: 1787666026628436638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35609,7 +36318,8 @@ MonoBehaviour:
   _WheelTireState: 0
   _ElectricityState: 0
   _BatteryState: 0
-  _LocalizerRecieverState: 0
+  _LocalizerRecieverInfoState: 0
+  _CockpitLocalizerPanelState: 0
 --- !u!114 &6938242102999573399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43876,7 +44586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474885678459092242}
   m_Layer: 9
-  m_Name: Alert Controls
+  m_Name: Alert-Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55999,6 +56709,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7003508228076037877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4902417428782611682}
+  m_Layer: 9
+  m_Name: Localizer-Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4902417428782611682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7003508228076037877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5555920222995488409}
+  m_Father: {fileID: 9085104983384404414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7008374142938346887
 GameObject:
   m_ObjectHideFlags: 0
@@ -65501,7 +66243,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8228587691078684091}
-  m_Mesh: {fileID: -1420398578663065190, guid: 4d1f9e760d0184444b521058a25fa44b, type: 3}
+  m_Mesh: {fileID: -1420398578663065190, guid: ca3d6f256b1fcd14c893cffbdad5bb9a, type: 3}
 --- !u!23 &2437170062361210079
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69311,7 +70053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7635769842725384776}
   m_Layer: 9
-  m_Name: STS-Utilities
+  m_Name: STS-AV-Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69330,10 +70072,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4314432611047324953}
   - {fileID: 1250598626121453314}
   - {fileID: 4561591566821987768}
   - {fileID: 2879149604136972391}
+  - {fileID: 4314432611047324953}
   m_Father: {fileID: 4289956803416678646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8745540216864061601
@@ -69568,6 +70310,7 @@ GameObject:
   - component: {fileID: 2963648614925335327}
   - component: {fileID: 7641907289041902180}
   - component: {fileID: 8625548484370725967}
+  - component: {fileID: 3951452255954074238}
   m_Layer: 9
   m_Name: Camera-Gear
   m_TagString: Untagged
@@ -69649,6 +70392,138 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8782024725902064865}
   m_Enabled: 1
+--- !u!114 &3951452255954074238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782024725902064865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 2
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.5
+  TAAQuality: 2
+  taaSharpenMode: 0
+  taaRingingReduction: 0
+  taaHistorySharpening: 0.35
+  taaAntiFlicker: 0.5
+  taaMotionVectorRejection: 0
+  taaAntiHistoryRinging: 0
+  taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_FocusDistance: 10
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  xrRendering: 1
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  allowDeepLearningSuperSampling: 1
+  deepLearningSuperSamplingUseCustomQualitySettings: 0
+  deepLearningSuperSamplingQuality: 0
+  deepLearningSuperSamplingUseCustomAttributes: 0
+  deepLearningSuperSamplingUseOptimalSettings: 1
+  deepLearningSuperSamplingSharpening: 0
+  fsrOverrideSharpness: 0
+  fsrSharpness: 0.92
+  exposureTarget: {fileID: 0}
+  materialMipBias: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 5770166122053453
+      data2: 13799031440106553368
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 20
+    sssCustomDownsampleSteps: 0
+    msaaMode: 1
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!1 &8783634739051059642
 GameObject:
   m_ObjectHideFlags: 0
@@ -73164,6 +74039,228 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
   m_PrefabInstance: {fileID: 827570303469974516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1447893190502913088
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight On/Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6115
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6808
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _CockpitLocalizerPanelState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: On
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: NoSignal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &5597501837172493947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 1447893190502913088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1613983238521061006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73788,6 +74885,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7223185577823238313, guid: b7d0b6cfa5999a9479b138f3f2eb79d5, type: 3}
   m_PrefabInstance: {fileID: 2452622364433723523}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2649057254352130189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4902417428782611682}
+    m_Modifications:
+    - target: {fileID: 3092532296309788082, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_text
+      value: LOC 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102773804445389998, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_Name
+      value: LocalizerReceiver IO
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102773804445389998, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5214
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6936
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.57566655
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967593707081309032, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4816507016874361098}
+    - target: {fileID: 8967593707081309032, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleLocalizerPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967593707081309032, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Viguar.Aircraft.ControlPanels.LocalizerPanelController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+--- !u!4 &5555920222995488409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
+  m_PrefabInstance: {fileID: 2649057254352130189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2842185776320818940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73953,228 +75132,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6474371560586134114, guid: a4e4d6147dd33bc40934cad843a486b9, type: 3}
   m_PrefabInstance: {fileID: 3130495393363600467}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3197537850737713834
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5807010513751159312}
-    m_Modifications:
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Name
-      value: LocalizerLight TooHigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.6217
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5152
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1638
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5756666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.410619
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.57566667
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.41061902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -71
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _LocalizerRecieverState
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: hasLightSignal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].OnVariableValue
-      value: High
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].OnVariableValue
-      value: TooHigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: blink
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _StateGrounded
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
-      value: True
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
-      value: False
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
-      value: Retracted
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
---- !u!4 &8495564432472488081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-  m_PrefabInstance: {fileID: 3197537850737713834}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3290797561261076433
 PrefabInstance:
@@ -74520,228 +75477,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
   m_PrefabInstance: {fileID: 3559639095568776610}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3685120463231588981
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5807010513751159312}
-    m_Modifications:
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Name
-      value: LocalizerLight TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.58289987
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.40300006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1638
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5756666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.410619
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.57566667
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.41061902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -71
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _LocalizerRecieverState
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: hasLightSignal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].OnVariableValue
-      value: High
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].OnVariableValue
-      value: TooHigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: blink
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _StateGrounded
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
-      value: True
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
-      value: False
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
-      value: Retracted
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
---- !u!4 &7682451456746602574 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-  m_PrefabInstance: {fileID: 3685120463231588981}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3804608614153569104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74916,15 +75651,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.59279984
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43160003
+      value: 0.4542
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1638
+      value: -0.6271
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74956,11 +75691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: lightColor
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: VariableName
-      value: _LocalizerRecieverState
+      value: _LocalizerRecieverInfoState
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: hasLightSignal
@@ -74968,7 +75703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].CueSpeed
@@ -75016,11 +75751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[5].BlinkSpeed
@@ -75036,31 +75771,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
+      value: Unknown
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
+      value: OutOfRange
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].OnVariableValue
       value: High
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[6].OnVariableValue
-      value: TooHigh
+      value: TooLow
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[7].OnVariableValue
@@ -75718,7 +76453,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
   m_PrefabInstance: {fileID: 5647030003691868733}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6255036978529402443
+--- !u!1001 &6244611892200165359
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -75728,7 +76463,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_Name
-      value: LocalizerLight High
+      value: LocalizerLight Defect/Signal
       objectReference: {fileID: 0}
     - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_IsActive
@@ -75736,15 +76471,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.61229986
+      value: 0.6115
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48800004
+      value: 0.4875
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1638
+      value: -0.7055
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75776,11 +76511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: lightColor
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: VariableName
-      value: _LocalizerRecieverState
+      value: _CockpitLocalizerPanelState
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: hasLightSignal
@@ -75788,7 +76523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.size
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].CueSpeed
@@ -75832,11 +76567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[2].BlinkSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[4].BlinkSpeed
@@ -75844,7 +76579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[5].BlinkSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[6].BlinkSpeed
@@ -75856,27 +76591,249 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
+      value: On
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
+      value: Off
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
+      value: Defect
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
+      value: NoSignal
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
+      value: Defect
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].OnVariableValue
+      value: TooHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].OnVariableValue
+      value: Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: blink
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _StateGrounded
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
+      value: True
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
+      value: False
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
+      value: Retracted
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+--- !u!4 &1085631405270242772 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+  m_PrefabInstance: {fileID: 6244611892200165359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6255036978529402443
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5807010513751159312}
+    m_Modifications:
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_Name
+      value: LocalizerLight High
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6233
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5217
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6271
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5756666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.410619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57566667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41061902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: lightColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: VariableName
+      value: _LocalizerRecieverInfoState
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: hasLightSignal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].CueSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[0].OnVariableValue
+      value: Unknown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[1].OnVariableValue
+      value: OutOfRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[2].OnVariableValue
       value: High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[3].OnVariableValue
+      value: OnGlideSlope
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[5].OnVariableValue
+      value: Off
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[6].OnVariableValue
@@ -76714,23 +77671,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1856
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1856
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1856
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5793
+      value: 0.576
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6007
+      value: 0.5978
       objectReference: {fileID: 0}
     - target: {fileID: 7627355627074522644, guid: ea32a9c7249459d45a8b3f0b7eaa6a88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76808,15 +77765,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.60249984
+      value: 0.6115
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45980003
+      value: 0.4875
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1638
+      value: -0.6271
       objectReference: {fileID: 0}
     - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -76852,7 +77809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: VariableName
-      value: _LocalizerRecieverState
+      value: _LocalizerRecieverInfoState
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: hasLightSignal
@@ -76860,7 +77817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].CueSpeed
@@ -76908,11 +77865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[5].BlinkSpeed
@@ -76928,27 +77885,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
+      value: Unknown
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
+      value: OutOfRange
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
+      value: High
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
       value: OnGlideSlope
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
+      propertyPath: SignalProperties.Array.data[4].OnVariableValue
+      value: Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[5].OnVariableValue
-      value: High
+      value: Defect
       objectReference: {fileID: 0}
     - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
       propertyPath: SignalProperties.Array.data[6].OnVariableValue
@@ -77371,232 +78328,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: 5c87a22aff28dd94fa302d2e3b317caa, type: 3}
   m_PrefabInstance: {fileID: 8118201740900231902}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8546973724199617635
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5807010513751159312}
-    m_Modifications:
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Name
-      value: LocalizerLight TooLow (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5607
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3386
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1777
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5756666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.410619
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.57566667
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.41061902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -71
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _LocalizerRecieverState
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: hasAudioSignal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: hasLightSignal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].OnVariableValue
-      value: High
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].OnVariableValue
-      value: TooHigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: blink
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _StateGrounded
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
-      value: True
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
-      value: False
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
-      value: Retracted
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
---- !u!4 &3397211918440947288 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-  m_PrefabInstance: {fileID: 8546973724199617635}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8551683248895111627
 PrefabInstance:
@@ -78089,228 +78820,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: 5c87a22aff28dd94fa302d2e3b317caa, type: 3}
   m_PrefabInstance: {fileID: 8792203616758057849}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &9112957223270011408
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5807010513751159312}
-    m_Modifications:
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Name
-      value: LocalizerLight TooLow (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3561387688014225093, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5607
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3386
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1528
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5756666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.410619
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.57566667
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.41061902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -71
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _LocalizerRecieverState
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: hasLightSignal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].CueSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[0].OnVariableValue
-      value: Off
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[1].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[2].OnVariableValue
-      value: TooLow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[3].OnVariableValue
-      value: Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[4].OnVariableValue
-      value: OnGlideSlope
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[5].OnVariableValue
-      value: High
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[6].OnVariableValue
-      value: TooHigh
-      objectReference: {fileID: 0}
-    - target: {fileID: 6483755430954775817, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: SignalProperties.Array.data[7].OnVariableValue
-      value: Defect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: blink
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: lightColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: VariableName
-      value: _StateGrounded
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].BlinkSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].BlinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[0].OnVariableValue
-      value: True
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[1].OnVariableValue
-      value: False
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111798736566989499, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-      propertyPath: BlinkProperties.Array.data[2].OnVariableValue
-      value: Retracted
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
---- !u!4 &2868259849898526763 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6465376229169125947, guid: addfa9c93a8f6c44b9591bdbd45b516c, type: 3}
-  m_PrefabInstance: {fileID: 9112957223270011408}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9114010323475233708
 PrefabInstance:

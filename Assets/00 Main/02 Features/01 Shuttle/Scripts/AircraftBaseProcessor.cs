@@ -284,7 +284,12 @@ namespace Viguar.Aircraft
         public enum WheelBrakeStateTypes { Normal, Hot, Overheating, Fail, }
         public enum WheelTireStateTypes { Normal, CriticalPressure, Blowout, }
         public enum ElectricityStateTypes { Stable, }
-        public enum BatteryStateTypes { Stable, LowCharge, Empty, }
+        public enum BatteryStateTypes { Stable, LowCharge, Empty, }             
+        public enum LocalizerRecieverInfoTypes { Low, OnGlideSlope, High, OutOfRange, Unknown, }
+        
+        //Cockpit Panels
+        public enum CockpitLocalizerPanelStates { On, Off, Defect, NoSignal, }
+
 
         [HideInInspector] public CWPCStateTypes _CWPMasterCautionState; //Master Caution Panel
         [HideInInspector] public CWPWStateTypes _CWPMasterWarningState; //Master Alert Panel
@@ -299,13 +304,10 @@ namespace Viguar.Aircraft
         [HideInInspector] public WheelTireStateTypes _WheelTireState;
         [HideInInspector] public ElectricityStateTypes _ElectricityState;
         [HideInInspector] public BatteryStateTypes _BatteryState;
-
+        [HideInInspector] public LocalizerRecieverInfoTypes _LocalizerRecieverInfoState;
+        [HideInInspector] public CockpitLocalizerPanelStates _CockpitLocalizerPanelState;
         #endregion
-        #region Runtime Values: External Systems
-        public enum LocalizerRecieverStateTypes { Off, Defect, TooLow, Low, OnGlideSlope, High, TooHigh, OutOfRange, }
 
-        [HideInInspector] public LocalizerRecieverStateTypes _LocalizerRecieverState;
-        #endregion
         #endregion
         #region User & Virtual Input            
         public bool _HasSurfaceInputDelay { get; set; }
@@ -768,8 +770,12 @@ namespace Viguar.Aircraft
             DebugStringDict["_WheelTireState"] = _WheelTireState.ToString();
             DebugStringDict["_BatteryState"] = _BatteryState.ToString();
             DebugStringDict["_ElectricityState"] = _ElectricityState.ToString();
-            DebugStringDict["_LocalizerRecieverState"] = _LocalizerRecieverState.ToString();
-            
+            DebugStringDict["_LocalizerRecieverInfoState"] = _LocalizerRecieverInfoState.ToString();
+
+            //Cockpit Panels States
+            DebugStringDict["_CockpitLocalizerPanelState"] = _CockpitLocalizerPanelState.ToString();
+
+
         }
         #endregion
     }

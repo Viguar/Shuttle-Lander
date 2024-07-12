@@ -21,8 +21,8 @@ namespace Viguar.Aircraft
         private Transform pushablePart;
         private Vector3 MouseActionPushableOriginalLocation;
         private Vector3 mouseActionPushableTarget;
-        private float mouseInteractionPushDepth = -0.00435f;
-        private int mouseInteractionMovementSmoothing = 3;
+        private float mouseInteractionPushDepth = -0.004f;
+        private int mouseInteractionMovementSmoothing = 20;
         private bool mouseInteracted = false;
         private AircraftBaseProcessor _configBaseProcessor;
 
