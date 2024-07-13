@@ -10,26 +10,29 @@ namespace Viguar.Aircraft.Runways
     public class RunwayLocalizer : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
+        public enum DetectionMethods { ColliderLogic, AngleCalculation }
 
         [Header("Localizer Beam Creator")]
+        [LabelOverride("Evaluate Localizer by")] public DetectionMethods _DetectionMethod;
         [Header("Length & Orientation")]
         [LabelOverride("Localizer Beam Length")] public int _LocalizerRange = 1500;
         [LabelOverride("Glide Slope Angle")] public float _LocalizerGlobalAngle = 15;
-        [Space(10)]
+        [Space(5)]
         [Header("Glide Slope Shape")]
         [LabelOverride("Glide Slope Width Angle")] public float _LocalizerWidth = 25;
         [Space(5)]
         [LabelOverride("Inner Glide Slope Angle")] public float _LocalizerVerticalWindowCenter = 3;
         [LabelOverride("Outer Glide Slope Angle")] public float _LocalizerVerticalWindowOffset = 9;
-        [LabelOverride("Total Glide Slope Angle")] [ReadOnly] [SerializeField] private float _LocalizerTotalAngle;
-       
+        [LabelOverride("Total Glide Slope Angle")] [ReadOnly] [SerializeField] private float _LocalizerTotalAngle;       
         [Space(10)]
+        [Header("Debug Materials")]
         public Material _CenteredLocalizerDebugMaterial;
         public Material _OffsetLocalizerDebugMaterial;
         
         [HideInInspector] public bool _Centered = false;
-        [HideInInspector] public bool _Offset = false;
+        [HideInInspector] public bool _Offset = false;        
         private float _CurrentApproachAngle;
+        private Vector2 _MaxGlideSlopeDeviationAngle;
         private bool _AboveGlideslope = false;
 
         private void OnValidate()
@@ -42,14 +45,17 @@ namespace Viguar.Aircraft.Runways
         {
             _configBaseProcessor = GameObject.FindGameObjectWithTag("aircraft").GetComponent<AircraftBaseProcessor>();
             _LocalizerTotalAngle = _LocalizerVerticalWindowCenter + _LocalizerVerticalWindowOffset;
+
+            _MaxGlideSlopeDeviationAngle = new Vector2(_LocalizerGlobalAngle - (_LocalizerVerticalWindowCenter / 2), _LocalizerGlobalAngle + (_LocalizerVerticalWindowCenter / 2)); //Store the Min/Max Bounds of the localizer                
         }
 
         private void Update()
         {
-            RunLocalizerLogic();
+            if(_DetectionMethod == DetectionMethods.ColliderLogic) { RunLocalizerColliderLogic(); }
+            else { RunLocalizerColliderLogic(); }
         }
 
-        private void RunLocalizerLogic()
+        private void RunLocalizerColliderLogic()
         {
             if(_configBaseProcessor._CockpitLocalizerPanelState == AircraftBaseProcessor.CockpitLocalizerPanelStates.On)
             {
@@ -65,6 +71,36 @@ namespace Viguar.Aircraft.Runways
                     else { _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Low; }
                 }
                 else //Run logic for not within localizer range.
+                {
+                    _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OutOfRange;
+                }
+            }
+            else
+            {
+                _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Unknown;
+            }
+        }
+        private void RunLocalizerAngleCalculationLogic()
+        {
+            if (_configBaseProcessor._CockpitLocalizerPanelState == AircraftBaseProcessor.CockpitLocalizerPanelStates.On)
+            {
+                if (_Offset)  //If we are at all inside the collider
+                {
+                    CalculateCurrentApproachAngle();
+                    if (_CurrentApproachAngle < _MaxGlideSlopeDeviationAngle.y && _CurrentApproachAngle > _MaxGlideSlopeDeviationAngle.x) 
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OnGlideSlope;
+                    }
+                    else if (_CurrentApproachAngle < _MaxGlideSlopeDeviationAngle.x)
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Low;
+                    }
+                    else if (_CurrentApproachAngle > _MaxGlideSlopeDeviationAngle.y)
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.High;
+                    }
+                } 
+                else
                 {
                     _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OutOfRange;
                 }
