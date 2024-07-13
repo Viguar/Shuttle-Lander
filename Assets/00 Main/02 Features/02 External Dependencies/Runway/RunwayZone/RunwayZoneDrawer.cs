@@ -5,25 +5,29 @@ using UnityEngine;
 namespace Viguar.Aircraft.Runways
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(BoxCollider))]
+    [RequireComponent(typeof(Rigidbody))]
     public class RunwayZoneDrawer : MonoBehaviour
     {
         private MeshFilter meshFilter;
         private BoxCollider boxCollider;
         private RunwayZone runwayZone;
+        private Rigidbody rigidbody;
 
         void Start()
         {
             meshFilter = GetComponent<MeshFilter>();
             boxCollider = GetComponent<BoxCollider>();
             runwayZone = GetComponentInParent<RunwayZone>();
+            rigidbody = GetComponent<Rigidbody>();
             CreateCube();
         }
 
         public void OnRunwayZoneValidate()
         {
-            if (meshFilter == null) { meshFilter = GetComponent<MeshFilter>(); }
-            if (boxCollider == null) { boxCollider = GetComponent<BoxCollider>(); }
-            if (runwayZone == null) { runwayZone = GetComponentInParent<RunwayZone>(); }
+            meshFilter = GetComponent<MeshFilter>(); 
+            boxCollider = GetComponent<BoxCollider>(); 
+            runwayZone = GetComponentInParent<RunwayZone>(); 
+            rigidbody = GetComponent<Rigidbody>(); 
             CreateCube();
         }
 
@@ -96,6 +100,8 @@ namespace Viguar.Aircraft.Runways
                 new Vector2(0, 0), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1), // Left            
                 new Vector2(0, 0), new Vector2(1, 0), new Vector2(1, 1), new Vector2(0, 1) // Right
             };
+            rigidbody.useGravity = false;
+
 
             mesh.vertices = vertices;
             mesh.triangles = triangles;

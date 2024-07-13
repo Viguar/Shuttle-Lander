@@ -16,6 +16,9 @@ TagManager:
   - runwayLocalizerOnGlideSlope
   - runwayLocalizerOffGlideSlope
   - runwayZone
+  - managerSceneInitializer
+  - managerGameManager
+  - managerDebugManager
   layers:
   - Default
   - TransparentFX

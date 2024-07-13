@@ -59,9 +59,11 @@ GameObject:
   - component: {fileID: 4107123451513551938}
   - component: {fileID: 5335684782096350948}
   - component: {fileID: 7281109373934650537}
+  - component: {fileID: 24384038647659667}
   - component: {fileID: 2867517937071065629}
   - component: {fileID: 4759899895607954008}
   - component: {fileID: 1212600840194623599}
+  - component: {fileID: 2314415097884301163}
   m_Layer: 0
   m_Name: Runway Zone Bounds
   m_TagString: Untagged
@@ -106,6 +108,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 142e1cf78c56abd45b6835570e53c4f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &24384038647659667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303400237067768142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03f0e0390b66044b4bba9268028d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &2867517937071065629
@@ -181,3 +195,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 5, z: 0}
+--- !u!54 &2314415097884301163
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303400237067768142}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

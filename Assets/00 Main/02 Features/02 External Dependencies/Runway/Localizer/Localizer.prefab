@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6840615785145968577}
   - component: {fileID: 3888094074522880655}
+  - component: {fileID: 6589813394010909305}
   - component: {fileID: 6811689793831333881}
   - component: {fileID: 1068830593819534372}
   - component: {fileID: 8977500989036941913}
@@ -49,6 +50,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalizerType: 1
+--- !u!114 &6589813394010909305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185414811218335193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03f0e0390b66044b4bba9268028d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &6811689793831333881
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -160,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7718335027373523966}
   - component: {fileID: 707955320212947147}
+  - component: {fileID: 1802146880315021173}
   - component: {fileID: 7060746839541998117}
   - component: {fileID: 4887458975101213922}
   - component: {fileID: 447590723287465549}
@@ -199,6 +213,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalizerType: 0
+--- !u!114 &1802146880315021173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215326631258160217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03f0e0390b66044b4bba9268028d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &7060746839541998117
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -347,11 +373,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64e47caf12cc4e409a6aafd0ba1a5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _DetectionMethod: 0
   _LocalizerRange: 1500
   _LocalizerGlobalAngle: 15
+  _LocalizerWidth: 25
   _LocalizerVerticalWindowCenter: 3
   _LocalizerVerticalWindowOffset: 12
-  _LocalizerWidth: 25
+  _LocalizerTotalAngle: 15
   _CenteredLocalizerDebugMaterial: {fileID: 2100000, guid: 037f71518bfa3144e9f4b549e434df91, type: 2}
   _OffsetLocalizerDebugMaterial: {fileID: 2100000, guid: 305d9a9932cf51b47a643697b7e56ef4, type: 2}
   _Centered: 0
