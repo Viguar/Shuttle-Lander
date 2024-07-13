@@ -286,6 +286,7 @@ namespace Viguar.Aircraft
         public enum ElectricityStateTypes { Stable, }
         public enum BatteryStateTypes { Stable, LowCharge, Empty, }             
         public enum LocalizerRecieverInfoTypes { Low, OnGlideSlope, High, OutOfRange, Unknown, }
+        public enum RunwayZoneReceiverInfoTypes { WithinRange, OutOfRange, Unknown, }
         
         //Cockpit Panels
         public enum CockpitLocalizerPanelStates { On, Off, Defect, NoSignal, }
@@ -293,6 +294,7 @@ namespace Viguar.Aircraft
 
         [HideInInspector] public CWPCStateTypes _CWPMasterCautionState; //Master Caution Panel
         [HideInInspector] public CWPWStateTypes _CWPMasterWarningState; //Master Alert Panel
+
         [HideInInspector] public RollAngleStateTypes _RollAngleState;
         [HideInInspector] public PitchAngleStateTypes _PitchAngleState;
         [HideInInspector] public SpeedStateTypes _SpeedState;
@@ -304,8 +306,10 @@ namespace Viguar.Aircraft
         [HideInInspector] public WheelTireStateTypes _WheelTireState;
         [HideInInspector] public ElectricityStateTypes _ElectricityState;
         [HideInInspector] public BatteryStateTypes _BatteryState;
+
         [HideInInspector] public LocalizerRecieverInfoTypes _LocalizerRecieverInfoState;
         [HideInInspector] public CockpitLocalizerPanelStates _CockpitLocalizerPanelState;
+        [HideInInspector] public RunwayZoneReceiverInfoTypes _RunwayZoneReceiverInfoState;
         #endregion
 
         #endregion

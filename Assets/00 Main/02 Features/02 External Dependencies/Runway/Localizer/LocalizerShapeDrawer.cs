@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Viguar.Aircraft.Runways
 {
-    [ExecuteInEditMode]
+    [ExecuteAlways]    
     public class LocalizerShapeDrawer : MonoBehaviour
     {
         private RunwayLocalizer rwLocalizer;
@@ -16,41 +16,35 @@ namespace Viguar.Aircraft.Runways
         public void OnLocalizerValidate()
         {
             rwLocalizer = GetComponent<RunwayLocalizer>();
-            if (GameObject.Find("LocalizerCenter") == null)
-            {
-                _CenteredLocalizerObject = new GameObject("LocalizerCenter");
-                _CenteredLocalizerObject.transform.SetParent(transform);
-                _CenteredLocalizerObject.AddComponent<LocalizerZoneDetector>();
-                _CenteredLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Center;
-            }
-            else
-            {
-                _CenteredLocalizerObject = GameObject.Find("LocalizerCenter");
-            }
-            if (GameObject.Find("LocalizerMargin") == null)
-            {
-                _OffsetLocalizerObject = new GameObject("LocalizerMargin");
-                _OffsetLocalizerObject.transform.SetParent(transform);
-                _OffsetLocalizerObject.AddComponent<LocalizerZoneDetector>();
-                _OffsetLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Offset;
-            }
-            else
-            {
-                _OffsetLocalizerObject = GameObject.Find("LocalizerMargin");
-            }
+
+            _CenteredLocalizerObject = GameObject.FindGameObjectWithTag("runwayLocalizerOnGlideSlope");
+            _CenteredLocalizerObject.transform.localPosition = Vector3.zero;
+            _CenteredLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Center;            
+
+            _OffsetLocalizerObject = GameObject.FindGameObjectWithTag("runwayLocalizerOffGlideSlope");
+            _OffsetLocalizerObject.transform.localPosition = Vector3.zero;
+            _OffsetLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Offset;
+
+            _CenteredLocalizerVertices = new Vector3[5];
+            _OffsetLocalizerVertices = new Vector3[5];
+
+            _CenteredLocalizerVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
+            _OffsetLocalizerVertices[4] = new Vector3(0, 0, 0);
+
+
             if (_CenteredLocalizerVertices == null || _CenteredLocalizerVertices.Length != 5)
             {
-                _CenteredLocalizerVertices = new Vector3[5];
-                _CenteredLocalizerVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
+                
+                
             }
             if (_OffsetLocalizerVertices == null || _OffsetLocalizerVertices.Length != 5)
             {
-                _OffsetLocalizerVertices = new Vector3[5];
-                _OffsetLocalizerVertices[4] = new Vector3(0, 0, 0);
+                
+                
             }
 
             DrawLocalizer(_CenteredLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter, rwLocalizer._CenteredLocalizerDebugMaterial);
-            DrawLocalizer(_OffsetLocalizerObject, rwLocalizer._LocalizerVerticalWindowOffset, rwLocalizer._OffsetLocalizerDebugMaterial);
+            DrawLocalizer(_OffsetLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter + rwLocalizer._LocalizerVerticalWindowOffset, rwLocalizer._OffsetLocalizerDebugMaterial);
         }
 
         public void DrawLocalizer(GameObject localizerOBJ, float vAngle, Material material)
@@ -63,7 +57,7 @@ namespace Viguar.Aircraft.Runways
             meshCollider.convex = true; meshCollider.isTrigger = true;
             if (meshFilter == null) { meshFilter = localizerOBJ.AddComponent<MeshFilter>(); }
             if (meshRenderer == null) { meshRenderer = localizerOBJ.AddComponent<MeshRenderer>(); }
-            meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off; meshRenderer.material = material;
+            meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off; meshRenderer.material = material; meshRenderer.receiveShadows = false;
             if (rigidbody == null) { rigidbody = localizerOBJ.AddComponent<Rigidbody>(); }
             rigidbody.useGravity = false; rigidbody.isKinematic = false;
 

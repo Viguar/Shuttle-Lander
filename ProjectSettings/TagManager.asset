@@ -13,6 +13,8 @@ TagManager:
   - weatherDynamicTile
   - weatherZone
   - runwayLocalizer
+  - runwayLocalizerOnGlideSlope
+  - runwayLocalizerOffGlideSlope
   - runwayZone
   layers:
   - Default

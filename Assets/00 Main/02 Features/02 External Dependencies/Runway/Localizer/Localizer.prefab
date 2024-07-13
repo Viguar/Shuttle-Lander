@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 707007371555799468}
   m_Layer: 0
   m_Name: LocalizerCenter
-  m_TagString: Untagged
+  m_TagString: runwayLocalizerOnGlideSlope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1185414811218335193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34, y: -1.232, z: 3.915}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 7796573086185809985}
   m_Layer: 0
   m_Name: LocalizerMargin
-  m_TagString: Untagged
+  m_TagString: runwayLocalizerOffGlideSlope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 3215326631258160217}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34, y: -1.232, z: 3.915}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -327,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 9089227006944732853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1999.8, y: 16.104, z: 1806.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -347,11 +347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64e47caf12cc4e409a6aafd0ba1a5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LocalizerRange: 1000
+  _LocalizerRange: 1500
   _LocalizerGlobalAngle: 15
-  _LocalizerVerticalWindowCenter: 5
+  _LocalizerVerticalWindowCenter: 3
   _LocalizerVerticalWindowOffset: 12
-  _LocalizerWidth: 35
+  _LocalizerWidth: 25
   _CenteredLocalizerDebugMaterial: {fileID: 2100000, guid: 037f71518bfa3144e9f4b549e434df91, type: 2}
   _OffsetLocalizerDebugMaterial: {fileID: 2100000, guid: 305d9a9932cf51b47a643697b7e56ef4, type: 2}
   _Centered: 0

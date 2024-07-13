@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.ReadOnly;
+
 
 namespace Viguar.Aircraft.Runways
 {
@@ -10,11 +12,17 @@ namespace Viguar.Aircraft.Runways
         private AircraftBaseProcessor _configBaseProcessor;
 
         [Header("Localizer Beam Creator")]
+        [Header("Length & Orientation")]
         [LabelOverride("Localizer Beam Length")] public int _LocalizerRange = 1500;
-        [LabelOverride("Glide Slope")] public float _LocalizerGlobalAngle = 15;
-        [LabelOverride("Inner Glide Slope Margin Angle")] public float _LocalizerVerticalWindowCenter = 3;
-        [LabelOverride("Outer Glide Slope Margin Angle")] public float _LocalizerVerticalWindowOffset = 12;
-        [LabelOverride("Glide Slope Width Angle")]public float _LocalizerWidth = 25;
+        [LabelOverride("Glide Slope Angle")] public float _LocalizerGlobalAngle = 15;
+        [Space(10)]
+        [Header("Glide Slope Shape")]
+        [LabelOverride("Glide Slope Width Angle")] public float _LocalizerWidth = 25;
+        [Space(5)]
+        [LabelOverride("Inner Glide Slope Angle")] public float _LocalizerVerticalWindowCenter = 3;
+        [LabelOverride("Outer Glide Slope Angle")] public float _LocalizerVerticalWindowOffset = 9;
+        [LabelOverride("Total Glide Slope Angle")] [ReadOnly] [SerializeField] private float _LocalizerTotalAngle;
+       
         [Space(10)]
         public Material _CenteredLocalizerDebugMaterial;
         public Material _OffsetLocalizerDebugMaterial;
@@ -27,11 +35,13 @@ namespace Viguar.Aircraft.Runways
         private void OnValidate()
         {
             GetComponent<LocalizerShapeDrawer>().OnLocalizerValidate();
+            _LocalizerTotalAngle = _LocalizerVerticalWindowCenter + _LocalizerVerticalWindowOffset;
         }
 
         private void Start()
         {
             _configBaseProcessor = GameObject.FindGameObjectWithTag("aircraft").GetComponent<AircraftBaseProcessor>();
+            _LocalizerTotalAngle = _LocalizerVerticalWindowCenter + _LocalizerVerticalWindowOffset;
         }
 
         private void Update()
