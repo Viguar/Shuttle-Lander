@@ -10,11 +10,11 @@ namespace Viguar.Aircraft.Runways
         private AircraftBaseProcessor _configBaseProcessor;
 
         [Header("Localizer Beam Creator")]
-        [LabelOverride("Localizer Beam Length")] public int _LocalizerRange = 1000;
+        [LabelOverride("Localizer Beam Length")] public int _LocalizerRange = 1500;
         [LabelOverride("Glide Slope")] public float _LocalizerGlobalAngle = 15;
-        [LabelOverride("Inner Glide Slope Margin Angle")] public float _LocalizerVerticalWindowCenter = 7;
+        [LabelOverride("Inner Glide Slope Margin Angle")] public float _LocalizerVerticalWindowCenter = 3;
         [LabelOverride("Outer Glide Slope Margin Angle")] public float _LocalizerVerticalWindowOffset = 12;
-        [LabelOverride("Glide Slope Width Angle")]public float _LocalizerWidth = 20;
+        [LabelOverride("Glide Slope Width Angle")]public float _LocalizerWidth = 25;
         [Space(10)]
         public Material _CenteredLocalizerDebugMaterial;
         public Material _OffsetLocalizerDebugMaterial;

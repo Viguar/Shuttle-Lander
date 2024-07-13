@@ -35982,9 +35982,9 @@ MonoBehaviour:
       RotaryNeedleMaxTurn: 360
       LinearNeedleConstraints: {x: 0, y: 0}
       DigitConstraints: {x: 0, y: 0}
-      AvionicsRotationSmoothing: 3
+      AvionicsRotationSmoothing: 2
       InstrumentNeedle:
-      - Needle: {fileID: 0}
+      - Needle: {fileID: 3365802426737506354}
         NeedleFactor: 7
         CustomNeedleFactor: -360
         NeedleOneAxis: 1

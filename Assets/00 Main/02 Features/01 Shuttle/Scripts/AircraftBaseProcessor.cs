@@ -424,7 +424,8 @@ namespace Viguar.Aircraft
 
             if (_StartWithCustomFuelAmount) { _CurrentFuelAmount = fuelAm; }
             if (_StartAtCustomPosition) { gameObject.transform.position = posAm.transform.position; }
-            if (_StartWithVelocity) { GetComponent<Rigidbody>().velocity = velAm; }
+            if (_StartWithVelocity) { GetComponent<Rigidbody>().velocity = transform.InverseTransformDirection(velAm); }
+            if (GetComponent<AircraftBaseMethods>()) { GetComponent<AircraftBaseMethods>().RecordOriginalValues(); }
             //GetComponent<AircraftEnginesProcessorMultiEngine>().MasterSetMultiEngine(_StartWithEngineRunning);
         }
         public void ProcessAerodynamicConfiguration(float ySeaLevel, float maxAltitude, float maxLiftSpeed, float aerodynamicEffect, float lift, float dragOverSpeed, bool customcom, Transform customcompos, AnimationCurve liftSpeedFactor)

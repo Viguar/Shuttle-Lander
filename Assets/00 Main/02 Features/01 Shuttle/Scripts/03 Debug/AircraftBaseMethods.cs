@@ -8,13 +8,16 @@ public class AircraftBaseMethods : MonoBehaviour
     private Vector3 _originalPosition;
     private Quaternion _originalRotation;
     private Vector3 _originalVelocity;
+    private Vector3 _originalAngularVelocity;
     private Vector3 _velocityAtFreeze;
+    private Vector3 _angularVelocityAtFreeze;
 
-    void Start()
+    public void RecordOriginalValues()
     {
         _originalPosition = gameObject.transform.position;
         _originalRotation = gameObject.transform.rotation;
         _originalVelocity = GetComponent<Rigidbody>().velocity;
+        _originalAngularVelocity = GetComponent<Rigidbody>().angularVelocity;
     }
 
     #region Resetting Aircraft
@@ -30,6 +33,7 @@ public class AircraftBaseMethods : MonoBehaviour
     public void ResetAircraftVelocity()
     {
         GetComponent<Rigidbody>().velocity = _originalVelocity;
+        GetComponent<Rigidbody>().angularVelocity = _originalAngularVelocity;
     }   
     public void FullResetAircraft()
     {
@@ -42,12 +46,14 @@ public class AircraftBaseMethods : MonoBehaviour
     public void FreezeAircraft()
     {
         _velocityAtFreeze = GetComponent<Rigidbody>().velocity;
+        _angularVelocityAtFreeze = GetComponent<Rigidbody>().angularVelocity;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     public void UnfreezeAircraft()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         GetComponent<Rigidbody>().velocity = _velocityAtFreeze;
+        GetComponent<Rigidbody>().angularVelocity = _angularVelocityAtFreeze;
     }
     #endregion
     #region Changing Aircraft Transform & Velocity
