@@ -45,7 +45,7 @@ namespace Viguar.Aircraft
 
         private void handleMouseInteraction()
         {
-            if (_configBaseProcessor._PilotKeyboardMouseClickInput)
+            if (_configBaseProcessor._PilotHIDSubmitInput)
             {
                 Ray ray = _configBaseProcessor._DebugActiveCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;

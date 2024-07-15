@@ -60,9 +60,11 @@ namespace Viguar.Aircraft
         }
         private void GetHIDInput()
         {
-            _configBaseProcessor._HIDPitchInput = _configBaseProcessor._OverridePitchInput;//Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
+            Vector2 mouseSteering = (!Cursor.visible && _configBaseProcessor._PilotHIDSubmitInput ? _configBaseProcessor._PilotHIDAdjustmentInput.normalized : Vector2.zero);
+
+            _configBaseProcessor._HIDPitchInput = Mathf.Clamp(_configBaseProcessor._OverridePitchInput + mouseSteering.y, -1f, 1f);//Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
             _configBaseProcessor._HIDYawInput = _configBaseProcessor._OverrideYawInput;//Mathf.Clamp(Input.GetAxis("Yaw"), -1, 1);
-            _configBaseProcessor._HIDRollInput = _configBaseProcessor._OverrideRollInput;//Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
+            _configBaseProcessor._HIDRollInput = Mathf.Clamp(_configBaseProcessor._OverrideRollInput + mouseSteering.x, -1f, 1f);//Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
             _configBaseProcessor._HIDAirbrakeInput = _configBaseProcessor._OverrideAirbrakeInput;//Mathf.Clamp(Input.GetAxis("Airbrake"), 0, 1);
             _configBaseProcessor._HIDWheelbrakeInput = _configBaseProcessor._OverrideAirbrakeInput;//Mathf.Clamp(Input.GetAxis("Airbrake"), 0, 1);
             _configBaseProcessor._HIDFlapsInput = _configBaseProcessor._OverrideFlapsInput;//Input.GetButtonDown("Flaps");

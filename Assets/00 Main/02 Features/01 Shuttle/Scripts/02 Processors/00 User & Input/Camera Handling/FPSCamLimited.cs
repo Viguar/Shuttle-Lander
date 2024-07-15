@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Viguar.Aircraft;
 
 public class FPSCamLimited : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class FPSCamLimited : MonoBehaviour
     private float fov = 0.0f;
     private Vector2 fovLimits = new Vector2(15, 100);
     private Camera attachedCamera;
-
+    private AircraftBaseProcessor _configBaseProcessor;
     private void Start()
     {
+        _configBaseProcessor = GetComponentInParent<AircraftBaseProcessor>();
         attachedCamera = GetComponent<Camera>();
         if(attachedCamera.fieldOfView < fovLimits.y && attachedCamera.fieldOfView > fovLimits.x)
         {
@@ -29,7 +31,7 @@ public class FPSCamLimited : MonoBehaviour
 
     private void Update()
     {
-        if (attachedCamera.isActiveAndEnabled && !Cursor.visible)
+        if (attachedCamera.isActiveAndEnabled && !Cursor.visible && !_configBaseProcessor._PilotHIDSubmitInput)
         {
             RotateCamera();
             ZoomCamera();
