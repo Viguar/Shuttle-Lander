@@ -11,6 +11,8 @@ namespace Viguar.Aircraft
         public HIDInputComputer aInput;
         private AircraftBaseProcessor _configBaseProcessor;
 
+        public Vector3 _RecordedMousePosition;
+
         private void Awake()
         {
             aInput = new HIDInputComputer(); //Initialise the InputActions
@@ -71,6 +73,28 @@ namespace Viguar.Aircraft
 
             _configBaseProcessor._PilotHIDSubmitInput = (cockpitSubmit == 0 ? false : true);
             _configBaseProcessor._PilotHIDAdjustmentInput = adjustDirectional;
+        }
+
+
+
+        public void RecordMousePosition()
+        {
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            _RecordedMousePosition = _configBaseProcessor._DebugActiveCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _configBaseProcessor._DebugActiveCamera.nearClipPlane));
+            _RecordedMousePosition.z = 0;
+            print(_RecordedMousePosition);   
+        }
+
+        public void MoveMousePositionToLast()
+        {
+            Vector3 screenPos = _configBaseProcessor._DebugActiveCamera.WorldToScreenPoint(_RecordedMousePosition);
+            Mouse.current.WarpCursorPosition(new Vector2(screenPos.x, screenPos.y));
+        }
+
+        public void MoveMousePosition(Vector2 position)
+        {
+            var mouse = Mouse.current;
+            mouse.WarpCursorPosition(position);
         }
     }
 }

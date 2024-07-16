@@ -21,6 +21,9 @@ namespace Viguar.Aircraft
 
         private bool debugMouseState = false;
 
+        private Vector2 mouseSteering;
+        private float mouseSterringSensitivity = 4.5f;
+
         private void Start()
         {
             _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
@@ -59,9 +62,7 @@ namespace Viguar.Aircraft
             _configBaseProcessor._LandingGearInitiated = _configBaseProcessor._HIDLandingGearInput;
         }
         private void GetHIDInput()
-        {
-            Vector2 mouseSteering = (!Cursor.visible && _configBaseProcessor._PilotHIDSubmitInput ? _configBaseProcessor._PilotHIDAdjustmentInput.normalized : Vector2.zero);
-
+        {           
             _configBaseProcessor._HIDPitchInput = Mathf.Clamp(_configBaseProcessor._OverridePitchInput + mouseSteering.y, -1f, 1f);//Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
             _configBaseProcessor._HIDYawInput = _configBaseProcessor._OverrideYawInput;//Mathf.Clamp(Input.GetAxis("Yaw"), -1, 1);
             _configBaseProcessor._HIDRollInput = Mathf.Clamp(_configBaseProcessor._OverrideRollInput + mouseSteering.x, -1f, 1f);//Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
@@ -101,6 +102,15 @@ namespace Viguar.Aircraft
         {
             if(_landingGearProcessor == null) { _landingGearProcessor = GetComponent<AircraftLandingGearProcessor>(); }
             if(_controlSurfaceProcessor == null) { _controlSurfaceProcessor = GetComponent<AircraftControlSurfacesProcessor>(); }
+        }
+
+        public void SetDirectionalSteeringInput(Vector2 steering)
+        {
+            float sensitivityDecimal = 1 / (mouseSterringSensitivity * 0.01f);
+
+            steering.x = Mathf.Clamp(steering.x, -sensitivityDecimal, sensitivityDecimal);
+            steering.y = Mathf.Clamp(steering.y, -sensitivityDecimal, sensitivityDecimal);
+            mouseSteering = steering / sensitivityDecimal;
         }
     }
 }

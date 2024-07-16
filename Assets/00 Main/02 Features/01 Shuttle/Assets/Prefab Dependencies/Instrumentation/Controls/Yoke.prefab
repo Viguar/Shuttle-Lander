@@ -182,9 +182,13 @@ GameObject:
   - component: {fileID: 2145591872896033199}
   - component: {fileID: 764906070296105117}
   - component: {fileID: 7498244933652762827}
+  - component: {fileID: 4617478395931864051}
+  - component: {fileID: 4973790707746916684}
+  - component: {fileID: 567230174618494506}
+  - component: {fileID: 1072056906853153902}
   m_Layer: 0
   m_Name: v_yoke_wheel
-  m_TagString: Untagged
+  m_TagString: cockpitYokeWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +262,90 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4617478395931864051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830331401632782553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.097361445, y: 0.20137733, z: 0.104388654}
+  m_Center: {x: 0.2051211, y: -0.000000037252903, z: 0.000000014901161}
+--- !u!65 &4973790707746916684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830331401632782553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.097361445, y: 0.20137733, z: 0.104388654}
+  m_Center: {x: -0.2051211, y: -0.000000037252903, z: 0.000000014901161}
+--- !u!65 &567230174618494506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830331401632782553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.097361445, y: 0.20137733, z: 0.104388654}
+  m_Center: {x: 0, y: -0.000000037252903, z: 0.000000014901161}
+--- !u!65 &1072056906853153902
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830331401632782553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.33, y: 0.069606185, z: 0.104388654}
+  m_Center: {x: 0, y: -0.0658856, z: 0.000000014901161}
 --- !u!1 &5323255845499586996
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +529,7 @@ GameObject:
   - component: {fileID: 6906900993982905296}
   - component: {fileID: 7527175554822026357}
   - component: {fileID: 5733382495424692415}
+  - component: {fileID: 3395029498585746802}
   m_Layer: 0
   m_Name: Yoke
   m_TagString: Untagged
@@ -516,6 +605,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3395029498585746802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093912838510010730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374837d0ad42e2b4aa149a88be4bdb34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6497928327895187098
 GameObject:
   m_ObjectHideFlags: 0
