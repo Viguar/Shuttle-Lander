@@ -10,7 +10,7 @@ namespace Viguar.Aircraft
         private UserInputProcessor _userInputProcessor;
         private bool hasClickedOnYoke = false;
         private bool hasActivatedCursor = true;        
-
+        
         private void Start()
         {
             _configBaseProcessor = GetComponentInParent<AircraftBaseProcessor>();
@@ -45,7 +45,6 @@ namespace Viguar.Aircraft
                 if (!hasActivatedCursor) 
                 { 
                     Cursor.visible = true;
-                    //_userInputProcessor.MoveMousePositionToLast();
                 }                
             }
         }

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 
-
 namespace Viguar.Aircraft
 {
     public class InteractableCockpitButton : MonoBehaviour

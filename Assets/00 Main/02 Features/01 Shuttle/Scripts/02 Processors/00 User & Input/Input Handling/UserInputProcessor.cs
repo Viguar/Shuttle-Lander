@@ -82,7 +82,6 @@ namespace Viguar.Aircraft
             Vector3 mousePos = Mouse.current.position.ReadValue();
             _RecordedMousePosition = _configBaseProcessor._DebugActiveCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _configBaseProcessor._DebugActiveCamera.nearClipPlane));
             _RecordedMousePosition.z = 0;
-            print(_RecordedMousePosition);   
         }
 
         public void MoveMousePositionToLast()
