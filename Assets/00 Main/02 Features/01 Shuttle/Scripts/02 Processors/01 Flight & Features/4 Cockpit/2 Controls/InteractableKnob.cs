@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 
 namespace Viguar.Aircraft
 {
@@ -11,8 +12,13 @@ namespace Viguar.Aircraft
         private bool hasClickedOnKnob = false;
         private bool hasActivatedCursor = true;
         private GameObject knobMesh;
+        private float knobTwistValue;
         [SerializeField] private float sensitivity = 10;
         [SerializeField] private string ConnectedValue;
+        [SerializeField] private float DefaultValue;
+        [SerializeField] private Vector2 ValueMinMaxClamp;
+        [SerializeField] private bool hasConnectedDisplay;
+        [DrawIf("hasConnectedDisplay", true)][SerializeField] private SegmentDisplay ConnectedDisplay;
 
         private void Start()
         {
@@ -22,12 +28,15 @@ namespace Viguar.Aircraft
             {
                 if(child.tag == "cockpitKnobModel") { knobMesh = child.gameObject; }
             }
+            knobTwistValue = DefaultValue;
+            knobTwistValue = Mathf.Clamp(knobTwistValue, ValueMinMaxClamp.x, ValueMinMaxClamp.y);
+            ConnectedDisplay.DisplayText(knobTwistValue);
         }
 
         private void FixedUpdate()
         {
             CheckForInputOnKnob();
-            OnKnobInput();
+            OnKnobInput();           
         }
 
         private void CheckForInputOnKnob()
@@ -71,13 +80,14 @@ namespace Viguar.Aircraft
 
         private void TwistKnob()
         {
+            //Twist knob
             Vector3 currentRot = knobMesh.transform.localRotation.eulerAngles;
-            knobMesh.transform.localRotation = Quaternion.Euler(currentRot.x, currentRot.y + _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x * sensitivity, currentRot.z);            
-        }
+            knobMesh.transform.localRotation = Quaternion.Euler(currentRot.x, currentRot.y + _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x * sensitivity, currentRot.z);
 
-        private void CalculateValue()
-        {
-
+            //Run value of rotation
+            knobTwistValue += _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x;
+            knobTwistValue = Mathf.Clamp(knobTwistValue, ValueMinMaxClamp.x, ValueMinMaxClamp.y);
+            ConnectedDisplay.DisplayText(knobTwistValue);
         }
     }
 }
