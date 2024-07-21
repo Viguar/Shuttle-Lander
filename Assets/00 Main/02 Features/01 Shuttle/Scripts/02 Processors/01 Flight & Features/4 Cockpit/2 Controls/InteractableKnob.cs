@@ -14,6 +14,7 @@ namespace Viguar.Aircraft
         private GameObject knobMesh;
         private float knobTwistValue;
         [SerializeField] private float sensitivity = 10;
+        [SerializeField] private float OutputFactor = 1;
         [SerializeField] private string ConnectedValue;
         [SerializeField] private float DefaultValue;
         [SerializeField] private Vector2 ValueMinMaxClamp;
@@ -47,7 +48,7 @@ namespace Viguar.Aircraft
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    if (hit.collider.tag == "cockpitInteractableKnob")
+                    if (hit.collider.gameObject == gameObject)
                     {
                         _userInputProcessor.RecordMousePosition();
                         hasClickedOnKnob = true;
@@ -85,7 +86,7 @@ namespace Viguar.Aircraft
             knobMesh.transform.localRotation = Quaternion.Euler(currentRot.x, currentRot.y + _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x * sensitivity, currentRot.z);
 
             //Run value of rotation
-            knobTwistValue += _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x;
+            knobTwistValue += _configBaseProcessor._PilotHIDAdjustmentInput.normalized.x * OutputFactor;
             knobTwistValue = Mathf.Clamp(knobTwistValue, ValueMinMaxClamp.x, ValueMinMaxClamp.y);
             ConnectedDisplay.DisplayText(knobTwistValue);
         }
