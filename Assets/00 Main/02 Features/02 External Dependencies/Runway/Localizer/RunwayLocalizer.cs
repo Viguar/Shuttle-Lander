@@ -1,91 +1,132 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEditor;
+using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
+using Viguar.EditorTooling.InspectorUITools.ReadOnly;
 
-public class RunwayLocalizer : MonoBehaviour
+
+namespace Viguar.Aircraft.Runways
 {
-    public LocalizerBeam[] _Localizer;
-    [Space(10)]
-    [Header("Localizer Colors (Editor)")]
-    [SerializeField] private Color32 _LocalizerColorOnGlideSlope;
-    [SerializeField] private Color32 _LocalizerColorLow;
-    [SerializeField] private Color32 _LocalizerColorTooLow;
-    [SerializeField] private Color32 _LocalizerColorHigh;
-    [SerializeField] private Color32 _LocalizerColorTooHigh;
-
-    private void Update()
+    public class RunwayLocalizer : MonoBehaviour
     {
-        RunLocalizer();
-    }
+        private AircraftBaseProcessor _configBaseProcessor;
+        public enum DetectionMethods { ColliderLogic, AngleCalculation }
 
-    private void RunLocalizer()
-    {      
-        foreach(LocalizerBeam localizer in _Localizer)
+        [Header("Localizer Beam Creator")]
+        [LabelOverride("Evaluate Localizer by")] public DetectionMethods _DetectionMethod;
+        [Header("Length & Orientation")]
+        [LabelOverride("Localizer Beam Length")] public int _LocalizerRange = 1500;
+        [LabelOverride("Glide Slope Angle")] public float _LocalizerGlobalAngle = 15;
+        [Space(5)]
+        [Header("Glide Slope Shape")]
+        [LabelOverride("Glide Slope Width Angle")] public float _LocalizerWidth = 25;
+        [Space(5)]
+        [LabelOverride("Inner Glide Slope Angle")] public float _LocalizerVerticalWindowCenter = 3;
+        [LabelOverride("Outer Glide Slope Angle")] public float _LocalizerVerticalWindowOffset = 9;
+        [LabelOverride("Total Glide Slope Angle")] [ReadOnly] [SerializeField] private float _LocalizerTotalAngle;       
+        [Space(10)]
+        [Header("Debug Materials")]
+        public Material _CenteredLocalizerDebugMaterial;
+        public Material _OffsetLocalizerDebugMaterial;
+        
+        [HideInInspector] public bool _Centered = false;
+        [HideInInspector] public bool _Offset = false;        
+        private float _CurrentApproachAngle;
+        private Vector2 _MaxGlideSlopeDeviationAngle;
+        private bool _AboveGlideslope = false;
+
+        private void OnValidate()
         {
-            for(int i=0; i<localizer._LocalizerRayAmount; i++)
-            {
-                CreateLocalizer(i, localizer._LocalizerRayAmount, localizer._LocalizerWidth, localizer._LocalizerAngle, localizer._LocalizerRange, localizer);
-            }
-        }       
-    }
+            GetComponent<LocalizerShapeDrawer>().OnLocalizerValidate();
+            _LocalizerTotalAngle = _LocalizerVerticalWindowCenter + _LocalizerVerticalWindowOffset;
+        }
 
-    private void CreateLocalizer(int iteration, int rayAmount, float raySpread, float rayAngle, int rayRange, LocalizerBeam beam)
-    {
-        Vector3 localizerOrigin = transform.position; //The Localizer Beams are send from this very gameObject.
-        float rayOffsetRotation = ((iteration - (rayAmount - 1) / 2) * raySpread) / (rayAmount - 1); //The spreading angle of the rays based on the amount and maximum spread angle.
-        Vector3 rayDirection = Quaternion.Euler(-rayAngle, rayOffsetRotation, 0) * transform.forward; //The rays align with the direction the attached gameObject is facing with a positive angle upwards.
-        Color32 rayColor;     
-        switch(beam._LocalizerType)
+        private void Start()
         {
-            case LocalizerBeam._LocalizerTypes.OnGlideSlope:
-                rayColor = _LocalizerColorOnGlideSlope;
-                DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                break;
-            case LocalizerBeam._LocalizerTypes.Low:
-                rayColor = _LocalizerColorLow;
-                DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                break;
-            case LocalizerBeam._LocalizerTypes.TooLow:
-                rayColor = _LocalizerColorTooLow;
-                DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                break;
-            case LocalizerBeam._LocalizerTypes.High:
-                rayColor = _LocalizerColorHigh;
-                DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                break;
-            case LocalizerBeam._LocalizerTypes.TooHigh:
-                rayColor = _LocalizerColorTooHigh;
-                DrawRayGizmo(localizerOrigin, rayDirection, rayRange, rayColor);
-                break;
-        }        
-        //FOR LATER:
-        /*
-         *RaycastHit hit;
-            if (Physics.Raycast(origin, direction, out hit, detectionRange))
+            _configBaseProcessor = GameObject.FindGameObjectWithTag("aircraft").GetComponent<AircraftBaseProcessor>();
+            _LocalizerTotalAngle = _LocalizerVerticalWindowCenter + _LocalizerVerticalWindowOffset;
+
+            _MaxGlideSlopeDeviationAngle = new Vector2(_LocalizerGlobalAngle - (_LocalizerVerticalWindowCenter / 2), _LocalizerGlobalAngle + (_LocalizerVerticalWindowCenter / 2)); //Store the Min/Max Bounds of the localizer                
+        }
+
+        private void Update()
+        {
+            if(_DetectionMethod == DetectionMethods.ColliderLogic) { RunLocalizerColliderLogic(); }
+            else { RunLocalizerColliderLogic(); }
+        }
+
+        private void RunLocalizerColliderLogic()
+        {
+            if(_configBaseProcessor._CockpitLocalizerPanelState == AircraftBaseProcessor.CockpitLocalizerPanelStates.On)
             {
-                // Check the hit point and adjust game elements accordingly
-                // You may also want to differentiate between rays (center, left, right) for specific adjustments
+                if (_Offset && _Centered) //Run logic for centered localizer range.
+                {
+                    _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OnGlideSlope;
+                }
+                else if (_Offset && !_Centered) //Run logic offset localizer range.
+                {
+                    CalculateCurrentApproachAngle();
+                    EvaluateCurrentApproachAngle();
+                    if (_AboveGlideslope) { _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.High; }
+                    else { _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Low; }
+                }
+                else //Run logic for not within localizer range.
+                {
+                    _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OutOfRange;
+                }
             }
-         */
-    }
+            else
+            {
+                _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Unknown;
+            }
+        }
+        private void RunLocalizerAngleCalculationLogic()
+        {
+            if (_configBaseProcessor._CockpitLocalizerPanelState == AircraftBaseProcessor.CockpitLocalizerPanelStates.On)
+            {
+                if (_Offset)  //If we are at all inside the collider
+                {
+                    CalculateCurrentApproachAngle();
+                    if (_CurrentApproachAngle < _MaxGlideSlopeDeviationAngle.y && _CurrentApproachAngle > _MaxGlideSlopeDeviationAngle.x) 
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OnGlideSlope;
+                    }
+                    else if (_CurrentApproachAngle < _MaxGlideSlopeDeviationAngle.x)
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Low;
+                    }
+                    else if (_CurrentApproachAngle > _MaxGlideSlopeDeviationAngle.y)
+                    {
+                        _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.High;
+                    }
+                } 
+                else
+                {
+                    _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.OutOfRange;
+                }
+            }
+            else
+            {
+                _configBaseProcessor._LocalizerRecieverInfoState = AircraftBaseProcessor.LocalizerRecieverInfoTypes.Unknown;
+            }
+        }
 
-    private void DrawRayGizmo(Vector3 origin, Vector3 direction, float length, Color32 color)
-    {
-        Gizmos.color = color;
-        Gizmos.DrawRay(origin, direction * length);
-    }
+        private void CalculateCurrentApproachAngle()
+        {
+            Vector3 pos1 = transform.position;
+            Vector3 pos2 = _configBaseProcessor.gameObject.transform.position;
+            Vector3 horizontalVector = new Vector3(pos2.x - pos1.x, 0, pos2.z - pos1.z);
 
-    private void OnDrawGizmos()
-    {     
-        RunLocalizer(); // Visualize the rays in the Unity Editor scene view
+            float heightDifference = pos2.y - pos1.y;
+            float horizontalDifference = horizontalVector.magnitude;
+            _CurrentApproachAngle = Mathf.Atan2(heightDifference, horizontalDifference) * Mathf.Rad2Deg;
+        }
+
+        private void EvaluateCurrentApproachAngle()
+        {
+            if(_CurrentApproachAngle > _LocalizerGlobalAngle) { _AboveGlideslope = true; }
+            else { _AboveGlideslope = false; }
+        }
+
     }
 }
-
-    [System.Serializable]
-    public class LocalizerBeam
-    {
-    public enum _LocalizerTypes { OnGlideSlope, Low, TooLow, High, TooHigh, }
-    public _LocalizerTypes _LocalizerType;
-    public int _LocalizerRayAmount;
-    public int _LocalizerRange;
-    public float _LocalizerAngle;
-    public float _LocalizerWidth;
-    }

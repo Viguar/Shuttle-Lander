@@ -53,13 +53,14 @@ namespace Viguar.Aircraft
             if (_configLandingGear) { ConfigApplyLandingGear(); }        
             if (_configEnvironment) { ConfigApplyEnvironment(); }
             if (_configAutomatics) { ConfigApplyAutoFlightSystem(); }
-            ConfigApplyEnvironmentFallback();
+            
             ConfigApplyConstraints();
             ConfigApplyConstraintsFlightState();
             ConfigApplyConstraintsFlightStateCategories();
             ConfigApplyConstraintsAutomatics();
             ConfigApplyAnimations();
-            _configBaseProcessor.ProcessStartConfiguation(_cStart._cEngineOn, _cStart._cCustomFuelAmount, _cStart._cStartFuel, _cStart._cCustomFuelAmount, _cStart._cStartPos, _cStart._cVelocity, _cStart._cStartVelocity, _cStart._cGearDown);            
+            _configBaseProcessor.ProcessStartConfiguation(_cStart._cEngineOn, _cStart._cCustomFuelAmount, _cStart._cStartFuel, _cStart._cCustomFuelAmount, _cStart._cStartPos, _cStart._cVelocity, _cStart._cStartVelocity, _cStart._cGearDown);
+            ConfigApplyEnvironmentFallback();
         }
 
         void ConfigApplyAerodynamics()

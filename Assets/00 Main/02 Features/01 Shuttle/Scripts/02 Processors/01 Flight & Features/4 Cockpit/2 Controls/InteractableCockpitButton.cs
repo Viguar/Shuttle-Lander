@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
 
-
 namespace Viguar.Aircraft
 {
     public class InteractableCockpitButton : MonoBehaviour
@@ -21,8 +20,8 @@ namespace Viguar.Aircraft
         private Transform pushablePart;
         private Vector3 MouseActionPushableOriginalLocation;
         private Vector3 mouseActionPushableTarget;
-        private float mouseInteractionPushDepth = -0.00435f;
-        private int mouseInteractionMovementSmoothing = 3;
+        private float mouseInteractionPushDepth = -0.004f;
+        private int mouseInteractionMovementSmoothing = 20;
         private bool mouseInteracted = false;
         private AircraftBaseProcessor _configBaseProcessor;
 
@@ -37,25 +36,27 @@ namespace Viguar.Aircraft
             _configBaseProcessor = gameObject.GetComponentInParent<AircraftBaseProcessor>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             if (isMouseResponsive) { handleMouseInteraction(); }
-            if(Input.GetMouseButtonDown(0))
+            
+        }       
+
+        private void handleMouseInteraction()
+        {
+            if (_configBaseProcessor._PilotHIDSubmitInput)
             {
                 Ray ray = _configBaseProcessor._DebugActiveCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, 1000))
+                if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    if(hit.collider.gameObject == gameObject)
-                    {                        
+                    if (hit.collider.gameObject == gameObject)
+                    {
                         OnButtonPressed.Invoke();
                         mouseInteracted = true;
                     }
                 }
             }
-        }       
-        private void handleMouseInteraction()
-        {               
             if (mouseInteracted)
             {
                 mouseActionPushableTarget.y = MouseActionPushableOriginalLocation.y + mouseInteractionPushDepth;

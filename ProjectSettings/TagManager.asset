@@ -12,6 +12,16 @@ TagManager:
   - weatherController
   - weatherDynamicTile
   - weatherZone
+  - runwayLocalizer
+  - runwayLocalizerOnGlideSlope
+  - runwayLocalizerOffGlideSlope
+  - runwayZone
+  - managerSceneInitializer
+  - managerGameManager
+  - managerDebugManager
+  - cockpitYokeWheel
+  - cockpitInteractableKnob
+  - cockpitKnobModel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +29,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - MaskingLayer
   - 
   - 
   - 

@@ -28,13 +28,22 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             ""id"": ""fa5954d5-eaa6-4cee-ac2b-17343a8d989d"",
             ""actions"": [
                 {
-                    ""name"": ""LMB-Interact"",
+                    ""name"": ""pCockpit.Mainclick"",
                     ""type"": ""Button"",
                     ""id"": ""52b884d1-ce6c-480b-8c5c-b99f245c567e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""pCockpit.Directional"",
+                    ""type"": ""Value"",
+                    ""id"": ""81ae5b63-805f-4d5b-8714-11285a928d4b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -45,7 +54,18 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LMB-Interact"",
+                    ""action"": ""pCockpit.Mainclick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccc5a3e8-df86-44ea-8aea-3c1edfa8cbb0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pCockpit.Directional"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -56,63 +76,36 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             ""id"": ""0807af68-4b0b-4334-a655-7ea7861ec78c"",
             ""actions"": [
                 {
-                    ""name"": ""aControlsurfaces.Pitchcontrol.Override"",
-                    ""type"": ""Button"",
-                    ""id"": ""716e8c14-0c00-4c50-8e27-cf9159300580"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""aAircraftcontrol.Directionalcontrol.Override"",
+                    ""type"": ""Value"",
+                    ""id"": ""363749bd-7167-415c-b7c9-1d5289c68990"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""aControlsurfaces.Rollcontrol.Override"",
-                    ""type"": ""Button"",
-                    ""id"": ""2ae5b73e-95da-480d-a5b1-326d92de6051"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""aControlsurfaces.Yawcontrol.Override"",
-                    ""type"": ""Button"",
-                    ""id"": ""69399770-f406-4ef7-843b-ee0a996ded4a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""aControlsurfaces.Airbrakecontrol.Override"",
-                    ""type"": ""Button"",
+                    ""name"": ""aAircraftcontrol.Airbrakecontrol.Override"",
+                    ""type"": ""Value"",
                     ""id"": ""319e1d17-b0c3-4d55-aa26-8ef5fe925c28"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""aControlsurfaces.Flapcontrol.Override"",
+                    ""name"": ""aAircraftcontrol.Flapscontrol.Override"",
                     ""type"": ""Button"",
                     ""id"": ""5fa0c456-244b-4295-af53-180cf17e81c0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""aAircraftsystems.Landinggearcontrol.Override"",
+                    ""name"": ""aAircraftcontrol.Gearcontrol.Override"",
                     ""type"": ""Button"",
                     ""id"": ""10163f29-f91a-440a-aba1-7d501c473841"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""aAircraftsystems.Throttlecontrol.Override"",
-                    ""type"": ""Button"",
-                    ""id"": ""08ffccce-3f26-447a-8b9a-4bd8ef040d16"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
@@ -121,123 +114,13 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""aControlsurfaces.Pitchcontrol.Keyboard"",
-                    ""id"": ""a922d62f-2836-4b85-b353-e48afe021c9f"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Pitchcontrol.Override"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5318a183-ae37-4b62-859c-825a6c1ea060"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Pitchcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""8b592f9b-05f1-4ad9-8b0f-630141193819"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Pitchcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""aControlsurfaces.Rollcontrol.Keyboard"",
-                    ""id"": ""9d5bf0a9-f83f-49f0-bb39-d9db1b8d8ca3"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Rollcontrol.Override"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""56a1c5e5-6d62-41da-99db-b0fa76150b76"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Rollcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""7d8b8cec-dfcb-456d-a167-29fd1a902c08"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Rollcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""aControlsurfaces.Yawcontrol.Keyboard"",
-                    ""id"": ""e99fe34c-4883-4b0f-bd01-031e1ce5b28b"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Yawcontrol.Override"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""b593a648-91eb-44e9-b42d-dde8717962ad"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Yawcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""5708e674-4b6d-4fb1-baed-1b03fe41090d"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Yawcontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""69fa7d1c-46e0-4fbe-a5be-212112cc2717"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""aControlsurfaces.Airbrakecontrol.Override"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": """",
                     ""id"": ""515aa64b-5602-48b0-9548-56df27d4cf6a"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aControlsurfaces.Flapcontrol.Override"",
+                    ""action"": ""aAircraftcontrol.Flapscontrol.Override"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -248,42 +131,97 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aAircraftsystems.Landinggearcontrol.Override"",
+                    ""action"": ""aAircraftcontrol.Gearcontrol.Override"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""aAircraftsystems.Throttlecontrol.Keyboard"",
-                    ""id"": ""ef941308-9983-4927-b648-6ae8e0681bd7"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""Directionalcontrols.Override.Keyboard"",
+                    ""id"": ""1a47dcda-cb2c-495c-8275-06a03e761230"",
+                    ""path"": ""3DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aAircraftsystems.Throttlecontrol.Override"",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""4fd4ae83-0e63-4156-bc77-2ce922947621"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""name"": ""up"",
+                    ""id"": ""955e2fa7-b075-4363-839d-acb039865b80"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aAircraftsystems.Throttlecontrol.Override"",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""005487e4-bff2-42b8-aebd-f649df7af983"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""name"": ""down"",
+                    ""id"": ""bd327f5a-4d18-47ed-8e78-371910d781df"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""aAircraftsystems.Throttlecontrol.Override"",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1345a176-6999-409c-9b4f-f7a92436e028"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3d9f7325-aae4-49ab-bca5-3f877da311ec"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""21c1402c-cf81-4955-b98a-1ab14d71655d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""20931a04-1ea4-4e3c-9198-d83a7fc8747a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""aAircraftcontrol.Directionalcontrol.Override"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69fa7d1c-46e0-4fbe-a5be-212112cc2717"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""aAircraftcontrol.Airbrakecontrol.Override"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -333,6 +271,17 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f5b521f6-4ed4-4c70-ae9f-c9f148f7af3c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pDebug.Debugcontrols.Togglecursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c4c08e26-b6ed-488b-a0b7-1a65bda55326"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -360,16 +309,14 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
 }");
         // Pilot
         m_Pilot = asset.FindActionMap("Pilot", throwIfNotFound: true);
-        m_Pilot_LMBInteract = m_Pilot.FindAction("LMB-Interact", throwIfNotFound: true);
+        m_Pilot_pCockpitMainclick = m_Pilot.FindAction("pCockpit.Mainclick", throwIfNotFound: true);
+        m_Pilot_pCockpitDirectional = m_Pilot.FindAction("pCockpit.Directional", throwIfNotFound: true);
         // Aircraftcontrols
         m_Aircraftcontrols = asset.FindActionMap("Aircraftcontrols", throwIfNotFound: true);
-        m_Aircraftcontrols_aControlsurfacesPitchcontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Pitchcontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aControlsurfacesRollcontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Rollcontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aControlsurfacesYawcontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Yawcontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aControlsurfacesAirbrakecontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Airbrakecontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aControlsurfacesFlapcontrolOverride = m_Aircraftcontrols.FindAction("aControlsurfaces.Flapcontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aAircraftsystemsLandinggearcontrolOverride = m_Aircraftcontrols.FindAction("aAircraftsystems.Landinggearcontrol.Override", throwIfNotFound: true);
-        m_Aircraftcontrols_aAircraftsystemsThrottlecontrolOverride = m_Aircraftcontrols.FindAction("aAircraftsystems.Throttlecontrol.Override", throwIfNotFound: true);
+        m_Aircraftcontrols_aAircraftcontrolDirectionalcontrolOverride = m_Aircraftcontrols.FindAction("aAircraftcontrol.Directionalcontrol.Override", throwIfNotFound: true);
+        m_Aircraftcontrols_aAircraftcontrolAirbrakecontrolOverride = m_Aircraftcontrols.FindAction("aAircraftcontrol.Airbrakecontrol.Override", throwIfNotFound: true);
+        m_Aircraftcontrols_aAircraftcontrolFlapscontrolOverride = m_Aircraftcontrols.FindAction("aAircraftcontrol.Flapscontrol.Override", throwIfNotFound: true);
+        m_Aircraftcontrols_aAircraftcontrolGearcontrolOverride = m_Aircraftcontrols.FindAction("aAircraftcontrol.Gearcontrol.Override", throwIfNotFound: true);
         // Debugcontrols
         m_Debugcontrols = asset.FindActionMap("Debugcontrols", throwIfNotFound: true);
         m_Debugcontrols_pDebugDebugcontrolsTogglecursor = m_Debugcontrols.FindAction("pDebug.Debugcontrols.Togglecursor", throwIfNotFound: true);
@@ -436,12 +383,14 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     // Pilot
     private readonly InputActionMap m_Pilot;
     private List<IPilotActions> m_PilotActionsCallbackInterfaces = new List<IPilotActions>();
-    private readonly InputAction m_Pilot_LMBInteract;
+    private readonly InputAction m_Pilot_pCockpitMainclick;
+    private readonly InputAction m_Pilot_pCockpitDirectional;
     public struct PilotActions
     {
         private @HIDInputComputer m_Wrapper;
         public PilotActions(@HIDInputComputer wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LMBInteract => m_Wrapper.m_Pilot_LMBInteract;
+        public InputAction @pCockpitMainclick => m_Wrapper.m_Pilot_pCockpitMainclick;
+        public InputAction @pCockpitDirectional => m_Wrapper.m_Pilot_pCockpitDirectional;
         public InputActionMap Get() { return m_Wrapper.m_Pilot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,16 +400,22 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PilotActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PilotActionsCallbackInterfaces.Add(instance);
-            @LMBInteract.started += instance.OnLMBInteract;
-            @LMBInteract.performed += instance.OnLMBInteract;
-            @LMBInteract.canceled += instance.OnLMBInteract;
+            @pCockpitMainclick.started += instance.OnPCockpitMainclick;
+            @pCockpitMainclick.performed += instance.OnPCockpitMainclick;
+            @pCockpitMainclick.canceled += instance.OnPCockpitMainclick;
+            @pCockpitDirectional.started += instance.OnPCockpitDirectional;
+            @pCockpitDirectional.performed += instance.OnPCockpitDirectional;
+            @pCockpitDirectional.canceled += instance.OnPCockpitDirectional;
         }
 
         private void UnregisterCallbacks(IPilotActions instance)
         {
-            @LMBInteract.started -= instance.OnLMBInteract;
-            @LMBInteract.performed -= instance.OnLMBInteract;
-            @LMBInteract.canceled -= instance.OnLMBInteract;
+            @pCockpitMainclick.started -= instance.OnPCockpitMainclick;
+            @pCockpitMainclick.performed -= instance.OnPCockpitMainclick;
+            @pCockpitMainclick.canceled -= instance.OnPCockpitMainclick;
+            @pCockpitDirectional.started -= instance.OnPCockpitDirectional;
+            @pCockpitDirectional.performed -= instance.OnPCockpitDirectional;
+            @pCockpitDirectional.canceled -= instance.OnPCockpitDirectional;
         }
 
         public void RemoveCallbacks(IPilotActions instance)
@@ -482,24 +437,18 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     // Aircraftcontrols
     private readonly InputActionMap m_Aircraftcontrols;
     private List<IAircraftcontrolsActions> m_AircraftcontrolsActionsCallbackInterfaces = new List<IAircraftcontrolsActions>();
-    private readonly InputAction m_Aircraftcontrols_aControlsurfacesPitchcontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aControlsurfacesRollcontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aControlsurfacesYawcontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aControlsurfacesAirbrakecontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aControlsurfacesFlapcontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aAircraftsystemsLandinggearcontrolOverride;
-    private readonly InputAction m_Aircraftcontrols_aAircraftsystemsThrottlecontrolOverride;
+    private readonly InputAction m_Aircraftcontrols_aAircraftcontrolDirectionalcontrolOverride;
+    private readonly InputAction m_Aircraftcontrols_aAircraftcontrolAirbrakecontrolOverride;
+    private readonly InputAction m_Aircraftcontrols_aAircraftcontrolFlapscontrolOverride;
+    private readonly InputAction m_Aircraftcontrols_aAircraftcontrolGearcontrolOverride;
     public struct AircraftcontrolsActions
     {
         private @HIDInputComputer m_Wrapper;
         public AircraftcontrolsActions(@HIDInputComputer wrapper) { m_Wrapper = wrapper; }
-        public InputAction @aControlsurfacesPitchcontrolOverride => m_Wrapper.m_Aircraftcontrols_aControlsurfacesPitchcontrolOverride;
-        public InputAction @aControlsurfacesRollcontrolOverride => m_Wrapper.m_Aircraftcontrols_aControlsurfacesRollcontrolOverride;
-        public InputAction @aControlsurfacesYawcontrolOverride => m_Wrapper.m_Aircraftcontrols_aControlsurfacesYawcontrolOverride;
-        public InputAction @aControlsurfacesAirbrakecontrolOverride => m_Wrapper.m_Aircraftcontrols_aControlsurfacesAirbrakecontrolOverride;
-        public InputAction @aControlsurfacesFlapcontrolOverride => m_Wrapper.m_Aircraftcontrols_aControlsurfacesFlapcontrolOverride;
-        public InputAction @aAircraftsystemsLandinggearcontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftsystemsLandinggearcontrolOverride;
-        public InputAction @aAircraftsystemsThrottlecontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftsystemsThrottlecontrolOverride;
+        public InputAction @aAircraftcontrolDirectionalcontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftcontrolDirectionalcontrolOverride;
+        public InputAction @aAircraftcontrolAirbrakecontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftcontrolAirbrakecontrolOverride;
+        public InputAction @aAircraftcontrolFlapscontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftcontrolFlapscontrolOverride;
+        public InputAction @aAircraftcontrolGearcontrolOverride => m_Wrapper.m_Aircraftcontrols_aAircraftcontrolGearcontrolOverride;
         public InputActionMap Get() { return m_Wrapper.m_Aircraftcontrols; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -509,52 +458,34 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_AircraftcontrolsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_AircraftcontrolsActionsCallbackInterfaces.Add(instance);
-            @aControlsurfacesPitchcontrolOverride.started += instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesPitchcontrolOverride.performed += instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesPitchcontrolOverride.canceled += instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.started += instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.performed += instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.canceled += instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.started += instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.performed += instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.canceled += instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.started += instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.performed += instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.canceled += instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.started += instance.OnAControlsurfacesFlapcontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.performed += instance.OnAControlsurfacesFlapcontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.canceled += instance.OnAControlsurfacesFlapcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.started += instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.performed += instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.canceled += instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.started += instance.OnAAircraftsystemsThrottlecontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.performed += instance.OnAAircraftsystemsThrottlecontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.canceled += instance.OnAAircraftsystemsThrottlecontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.started += instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.performed += instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.canceled += instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.started += instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.performed += instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.canceled += instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.started += instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.performed += instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.canceled += instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.started += instance.OnAAircraftcontrolGearcontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.performed += instance.OnAAircraftcontrolGearcontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.canceled += instance.OnAAircraftcontrolGearcontrolOverride;
         }
 
         private void UnregisterCallbacks(IAircraftcontrolsActions instance)
         {
-            @aControlsurfacesPitchcontrolOverride.started -= instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesPitchcontrolOverride.performed -= instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesPitchcontrolOverride.canceled -= instance.OnAControlsurfacesPitchcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.started -= instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.performed -= instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesRollcontrolOverride.canceled -= instance.OnAControlsurfacesRollcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.started -= instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.performed -= instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesYawcontrolOverride.canceled -= instance.OnAControlsurfacesYawcontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.started -= instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.performed -= instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesAirbrakecontrolOverride.canceled -= instance.OnAControlsurfacesAirbrakecontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.started -= instance.OnAControlsurfacesFlapcontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.performed -= instance.OnAControlsurfacesFlapcontrolOverride;
-            @aControlsurfacesFlapcontrolOverride.canceled -= instance.OnAControlsurfacesFlapcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.started -= instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.performed -= instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsLandinggearcontrolOverride.canceled -= instance.OnAAircraftsystemsLandinggearcontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.started -= instance.OnAAircraftsystemsThrottlecontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.performed -= instance.OnAAircraftsystemsThrottlecontrolOverride;
-            @aAircraftsystemsThrottlecontrolOverride.canceled -= instance.OnAAircraftsystemsThrottlecontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.started -= instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.performed -= instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolDirectionalcontrolOverride.canceled -= instance.OnAAircraftcontrolDirectionalcontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.started -= instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.performed -= instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolAirbrakecontrolOverride.canceled -= instance.OnAAircraftcontrolAirbrakecontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.started -= instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.performed -= instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolFlapscontrolOverride.canceled -= instance.OnAAircraftcontrolFlapscontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.started -= instance.OnAAircraftcontrolGearcontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.performed -= instance.OnAAircraftcontrolGearcontrolOverride;
+            @aAircraftcontrolGearcontrolOverride.canceled -= instance.OnAAircraftcontrolGearcontrolOverride;
         }
 
         public void RemoveCallbacks(IAircraftcontrolsActions instance)
@@ -636,17 +567,15 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     public DebugcontrolsActions @Debugcontrols => new DebugcontrolsActions(this);
     public interface IPilotActions
     {
-        void OnLMBInteract(InputAction.CallbackContext context);
+        void OnPCockpitMainclick(InputAction.CallbackContext context);
+        void OnPCockpitDirectional(InputAction.CallbackContext context);
     }
     public interface IAircraftcontrolsActions
     {
-        void OnAControlsurfacesPitchcontrolOverride(InputAction.CallbackContext context);
-        void OnAControlsurfacesRollcontrolOverride(InputAction.CallbackContext context);
-        void OnAControlsurfacesYawcontrolOverride(InputAction.CallbackContext context);
-        void OnAControlsurfacesAirbrakecontrolOverride(InputAction.CallbackContext context);
-        void OnAControlsurfacesFlapcontrolOverride(InputAction.CallbackContext context);
-        void OnAAircraftsystemsLandinggearcontrolOverride(InputAction.CallbackContext context);
-        void OnAAircraftsystemsThrottlecontrolOverride(InputAction.CallbackContext context);
+        void OnAAircraftcontrolDirectionalcontrolOverride(InputAction.CallbackContext context);
+        void OnAAircraftcontrolAirbrakecontrolOverride(InputAction.CallbackContext context);
+        void OnAAircraftcontrolFlapscontrolOverride(InputAction.CallbackContext context);
+        void OnAAircraftcontrolGearcontrolOverride(InputAction.CallbackContext context);
     }
     public interface IDebugcontrolsActions
     {
