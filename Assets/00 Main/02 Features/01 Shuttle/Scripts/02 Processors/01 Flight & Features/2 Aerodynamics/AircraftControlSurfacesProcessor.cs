@@ -51,7 +51,7 @@ namespace Viguar.Aircraft
             {
                 if (flapInput)
                 {
-                    if (_configBaseProcessor._CurrentFlapSetting <= _configBaseProcessor._FlapSteps.Length)
+                    if (_configBaseProcessor._CurrentFlapSetting +1 < _configBaseProcessor._FlapSteps.Length)
                     {
                         _configBaseProcessor._CurrentFlapSetting += 1;
                     }
