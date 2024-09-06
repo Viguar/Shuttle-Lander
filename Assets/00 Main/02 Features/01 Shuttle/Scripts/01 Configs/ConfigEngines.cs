@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
-using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.Inspector.PropertyFields;
+using Viguar.EditorTooling.DataContainers;
 
 [System.Serializable]
 public class ConfigEngines

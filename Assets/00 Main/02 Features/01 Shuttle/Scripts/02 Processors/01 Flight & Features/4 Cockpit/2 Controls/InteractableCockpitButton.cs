@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
+using Viguar.Inspector.PropertyFields;
 
 namespace Viguar.Aircraft
 {
@@ -23,6 +23,7 @@ namespace Viguar.Aircraft
         private float mouseInteractionPushDepth = -0.004f;
         private int mouseInteractionMovementSmoothing = 20;
         private bool mouseInteracted = false;
+        private bool invokeLock = false;
         private AircraftBaseProcessor _configBaseProcessor;
 
         void Start()
@@ -51,25 +52,33 @@ namespace Viguar.Aircraft
                 if (Physics.Raycast(ray, out hit, 1000))
                 {
                     if (hit.collider.gameObject == gameObject)
-                    {
-                        OnButtonPressed.Invoke();
+                    {                       
                         mouseInteracted = true;
                     }
-                }
+                }                
             }
-            if (mouseInteracted)
+
+
+            if (mouseInteracted && !invokeLock)
             {
                 mouseActionPushableTarget.y = MouseActionPushableOriginalLocation.y + mouseInteractionPushDepth;
                 pushablePart.transform.localPosition = Vector3.Slerp(pushablePart.transform.localPosition, mouseActionPushableTarget, mouseInteractionMovementSmoothing * Time.deltaTime);
-                if(pushablePart.transform.localPosition == mouseActionPushableTarget)
+                if (pushablePart.transform.localPosition == mouseActionPushableTarget)
                 {
-                    mouseInteracted = false;
+                    OnButtonPressed.Invoke();
+                    invokeLock = true;                   
                 }
             }
-            else
-            {
+
+            if (invokeLock && !_configBaseProcessor._PilotHIDSubmitInput)
+            {               
                 mouseActionPushableTarget.y = MouseActionPushableOriginalLocation.y;
                 pushablePart.transform.localPosition = Vector3.Slerp(pushablePart.transform.localPosition, mouseActionPushableTarget, mouseInteractionMovementSmoothing * Time.deltaTime);
+                if (pushablePart.transform.localPosition == mouseActionPushableTarget)
+                {
+                    invokeLock = false;
+                    mouseInteracted = false;
+                }
             }
         }
 

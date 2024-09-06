@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Viguar.EditorTooling.DataContainers.Curve
+
+namespace Viguar.EditorTooling.DataContainers
 {
     [CreateAssetMenu(fileName = "Curve Container", menuName = "Viguar/DataContainers/CurveContainer", order = 0)]
     public class CurveContainer : ScriptableObject

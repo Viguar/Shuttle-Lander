@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Viguar.Structs.RangeFloat
+namespace Viguar.Structs
 {
     [Serializable]
     public struct RangeFloat

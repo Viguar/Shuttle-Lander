@@ -9,6 +9,7 @@ namespace Viguar.Aircraft
         public Camera[] cameras;
         private int index = 0;
         private AircraftBaseProcessor _configBaseProcessor;
+        private Camera currentCamera;
 
         void Start()
         {
@@ -16,28 +17,29 @@ namespace Viguar.Aircraft
             foreach (Camera camera in cameras) //Turn off every camera and their audio listener.
             {
                 camera.enabled = false;
-                camera.GetComponent<AudioListener>().enabled = false;
             }
-            cameras[0].enabled = true; //Turn on cam 1 and its audio listerner.
-            cameras[0].GetComponent<AudioListener>().enabled = true;
-            _configBaseProcessor._DebugActiveCamera = cameras[0];
+            cameras[0].enabled = true; //Turn on cam 1 and add audio listerner.
+            cameras[0].gameObject.AddComponent(typeof(AudioListener));
+            currentCamera = cameras[0];
+            _configBaseProcessor._DebugActiveCamera = currentCamera;
         }
 
         public void switchCameras()
         {
-                foreach (Camera _camera in cameras)
+            Destroy(currentCamera.GetComponent<AudioListener>());
+            foreach (Camera _camera in cameras)
                 {
                     _camera.enabled = false;
-                    _camera.GetComponent<AudioListener>().enabled = false;
                 }
                 index = index + 1 ;
                 if (index >= cameras.Length)
                 {
                     index = 0;
                 }
-                cameras[index].enabled = true;
-                cameras[index].GetComponent<AudioListener>().enabled = true;
-                _configBaseProcessor._DebugActiveCamera = cameras[index];
+            currentCamera = cameras[index];
+            currentCamera.enabled = true;
+                currentCamera.gameObject.AddComponent(typeof(AudioListener));
+            _configBaseProcessor._DebugActiveCamera = currentCamera;
         }
     }
 }

@@ -26,13 +26,12 @@ public class DebugCommander : MonoBehaviour
 
     private void Update()
     {
-        if (DebugUIActive)
-        {
+
             foreach (ValueDisplayer displayer in displayers)
             {
                 displayer.DisplayDebugValue();
             }
-        }
+        
         if(GetComponentInParent<AircraftBaseProcessor>()._DebugShutterInput) 
         {
             DebugUIActive = false;

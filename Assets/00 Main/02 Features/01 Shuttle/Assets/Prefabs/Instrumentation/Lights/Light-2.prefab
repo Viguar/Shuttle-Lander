@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6465376229169125947}
   - component: {fileID: 6483755430954775817}
   - component: {fileID: 6645547559565701918}
+  - component: {fileID: 1899732595911743885}
   m_Layer: 0
   m_Name: Light-2
   m_TagString: Untagged
@@ -164,7 +165,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -239,6 +240,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1899732595911743885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561387688014225093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa514e9cb29641d49a33d849ae1bbd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5996191401469401572
 GameObject:
   m_ObjectHideFlags: 0

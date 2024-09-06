@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Viguar.EditorTooling.InspectorUITools.OverrideLabels;
+using Viguar.Inspector.PropertyFields;
 
 namespace Viguar.Aircraft.Runways
 {

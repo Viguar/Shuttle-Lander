@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 
 #if UNITY_EDITOR
 using UnityEditor;
 using System.Net;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 #endif
 
 namespace Viguar.Aircraft

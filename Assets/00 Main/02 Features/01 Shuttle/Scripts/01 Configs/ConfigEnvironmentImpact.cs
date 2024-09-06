@@ -1,5 +1,5 @@
 using UnityEngine;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 [System.Serializable]
 
 public class ConfigEnvironmentImpact

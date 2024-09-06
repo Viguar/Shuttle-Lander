@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
+using Viguar.Inspector.PropertyFields;
 
 namespace Viguar.Aircraft
 {

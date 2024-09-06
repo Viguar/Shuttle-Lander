@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 [System.Serializable]
 
 public class ConfigControlSurfaces
