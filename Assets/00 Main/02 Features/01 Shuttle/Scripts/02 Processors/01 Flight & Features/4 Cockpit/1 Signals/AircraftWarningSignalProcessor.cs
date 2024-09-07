@@ -41,8 +41,9 @@ namespace Viguar.Aircraft
         private float cueLoopFrequencyFast;
         private float cueLoopTimerTarget;
         private float cueLoopTimer;
-        private bool cueOnceLock;
+
         private AudioSource cuePlaybackSource;
+        private AudioClip cuePlaybackClip;
         private bool acknowledgedMuteOverride = false;
         
         //BlinkProperties
@@ -81,18 +82,10 @@ namespace Viguar.Aircraft
             blinkingFrequencyFast = 1 / fast;
             blinkTimer = 0.0f;
         }
-
         public void InitialiseAudio(float clfs, float clff)
         {
+            //cuePlaybackSource = GameObject.FindGameObjectWithTag("cockpitAlarmSystemAudio").GetComponent<AudioSource>();
             cuePlaybackSource = GetComponent<AudioSource>();
-            if (!hasAudioSignal)
-            {
-                cuePlaybackSource.enabled = false;
-            }
-            else
-            {
-                cuePlaybackSource.enabled = true;
-            }
             cueLoopFrequencySlow = 1 / clfs;
             cueLoopFrequencyFast = 1 / clff;
         }
@@ -100,47 +93,51 @@ namespace Viguar.Aircraft
         public void HandleWarningSignals()
         {
             _configBaseProcessor.DefineDebugDictionaryString();
-            _configBaseProcessor.DebugStringDict.TryGetValue(VariableName, out string VariableString);
+            _configBaseProcessor.DebugStringDict.TryGetValue(VariableName, out string CurrentVariableString);
 
-
-            foreach (WarningSignalProperties SignalProperty in SignalProperties)
+            if (CurrentVariableString != lastStateString) //If the state has changed, we need to adjust the timers of the lights / audio! In this case we also unmute the audio should it have been manually muted.
             {
-                switch (SignalProperty.BlinkSpeed) //Handle the current frequency of light flashing.
+                OverrideUnmute();
+                foreach (WarningSignalProperties SignalProperty in SignalProperties)
                 {
-                    case Aircraft.WarningSignalProperties.BlinkSpeeds.Continuous:
-                        if (VariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = 0; CheckForStateChange(VariableString); }
-                        break;
-                    case Aircraft.WarningSignalProperties.BlinkSpeeds.Slow:
-                        if (VariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = blinkingFrequencySlow; CheckForStateChange(VariableString); }                                                                          
-                        break;
-                    case Aircraft.WarningSignalProperties.BlinkSpeeds.Fast:
-                        if (VariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = blinkingFrequencyFast; CheckForStateChange(VariableString); }              
-                        break;
-                    case Aircraft.WarningSignalProperties.BlinkSpeeds.Off:                        
-                        if (VariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = -1; CheckForStateChange(VariableString); }
-                        break;
+                    switch (SignalProperty.BlinkSpeed) //Handle the current frequency of light flashing.
+                    {
+                        case Aircraft.WarningSignalProperties.BlinkSpeeds.Continuous:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = 0; }
+                            break;
+                        case Aircraft.WarningSignalProperties.BlinkSpeeds.Slow:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = blinkingFrequencySlow;  }
+                            break;
+                        case Aircraft.WarningSignalProperties.BlinkSpeeds.Fast:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = blinkingFrequencyFast;  }
+                            break;
+                        case Aircraft.WarningSignalProperties.BlinkSpeeds.Off:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { blinkTimerTarget = -1;  }
+                            break;
+                    }
+                    switch (SignalProperty.CueSpeed) //Handle the current playback of audio.
+                    {
+                        case Aircraft.WarningSignalProperties.CueSpeeds.CueContinuously:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = 0; cuePlaybackSource.clip = SignalProperty.CueClip; }
+                            break;
+                        case Aircraft.WarningSignalProperties.CueSpeeds.CueSlowLoop:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = cueLoopFrequencySlow; cuePlaybackSource.clip = SignalProperty.CueClip;}
+                            break;
+                        case Aircraft.WarningSignalProperties.CueSpeeds.CueFastLoop:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = cueLoopFrequencyFast; cuePlaybackSource.clip = SignalProperty.CueClip; }
+                            break;
+                        case Aircraft.WarningSignalProperties.CueSpeeds.Once:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = -1; cuePlaybackSource.clip = SignalProperty.CueClip; cuePlaybackSource.Play(); }
+                            break;
+                        case Aircraft.WarningSignalProperties.CueSpeeds.Off:
+                            if (CurrentVariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = -1;  }
+                            break;
+                    }
                 }
-                switch (SignalProperty.CueSpeed) //Handle the current playback of audio.
-                {
-                    case Aircraft.WarningSignalProperties.CueSpeeds.CueContinuously:
-                        if (VariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = 0; cuePlaybackSource.resource = SignalProperty.CueClip; CheckForStateChange(VariableString); }
-                        break;
-                    case Aircraft.WarningSignalProperties.CueSpeeds.CueSlowLoop:
-                        if (VariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = cueLoopFrequencySlow; cuePlaybackSource.resource = SignalProperty.CueClip; CheckForStateChange(VariableString); }
-                        break;
-                    case Aircraft.WarningSignalProperties.CueSpeeds.CueFastLoop:
-                        if (VariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = cueLoopFrequencyFast; cuePlaybackSource.resource = SignalProperty.CueClip; CheckForStateChange(VariableString); }
-                        break;
-                    case Aircraft.WarningSignalProperties.CueSpeeds.Once:
-                        if (VariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = -2; cuePlaybackSource.resource = SignalProperty.CueClip; CheckForStateChange(VariableString); }
-                        break;
-                    case Aircraft.WarningSignalProperties.CueSpeeds.Off:
-                        if (VariableString == SignalProperty.OnVariableValue) { cueLoopTimerTarget = -1; cuePlaybackSource.resource = null; CheckForStateChange(VariableString); }
-                        break;
-                }
-            }
-            HandleLightLogic();
-            HandleAudioLogic();
+            }             
+            lastStateString = CurrentVariableString; //Set the value equal, so we can check again in the next frame whether or not the state has changed!           
+            HandleLightLogic(); //Run the logic for light
+            HandleAudioLogic(); //Run the logic for audio
         }
 
         public void OverrideMute()
@@ -150,7 +147,6 @@ namespace Viguar.Aircraft
                 acknowledgedMuteOverride = true;
             }
         }
-
         public void OverrideUnmute()
         {
             if (hasAudioSignal && respondsToMuteButton)
@@ -189,48 +185,27 @@ namespace Viguar.Aircraft
         }
         private void HandleAudioLogic()
         {
-            cuePlaybackSource.mute = acknowledgedMuteOverride;
-            if (cueLoopTimerTarget == -1)
+            if (cueLoopTimerTarget != -1f)
             {
-                cuePlaybackSource.Stop();
-                cueLoopTimer = 0.0f;
-            }
-            else if (cueLoopTimerTarget == -2)
-            {
-                if(!cueOnceLock)
+                if (cueLoopTimerTarget == 0)
                 {
-                    if (!cuePlaybackSource.isPlaying) { if (cuePlaybackSource.resource != null) { cuePlaybackSource.Play(); } }
-                    cueOnceLock = true;
+                    if (cuePlaybackSource.clip != null && !cuePlaybackSource.isPlaying) { cuePlaybackSource.Play(); }
                     cueLoopTimer = 0.0f;
-                }
-            }
-            else if (cueLoopTimerTarget == 0)
-            {
-                if(!cuePlaybackSource.isPlaying) { if (cuePlaybackSource.resource != null) { cuePlaybackSource.Play(); } }               
-                cueLoopTimer = 0.0f;
-                cueOnceLock = false;
-            }
-            else
-            {
-                if(cueLoopTimer > cueLoopTimerTarget)
-                {
-                    if (!cuePlaybackSource.isPlaying) { if (cuePlaybackSource.resource != null) { cuePlaybackSource.Play(); } }
-                    cueLoopTimer = 0.0f;
-                    cueOnceLock = false;
                 }
                 else
                 {
-                    cueLoopTimer += Time.deltaTime;
-                    cueOnceLock = false;
+                    if (cueLoopTimer > cueLoopTimerTarget)
+                    {
+                        if (cuePlaybackSource.clip != null && !cuePlaybackSource.isPlaying) { cuePlaybackSource.Play(); }
+                        cueLoopTimer = 0.0f;
+                    }
+                    else
+                    {
+                        cueLoopTimer += Time.deltaTime;
+                    }
                 }
-            }            
+            }
         } 
-        private void CheckForStateChange(string currentStateString)
-        {
-            if (currentStateString == lastStateString) { } //State did not change. We do nothing.
-            else { OverrideUnmute(); } //State did change. We unmute our audiosource.
-            lastStateString = currentStateString;
-        }
     }
 
     [Serializable]

@@ -10,17 +10,19 @@ namespace Viguar.Aircraft
         private int index = 0;
         private AircraftBaseProcessor _configBaseProcessor;
         private Camera currentCamera;
+        public int StartingCam = 0;
 
         void Start()
         {
+            if(StartingCam < 0 || StartingCam > cameras.Length) { StartingCam = 0; }
             _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
             foreach (Camera camera in cameras) //Turn off every camera and their audio listener.
             {
                 camera.enabled = false;
             }
-            cameras[0].enabled = true; //Turn on cam 1 and add audio listerner.
-            cameras[0].gameObject.AddComponent(typeof(AudioListener));
-            currentCamera = cameras[0];
+            cameras[StartingCam].enabled = true; //Turn on cam 1 and add audio listerner.
+            cameras[StartingCam].gameObject.AddComponent(typeof(AudioListener));
+            currentCamera = cameras[StartingCam];
             _configBaseProcessor._DebugActiveCamera = currentCamera;
         }
 

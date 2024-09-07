@@ -5,16 +5,8 @@ using TMPro;
 
 public class AircraftDebugConsoleLogger : MonoBehaviour
 {
-    private int CurrentLogMessageCount;
-
-    private void OnEnable()
+    public void UpdateConsole(string consoleText)
     {
-        UnityEngine.Application.logMessageReceived += LogCallback;
-    }
-
-    private void LogCallback(string logString, string stackTrace, LogType type)
-    {
-        CurrentLogMessageCount++;
-        GetComponent<TMP_Text>().text += "[" + CurrentLogMessageCount + "] " + logString + "\r\n";
+        GetComponent<TMP_Text>().text = consoleText;
     }
 }
