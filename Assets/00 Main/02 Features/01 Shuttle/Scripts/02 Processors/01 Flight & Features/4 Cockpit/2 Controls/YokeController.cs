@@ -9,20 +9,19 @@ namespace Viguar.Aircraft
         private AircraftBaseProcessor _configBaseProcessor;
         private UserInputProcessor _userInputProcessor;
         private bool hasClickedOnYoke = false;
-        private bool hasActivatedCursor = true;        
-        
-        private void Start()
+        private bool hasActivatedCursor = true;       
+        private float currentSteeringInputRoll;
+        private float currentSteeringInputPitch;
+        public void InitYokeController(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponentInParent<AircraftBaseProcessor>();
-            _userInputProcessor = GetComponentInParent<UserInputProcessor>();
+            _configBaseProcessor = baseProcessor;
+            _userInputProcessor = _configBaseProcessor._userInputProcessor;
         }
-
-        private void FixedUpdate()
+        public void PerformYokeCalculations()
         {
             CheckForInputOnYoke();
             OnYokeInput();
         }
-
         private void CheckForInputOnYoke()
         {
             if (_configBaseProcessor._PilotHIDSubmitInput)
@@ -48,17 +47,22 @@ namespace Viguar.Aircraft
                 }                
             }
         }
-
         private void OnYokeInput()
         {            
             if(hasClickedOnYoke)
             {
-                _configBaseProcessor.GetComponent<AircraftControlInputProcessor>().SetDirectionalSteeringInput(_configBaseProcessor._PilotHIDAdjustmentInput);                
+                currentSteeringInputRoll +=  _configBaseProcessor._PilotHIDAdjustmentInput.x * 0.005f;
+                currentSteeringInputPitch += _configBaseProcessor._PilotHIDAdjustmentInput.y * 0.005f;
+                currentSteeringInputRoll = Mathf.Clamp(currentSteeringInputRoll, -1, 1);
+                currentSteeringInputPitch = Mathf.Clamp(currentSteeringInputPitch, -1, 1);
+                _configBaseProcessor._aircraftControlInputProcessor.SetDirectionalSteeringInput(new Vector2(currentSteeringInputRoll, currentSteeringInputPitch));                
                 Cursor.visible = false;
             }
             else
             {
-                _configBaseProcessor.GetComponent<AircraftControlInputProcessor>().SetDirectionalSteeringInput(Vector2.zero);
+                currentSteeringInputRoll = 0;
+                currentSteeringInputPitch = 0;
+                _configBaseProcessor._aircraftControlInputProcessor.SetDirectionalSteeringInput(Vector2.zero);
                 hasActivatedCursor = true;                
             }
         }

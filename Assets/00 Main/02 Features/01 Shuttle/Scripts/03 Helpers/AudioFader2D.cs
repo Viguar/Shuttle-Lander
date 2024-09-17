@@ -19,10 +19,13 @@ public class AudioFader2D : MonoBehaviour
 
     private void Update()
     {
-        float distance = Vector3.Distance(GameObject.FindAnyObjectByType<AudioListener>().gameObject.transform.position, transform.position);
-        if (distance > maxDist) { audioSource.volume = 0 * volumeAtStart; }
-        else if (distance < maxDist) { audioSource.volume = 1 * volumeAtStart; }
-        else { audioSource.volume = (1 - ((distance - minDist) / (maxDist - minDist))) * volumeAtStart;  }
+        if (GameObject.FindAnyObjectByType<AudioListener>() != null)
+        {
+            float distance = Vector3.Distance(GameObject.FindAnyObjectByType<AudioListener>().gameObject.transform.position, transform.position);
+            if (distance > maxDist) { audioSource.volume = 0 * volumeAtStart; }
+            else if (distance < maxDist) { audioSource.volume = 1 * volumeAtStart; }
+            else { audioSource.volume = (1 - ((distance - minDist) / (maxDist - minDist))) * volumeAtStart; }
+        }
     }
 
 }

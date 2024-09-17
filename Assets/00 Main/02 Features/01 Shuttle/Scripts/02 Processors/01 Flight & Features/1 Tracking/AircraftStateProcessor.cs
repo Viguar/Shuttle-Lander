@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftStateProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
         private Rigidbody _aircraftRigidbody;
 
-        void Start()
+        public void InitStateProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Aircraft State Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
         }
-
         public void EvaluateAircraftStates()
         {
             CheckStateFlying();
@@ -27,7 +26,6 @@ namespace Viguar.Aircraft
             CheckStateStalled();
             CheckStateCrashed();
         }
-
         private void CheckStateFlying()
         {
             if(!_configBaseProcessor._StateGrounded && !_configBaseProcessor._StateCrashed) { _configBaseProcessor._StateFlying = true; }
@@ -129,9 +127,5 @@ namespace Viguar.Aircraft
         {
 
         }
-
-
-
-
     }
 }

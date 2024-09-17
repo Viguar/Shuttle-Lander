@@ -4,19 +4,16 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftAnimationProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
 
-
-
-        private void Start()
+        public void InitAnimationProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
+            _configBaseProcessor = baseProcessor;
             InitializeControlSurfaces();
         }
-        private void Update()
+        public void PerformAnimationCalculations()
         {
             MoveControlSurfaces();
             MoveAvionicsNeedles();
@@ -85,7 +82,7 @@ namespace Viguar.Aircraft
                             cs.AnimationStateA = false;
                         }
                         cs.AnimationFinished = true;
-                        cs.OnAnimationFinished.Invoke();
+                        //cs.OnAnimationFinished.Invoke();
                         break;
                 }
             }

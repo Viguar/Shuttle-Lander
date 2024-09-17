@@ -5,8 +5,6 @@ using Viguar.WeatherDynamics;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
-    [RequireComponent(typeof(Rigidbody))]
     public class AircraftEnvironmentProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
@@ -15,18 +13,6 @@ namespace Viguar.Aircraft
 
         private float minDensity = 0.00909935413f;  //Lowest Possible Density of Air at Sea Level
         private float maxDensity = 0.01620037228f;  //Highest Possible Density of Air at Sea Level
-
-        private void Start()
-        {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
-            InitEnvironmentProcessor();
-        }
-
-        private void Update()
-        {
-            PerformEnvironmentCalculations();
-        }
 
         public void PerformEnvironmentCalculations()
         {
@@ -141,9 +127,13 @@ namespace Viguar.Aircraft
                 _configBaseProcessor._CurrentSeaLevelRelativeHumidity = _configBaseProcessor._CurrentWeatherZone.zoneWeather.localSealevelHumidity;
                 _configBaseProcessor._CurrentSeaLevelWindStrength = _configBaseProcessor._CurrentWeatherZone.windProperties.localCurrentWindStrengthTotal;         
         }
-        private void InitEnvironmentProcessor()
+        public void InitEnvironmentProcessor(AircraftBaseProcessor baseProcessor)
         {
-            if(_configBaseProcessor._EnvironmentAffectsAerodynamics && GameObject.FindGameObjectWithTag("weatherController") != null)
+            Debug.Log("Initializing Environment Effect Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
+
+            if (_configBaseProcessor._EnvironmentAffectsAerodynamics && GameObject.FindGameObjectWithTag("weatherController") != null)
             {
                 _configBaseProcessor._GlobalWeatherController = GameObject.FindGameObjectWithTag("weatherController").GetComponent<weatherController>();                                  
             }

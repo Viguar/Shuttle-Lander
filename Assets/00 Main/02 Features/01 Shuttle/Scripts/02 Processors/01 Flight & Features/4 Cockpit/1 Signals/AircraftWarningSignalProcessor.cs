@@ -43,9 +43,8 @@ namespace Viguar.Aircraft
         private float cueLoopTimer;
 
         private AudioSource cuePlaybackSource;
-        private AudioClip cuePlaybackClip;
-        private bool acknowledgedMuteOverride = false;
-        
+        private AudioClip cuePlaybackClip;        
+
         //BlinkProperties
         [Space(10)]
         [SerializeField] private WarningSignalProperties[] SignalProperties;
@@ -144,14 +143,14 @@ namespace Viguar.Aircraft
         {
             if(hasAudioSignal && respondsToMuteButton)
             {
-                acknowledgedMuteOverride = true;
+                cuePlaybackSource.mute = true;
             }
         }
         public void OverrideUnmute()
         {
             if (hasAudioSignal && respondsToMuteButton)
             {
-                acknowledgedMuteOverride = false;
+                cuePlaybackSource.mute = false;
             }
         }
 

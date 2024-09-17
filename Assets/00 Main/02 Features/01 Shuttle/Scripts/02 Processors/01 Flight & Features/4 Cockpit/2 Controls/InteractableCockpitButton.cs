@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Viguar.Inspector.PropertyFields;
 
 namespace Viguar.Aircraft
 {
@@ -14,7 +11,7 @@ namespace Viguar.Aircraft
         [SerializeField] private UnityEvent OnButtonPressed = new UnityEvent();
         [Space(10)]
         [SerializeField] private bool soundOnInteraction;
-        [DrawIf("soundOnInteraction", true)][SerializeField] private AudioClip interactionSound;
+        [SerializeField] private AudioClip[] interactionSounds;        
 
         private AudioSource buttonSoundSource;
         private Transform pushablePart;
@@ -25,24 +22,22 @@ namespace Viguar.Aircraft
         private bool mouseInteracted = false;
         private bool invokeLock = false;
         private AircraftBaseProcessor _configBaseProcessor;
-
-        void Start()
+   
+        public void InitInteractableButton(AircraftBaseProcessor baseProcessor)
         {
-            foreach(Transform child in transform)
+            _configBaseProcessor = baseProcessor;
+            foreach (Transform child in transform)
             {
-                if(child.tag == "cockpitButtonPad") { pushablePart = child; }
+                if (child.tag == "cockpitButtonPad") { pushablePart = child; }
             }
-            if(soundOnInteraction) { buttonSoundSource = GetComponent<AudioSource>(); }
+            if (soundOnInteraction) { buttonSoundSource = GetComponent<AudioSource>(); }
             MouseActionPushableOriginalLocation = pushablePart.localPosition;
-            _configBaseProcessor = gameObject.GetComponentInParent<AircraftBaseProcessor>();
+            if (interactionSounds == null) { soundOnInteraction = false; }
         }
-
-        void FixedUpdate()
+        public void PerformInteractableButtonCalculations()
         {
             if (isMouseResponsive) { handleMouseInteraction(); }
-            
-        }       
-
+        }
         private void handleMouseInteraction()
         {
             if (_configBaseProcessor._PilotHIDSubmitInput)
@@ -58,13 +53,13 @@ namespace Viguar.Aircraft
                 }                
             }
 
-
             if (mouseInteracted && !invokeLock)
-            {
+            {               
                 mouseActionPushableTarget.y = MouseActionPushableOriginalLocation.y + mouseInteractionPushDepth;
                 pushablePart.transform.localPosition = Vector3.Slerp(pushablePart.transform.localPosition, mouseActionPushableTarget, mouseInteractionMovementSmoothing * Time.deltaTime);
                 if (pushablePart.transform.localPosition == mouseActionPushableTarget)
                 {
+                    if (soundOnInteraction) { buttonSoundSource.clip = interactionSounds[Random.Range(0, interactionSounds.Length)]; buttonSoundSource.Play(); }
                     OnButtonPressed.Invoke();
                     invokeLock = true;                   
                 }

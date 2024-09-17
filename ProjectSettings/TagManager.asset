@@ -24,6 +24,9 @@ TagManager:
   - cockpitKnobModel
   - debugPanel
   - cockpitAlarmSystemAudio
+  - aircraftComponentsContainer
+  - debugComponentsContainer
+  - cockpitComponentsContainer
   layers:
   - Default
   - TransparentFX

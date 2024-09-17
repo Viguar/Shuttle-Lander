@@ -74,4 +74,9 @@ public class AircraftBaseMethods : MonoBehaviour
 
     }    
     #endregion    
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }

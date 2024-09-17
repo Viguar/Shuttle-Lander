@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftControlInputProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
@@ -24,24 +23,15 @@ namespace Viguar.Aircraft
         private Vector2 mouseSteering;
         private float mouseSterringSensitivity = 4.5f;
 
-        private void Start()
+        public void InitControlInputProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _controlSurfaceProcessor = GetComponent<AircraftControlSurfacesProcessor>();
-            _landingGearProcessor = GetComponent<AircraftLandingGearProcessor>();
+            _configBaseProcessor = baseProcessor;
+            _controlSurfaceProcessor = _configBaseProcessor._aircraftControlSurfacesProcessor;
+            _landingGearProcessor = _configBaseProcessor._aircraftLandingGearProcessor;
             Cursor.visible = debugMouseState;
         }
-
-        void Update()
+        public void PerformInputCalculations()
         {
-            PerformInputCalculations();
-            _controlSurfaceProcessor.PerformControlSurfaceCalculations(_configBaseProcessor._YokePitchSetting, _configBaseProcessor._YokeRollSetting, _configBaseProcessor._PedalRudderSetting, _configBaseProcessor._LeverAirbrakeSetting, _configBaseProcessor._LeverFlapsSetting);
-            _landingGearProcessor.PerformLandingGear(_configBaseProcessor._LandingGearInitiated);
-        }
-
-        private void PerformInputCalculations()
-        {
-            CheckForMissingComponents();
             GetHIDInput();
             GetDebugHIDInput();
             CalculateTotalInput();
@@ -98,19 +88,9 @@ namespace Viguar.Aircraft
             _configBaseProcessor._DetectedRollInput = (totalRollInput == 0 ? false : true);
             _configBaseProcessor._DetectedYawInput = (totalYawInput == 0 ? false : true);
         }
-        private void CheckForMissingComponents()
-        {
-            if(_landingGearProcessor == null) { _landingGearProcessor = GetComponent<AircraftLandingGearProcessor>(); }
-            if(_controlSurfaceProcessor == null) { _controlSurfaceProcessor = GetComponent<AircraftControlSurfacesProcessor>(); }
-        }
-
         public void SetDirectionalSteeringInput(Vector2 steering)
         {
-            float sensitivityDecimal = 1 / (mouseSterringSensitivity * 0.01f);
-
-            steering.x = Mathf.Clamp(steering.x, -sensitivityDecimal, sensitivityDecimal);
-            steering.y = Mathf.Clamp(steering.y, -sensitivityDecimal, sensitivityDecimal);
-            mouseSteering = steering / sensitivityDecimal;
+            mouseSteering = steering;
         }
     }
 }

@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftLandingGearProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
         private bool _animationLock = false;
-        private void Start()
+
+        public void InitLandingGearProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
+            Debug.Log("Initializing Aircraft Landing Gear Processor Component");
+            _configBaseProcessor = baseProcessor;
+            SetLandingGear(_configBaseProcessor._LandingGearExtended);
             SetLandingGearType();
             CountLandingGearWheels();
         }
@@ -32,17 +34,9 @@ namespace Viguar.Aircraft
             {
                     _configBaseProcessor._LandingGearExtended = !_configBaseProcessor._LandingGearExtended;
                     _animationLock = false;
-                    //SetLandingGearState();
             }
         }
-        public void SetLandingGear(bool landingGearState)
-        {
-            if (_configBaseProcessor._LandingGearType == ConfigLandingGear._cLandingGearTypes.RetractableGear)
-            {
-                _configBaseProcessor._LandingGearExtended = landingGearState;
-                SetLandingGearState();
-            }
-        }
+        
         private void InitiateLandingGearSequence()
         {
             if(!_animationLock)
@@ -56,22 +50,31 @@ namespace Viguar.Aircraft
             else if (_configBaseProcessor._LandingGearExtended && !_animationLock) { _configBaseProcessor._LandingGearState = AircraftBaseProcessor.LandingGearStateTypes.Extended; }
             else { _configBaseProcessor._LandingGearState = AircraftBaseProcessor.LandingGearStateTypes.Retracted; }
         }
+
+        private void SetLandingGear(bool toLandingGearState) //Forces the bool to be in a certain state instead of toggling it.
+        {
+            if (_configBaseProcessor._LandingGearType == ConfigLandingGear._cLandingGearTypes.RetractableGear)
+            {
+                _configBaseProcessor._LandingGearExtended = toLandingGearState;
+                SetLandingGearState();
+            }
+        }
         private void SetLandingGearType()
         {
             if(_configBaseProcessor._LandingGearType == ConfigLandingGear._cLandingGearTypes.RetractableGear) { _configBaseProcessor._LandingGearInducesDrag = true; }
             else { _configBaseProcessor._LandingGearInducesDrag = false; }
         }
-
         private void CalculateLandingGearDrag()
         {
             if(_configBaseProcessor._LandingGearExtended) { _configBaseProcessor._LandingGearDrag = _configBaseProcessor._LandingGearDragStart; }
             else { _configBaseProcessor._LandingGearDrag = 0; }
         }
         #endregion
-        #region Wheels
+
+        #region Wheels & Brakes
         private void CountLandingGearWheels()
         {
-            _configBaseProcessor._LandingGearWheels = GetComponentsInChildren<WheelCollider>();
+            _configBaseProcessor._LandingGearWheels = _configBaseProcessor.GetComponentsInChildren<WheelCollider>();
             _configBaseProcessor._LandingGearWheelsAmount = _configBaseProcessor._LandingGearWheels.Length;
         }
         private void ControlLandingGearWheelBrakes()

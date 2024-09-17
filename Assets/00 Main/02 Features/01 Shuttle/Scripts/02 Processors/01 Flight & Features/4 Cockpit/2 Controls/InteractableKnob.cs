@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Viguar.Inspector.PropertyFields;
 
@@ -21,23 +19,23 @@ namespace Viguar.Aircraft
         [SerializeField] private bool hasConnectedDisplay;
         [DrawIf("hasConnectedDisplay", true)][SerializeField] private SegmentDisplay ConnectedDisplay;
 
-        private void Start()
+        public void InitInteractableKnob(AircraftBaseProcessor aircraftBaseProcessor)
         {
-            _configBaseProcessor = GetComponentInParent<AircraftBaseProcessor>();
-            _userInputProcessor = GetComponentInParent<UserInputProcessor>();
-            foreach(Transform child in transform)
+            _configBaseProcessor = aircraftBaseProcessor;
+            _userInputProcessor = _configBaseProcessor._userInputProcessor;
+            foreach (Transform child in transform)
             {
-                if(child.tag == "cockpitKnobModel") { knobMesh = child.gameObject; }
+                if (child.tag == "cockpitKnobModel") { knobMesh = child.gameObject; }
             }
             knobTwistValue = DefaultValue;
             knobTwistValue = Mathf.Clamp(knobTwistValue, ValueMinMaxClamp.x, ValueMinMaxClamp.y);
             ConnectedDisplay.DisplayText(knobTwistValue);
         }
 
-        private void FixedUpdate()
+        public void PerformKnobCalculations()
         {
             CheckForInputOnKnob();
-            OnKnobInput();           
+            OnKnobInput();
         }
 
         private void CheckForInputOnKnob()

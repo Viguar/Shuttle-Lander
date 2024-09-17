@@ -12,6 +12,7 @@ namespace Viguar.Aircraft
         private GlobalDebugManager _globalDebugManager;
 
         //Debug UI Toggling
+        private bool foundDebugUICanvas;
         private GameObject[] _debugUIPanels;
 
         //Debug UI Text & Value Handling
@@ -23,6 +24,7 @@ namespace Viguar.Aircraft
         private float DisplayRefreshRatePerSecond = 5;
 
         //Console Handling
+        private bool foundConsole;
         private int _currentLogMessageCount;
         private int _currentLogMessageCountTotal;
         private int _maxLogMessages = 200;
@@ -40,7 +42,7 @@ namespace Viguar.Aircraft
         }
         private void Start()
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
+            _configBaseProcessor = FindAnyObjectByType<AircraftBaseProcessor>();
             if (GameObject.FindGameObjectWithTag("managerDebugManager").GetComponent<GlobalDebugManager>() != null) { _globalDebugManager = GameObject.FindGameObjectWithTag("managerDebugManager").GetComponent<GlobalDebugManager>(); }
             InitDebugValueDisplays();
             InitLogger();
@@ -58,7 +60,7 @@ namespace Viguar.Aircraft
         }
         public void OpenDebugWindow()
         {
-            _configBaseProcessor._DebugPanelActive = false;
+            _configBaseProcessor._DebugPanelActive = true;
         }
         public void CloseDebugWindow()
         {
@@ -83,7 +85,7 @@ namespace Viguar.Aircraft
         //Debug UI Value Handling
         private void InitDebugValueDisplays()
         {
-            _displayers = GameObject.FindObjectsOfType<ValueDisplayer>();
+            _displayers = GameObject.FindObjectsByType<ValueDisplayer>(FindObjectsSortMode.None);
             foreach (ValueDisplayer _displayer in _displayers)
             {
                 _displayer.InitDisplayer(_defaultColor, _positiveColor, _negativeColor);
@@ -96,25 +98,33 @@ namespace Viguar.Aircraft
             {
                 foreach (ValueDisplayer _displayer in _displayers)
                 {
-                    _displayer.DisplayDebugValue();
+                    switch(_displayer.displayValue)
+                    {
+                        case ValueDisplayer.valueType.Float:
+                            _configBaseProcessor.DefineDebugDictionaryFloat();
+                            _configBaseProcessor.DebugFloatDict.TryGetValue(_displayer.variableName, out float VariableFloat);
+                            _displayer.SetText(VariableFloat.ToString());
+                            break;
+                        case ValueDisplayer.valueType.Bool:
+                            _configBaseProcessor.DefineDebugDictionaryBool();
+                            _configBaseProcessor.DebugBoolDict.TryGetValue(_displayer.variableName, out bool VariableBool);
+                            _displayer.SetText(VariableBool.ToString());
+                            break;
+                        case ValueDisplayer.valueType.Vector:
+                            _configBaseProcessor.DefineDebugDictionaryVector();
+                            _configBaseProcessor.DebugVectorDict.TryGetValue(_displayer.variableName, out Vector3 VariableVector);
+                            _displayer.SetText(VariableVector.ToString());
+                            break;
+                        case ValueDisplayer.valueType.String:
+                            _configBaseProcessor.DefineDebugDictionaryString();
+                            _configBaseProcessor.DebugStringDict.TryGetValue(_displayer.variableName, out string VariableString);
+                            _displayer.SetText(VariableString);
+                            break;
+                    }                   
                 }
                 SlowDisplayTicker = 0f;
             }
-        }
-
-        //Finding & Executing GlobalDebugManager
-        public void ShowDebugMeshes()
-        {
-            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(true); }
-        }
-        public void HideDebugMeshes()
-        {
-            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(false); }
-        }
-        public void ToggleDebugMeshes()
-        {
-            if (_globalDebugManager != null) { _globalDebugManager.ToggleDebugMeshRenderingState(); }
-        }
+        }        
 
         //Debug UI Console Handling
         private void InitLogger()
@@ -135,6 +145,20 @@ namespace Viguar.Aircraft
                 _currentConsoleString = "[" + _currentLogMessageCountTotal + "] " + logString + "\r\n";
             }
             _loggerComponent.UpdateConsole(_currentConsoleString);
+        }
+
+        //Finding & Executing GlobalDebugManager
+        public void ShowDebugMeshes()
+        {
+            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(true); }
+        }
+        public void HideDebugMeshes()
+        {
+            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(false); }
+        }
+        public void ToggleDebugMeshes()
+        {
+            if (_globalDebugManager != null) { _globalDebugManager.ToggleDebugMeshRenderingState(); }
         }
     }
 }

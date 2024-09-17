@@ -24,6 +24,7 @@ namespace Viguar.Aircraft
             cameras[StartingCam].gameObject.AddComponent(typeof(AudioListener));
             currentCamera = cameras[StartingCam];
             _configBaseProcessor._DebugActiveCamera = currentCamera;
+            index = StartingCam;
         }
 
         public void switchCameras()
@@ -39,8 +40,8 @@ namespace Viguar.Aircraft
                     index = 0;
                 }
             currentCamera = cameras[index];
-            currentCamera.enabled = true;
-                currentCamera.gameObject.AddComponent(typeof(AudioListener));
+            currentCamera.gameObject.AddComponent(typeof(AudioListener));
+            currentCamera.enabled = true;               
             _configBaseProcessor._DebugActiveCamera = currentCamera;
         }
     }

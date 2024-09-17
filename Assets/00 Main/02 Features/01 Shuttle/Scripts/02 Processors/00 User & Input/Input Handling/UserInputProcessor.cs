@@ -16,7 +16,6 @@ namespace Viguar.Aircraft
         private void Awake()
         {
             aInput = new HIDInputComputer(); //Initialise the InputActions
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>(); //The airplane to pass those values on to.
         }
         private void OnEnable()
         {
@@ -26,16 +25,19 @@ namespace Viguar.Aircraft
         private void OnDisable()
         {
             aInput.Disable();
+        }     
+
+        public void InitUserInputProcessor(AircraftBaseProcessor baseProcessor)
+        {
+            _configBaseProcessor = baseProcessor;
         }
 
-        private void Update()
+        public void PerformUserInputCalculations()
         {
             controlOverrideHIDInputs();
             controlDebugHIDInputs();
             controlKeyboardMouseCockpitHIDInputs();
         }
-
-
 
         private void controlDebugHIDInputs()
         {
@@ -69,6 +71,8 @@ namespace Viguar.Aircraft
             InputAction _CockpitAdjustInput = aInput.Pilot.pCockpitDirectional;
 
             Vector2 adjustDirectional = _CockpitAdjustInput.ReadValue<Vector2>();
+            Mathf.Clamp(adjustDirectional.x, -1, 1);
+            Mathf.Clamp(adjustDirectional.y, -1, 1);
             float cockpitSubmit = _CockpitSubmitInput.ReadValue<float>();
 
             _configBaseProcessor._PilotHIDSubmitInput = (cockpitSubmit == 0 ? false : true);
