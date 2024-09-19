@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Runtime.InteropServices; // For importing the Windows API
 
 //Input Processor for Unity's "new" Input system. I got to learn it quite late :(
 namespace Viguar.Aircraft
@@ -11,7 +12,10 @@ namespace Viguar.Aircraft
         public HIDInputComputer aInput;
         private AircraftBaseProcessor _configBaseProcessor;
 
-        public Vector3 _RecordedMousePosition;
+        [DllImport("user32.dll")] private static extern bool SetCursorPos(int X, int Y); //Import the SetCursorPos function from user32.dll (Windows specific)
+        [DllImport("user32.dll")] private static extern bool GetCursorPos(out displaycursorposition lpPoint); //Import the GetCursorPos function from user32.dll (to get the current mouse position)
+
+        public Vector2 _RecordedMousePosition;
 
         private void Awake()
         {
@@ -80,24 +84,37 @@ namespace Viguar.Aircraft
         }
 
 
-
+        //Mouse Logic
         public void RecordMousePosition()
         {
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            _RecordedMousePosition = _configBaseProcessor._DebugActiveCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _configBaseProcessor._DebugActiveCamera.nearClipPlane));
-            _RecordedMousePosition.z = 0;
+            //GetCursorPos(out displaycursorposition currentpos);
+            _RecordedMousePosition = new Vector2(GetCursorPosition().x, GetCursorPosition().y);
         }
-
-        public void MoveMousePositionToLast()
-        {
-            Vector3 screenPos = _configBaseProcessor._DebugActiveCamera.WorldToScreenPoint(_RecordedMousePosition);
-            Mouse.current.WarpCursorPosition(new Vector2(screenPos.x, screenPos.y));
-        }
-
         public void MoveMousePosition(Vector2 position)
         {
-            var mouse = Mouse.current;
-            mouse.WarpCursorPosition(position);
+            SetCursorPos(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+        }
+        public void MoveMousePositionToLast()
+        {
+            MoveMousePosition(_RecordedMousePosition);
+        }
+        public void CheckMouseLockingState()
+        {
+            if(!Cursor.visible) { Cursor.lockState = CursorLockMode.Locked; }
+            else { Cursor.lockState = CursorLockMode.None;}
+        }
+
+
+
+        public struct displaycursorposition//Struct to store cursor coordinates
+        {
+            public int x;
+            public int y;
+        }
+        public displaycursorposition GetCursorPosition() //Function to get the current cursor position
+        {
+            GetCursorPos(out displaycursorposition currentPos);
+            return currentPos;
         }
     }
 }

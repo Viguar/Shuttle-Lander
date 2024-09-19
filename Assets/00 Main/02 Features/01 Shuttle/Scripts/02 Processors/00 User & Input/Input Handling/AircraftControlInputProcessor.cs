@@ -70,9 +70,8 @@ namespace Viguar.Aircraft
             {
                 _configBaseProcessor._DebugCursorActive = !_configBaseProcessor._DebugCursorActive;
                 Cursor.visible = _configBaseProcessor._DebugCursorActive;
-            }
-            if(!Cursor.visible) { Cursor.lockState = CursorLockMode.Locked; }
-            else { Cursor.lockState = CursorLockMode.None;}
+                _configBaseProcessor._userInputProcessor.CheckMouseLockingState();
+            }       
         }
         private void CalculateTotalInput()
         {

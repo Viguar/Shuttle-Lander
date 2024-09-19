@@ -350,8 +350,8 @@ MonoBehaviour:
         m_CallState: 2
   soundOnInteraction: 1
   interactionSounds:
-  - {fileID: 8300000, guid: efcb8b009f860d74395738150fd7c8e9, type: 3}
-  - {fileID: 8300000, guid: 2d3ea37dbe3229d43a0e9928a5b5417c, type: 3}
+  - {fileID: 8300000, guid: d86c0c865eff27c4286f4e53f5e2b6e7, type: 3}
+  - {fileID: 8300000, guid: 405beb6ef9e68ff448f372c1fdf3d20e, type: 3}
 --- !u!33 &6806650002699813297
 MeshFilter:
   m_ObjectHideFlags: 0

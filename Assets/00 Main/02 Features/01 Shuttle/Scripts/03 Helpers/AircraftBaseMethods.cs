@@ -72,9 +72,15 @@ public class AircraftBaseMethods : MonoBehaviour
     public void DecreaseForwardSpeed()
     {
 
-    }    
-    #endregion    
+    }
+    #endregion
 
+    #region Control Surfaces
+    public void ToggleLandingGear()
+    {
+        GetComponent<AircraftBaseProcessor>()._aircraftLandingGearProcessor.ToggleLandingGear();
+    }
+    #endregion
     public void QuitApplication()
     {
         Application.Quit();
