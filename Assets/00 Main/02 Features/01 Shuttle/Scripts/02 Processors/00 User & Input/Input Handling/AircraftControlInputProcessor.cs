@@ -10,6 +10,7 @@ namespace Viguar.Aircraft
         private AircraftBaseProcessor _configBaseProcessor;
         private AircraftControlSurfacesProcessor _controlSurfaceProcessor;
         private AircraftLandingGearProcessor _landingGearProcessor;
+        private UserInputProcessor _userInputProcessor;
 
         private float totalPitchInput;
         private float totalYawInput;
@@ -28,7 +29,8 @@ namespace Viguar.Aircraft
             _configBaseProcessor = baseProcessor;
             _controlSurfaceProcessor = _configBaseProcessor._aircraftControlSurfacesProcessor;
             _landingGearProcessor = _configBaseProcessor._aircraftLandingGearProcessor;
-            Cursor.visible = debugMouseState;
+            _userInputProcessor = _configBaseProcessor._userInputProcessor;            
+            _userInputProcessor.ShowMouse(debugMouseState);
         }
         public void PerformInputCalculations()
         {
@@ -69,8 +71,7 @@ namespace Viguar.Aircraft
             if(_configBaseProcessor._DebugCursortoggleInput)
             {
                 _configBaseProcessor._DebugCursorActive = !_configBaseProcessor._DebugCursorActive;
-                Cursor.visible = _configBaseProcessor._DebugCursorActive;
-                _configBaseProcessor._userInputProcessor.CheckMouseLockingState();
+                _userInputProcessor.ShowMouse(_configBaseProcessor._DebugCursorActive);                
             }       
         }
         private void CalculateTotalInput()

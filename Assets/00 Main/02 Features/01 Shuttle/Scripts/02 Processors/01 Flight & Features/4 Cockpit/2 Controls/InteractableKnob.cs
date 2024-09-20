@@ -66,7 +66,7 @@ namespace Viguar.Aircraft
 
                 //If we have not yet recorded the mouse position, record it, else make it invisible.
                 if (!hasRecordedCursorPosition) { _userInputProcessor.RecordMousePosition(); hasRecordedCursorPosition = true; }
-                else { Cursor.visible = false; _userInputProcessor.CheckMouseLockingState(); }
+                else { _userInputProcessor.ShowMouse(false); }
 
                 //Finally Invoke the logic.
                 TwistKnob();
@@ -76,7 +76,7 @@ namespace Viguar.Aircraft
                 hasRecordedCursorPosition = false; //Reset the value so we can record the position again once we click on the yoke again.
 
                 //If we have not yet set the mouse position yet, set it.
-                if (!hasSetCursorPosition) { Cursor.visible = true; _userInputProcessor.CheckMouseLockingState(); _userInputProcessor.MoveMousePositionToLast(); hasSetCursorPosition = true; }
+                if (!hasSetCursorPosition) { _userInputProcessor.ShowMouse(true); _userInputProcessor.MoveMousePositionToLast(); hasSetCursorPosition = true; }
             } 
         }
 
