@@ -4,19 +4,31 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftAutoFlightProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
         private Rigidbody _aircraftRigidbody;
         private float throttleChangeRate;
         private float yokePitchChangeRate;
-        private void Start()
+
+        private bool hasAP;
+        private bool hasAT;
+        private bool hasAL;
+
+        public void InitAutoFlightProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Aircraft Automatic Flight Systems");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
         }
-       
+
+        public void PerformAutoflightCalculations()
+        {
+            if (hasAT) { PerformAT(); }
+            if (hasAP) { PerformAP(); }
+            if (hasAL) { PerformAL(); }
+        }
+
         private void InitAT()
         {
             _configBaseProcessor._ATOnline = true;

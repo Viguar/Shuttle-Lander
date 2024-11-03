@@ -1,5 +1,5 @@
 using UnityEngine;
-using Viguar.EditorTooling.InspectorUITools.ConditionalPropertyDisplay;
+using Viguar.Inspector.PropertyFields;
 
 [System.Serializable]
 public class ConfigStartSettings

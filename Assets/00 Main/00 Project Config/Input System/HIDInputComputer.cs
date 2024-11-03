@@ -44,6 +44,15 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""pCockpit.Secondaryclick"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bcffde0-cb32-426c-b861-1e075b63a4c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""pCockpit.Directional"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e93633ff-03bc-454f-b13a-01fdb527ab8f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pCockpit.Secondaryclick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -271,17 +291,6 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f5b521f6-4ed4-4c70-ae9f-c9f148f7af3c"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""pDebug.Debugcontrols.Togglecursor"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c4c08e26-b6ed-488b-a0b7-1a65bda55326"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -311,6 +320,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
         m_Pilot = asset.FindActionMap("Pilot", throwIfNotFound: true);
         m_Pilot_pCockpitMainclick = m_Pilot.FindAction("pCockpit.Mainclick", throwIfNotFound: true);
         m_Pilot_pCockpitDirectional = m_Pilot.FindAction("pCockpit.Directional", throwIfNotFound: true);
+        m_Pilot_pCockpitSecondaryclick = m_Pilot.FindAction("pCockpit.Secondaryclick", throwIfNotFound: true);
         // Aircraftcontrols
         m_Aircraftcontrols = asset.FindActionMap("Aircraftcontrols", throwIfNotFound: true);
         m_Aircraftcontrols_aAircraftcontrolDirectionalcontrolOverride = m_Aircraftcontrols.FindAction("aAircraftcontrol.Directionalcontrol.Override", throwIfNotFound: true);
@@ -385,12 +395,14 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     private List<IPilotActions> m_PilotActionsCallbackInterfaces = new List<IPilotActions>();
     private readonly InputAction m_Pilot_pCockpitMainclick;
     private readonly InputAction m_Pilot_pCockpitDirectional;
+    private readonly InputAction m_Pilot_pCockpitSecondaryclick;
     public struct PilotActions
     {
         private @HIDInputComputer m_Wrapper;
         public PilotActions(@HIDInputComputer wrapper) { m_Wrapper = wrapper; }
         public InputAction @pCockpitMainclick => m_Wrapper.m_Pilot_pCockpitMainclick;
         public InputAction @pCockpitDirectional => m_Wrapper.m_Pilot_pCockpitDirectional;
+        public InputAction @pCockpitSecondaryclick => m_Wrapper.m_Pilot_pCockpitSecondaryclick;
         public InputActionMap Get() { return m_Wrapper.m_Pilot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -406,6 +418,9 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             @pCockpitDirectional.started += instance.OnPCockpitDirectional;
             @pCockpitDirectional.performed += instance.OnPCockpitDirectional;
             @pCockpitDirectional.canceled += instance.OnPCockpitDirectional;
+            @pCockpitSecondaryclick.started += instance.OnPCockpitSecondaryclick;
+            @pCockpitSecondaryclick.performed += instance.OnPCockpitSecondaryclick;
+            @pCockpitSecondaryclick.canceled += instance.OnPCockpitSecondaryclick;
         }
 
         private void UnregisterCallbacks(IPilotActions instance)
@@ -416,6 +431,9 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
             @pCockpitDirectional.started -= instance.OnPCockpitDirectional;
             @pCockpitDirectional.performed -= instance.OnPCockpitDirectional;
             @pCockpitDirectional.canceled -= instance.OnPCockpitDirectional;
+            @pCockpitSecondaryclick.started -= instance.OnPCockpitSecondaryclick;
+            @pCockpitSecondaryclick.performed -= instance.OnPCockpitSecondaryclick;
+            @pCockpitSecondaryclick.canceled -= instance.OnPCockpitSecondaryclick;
         }
 
         public void RemoveCallbacks(IPilotActions instance)
@@ -569,6 +587,7 @@ public partial class @HIDInputComputer: IInputActionCollection2, IDisposable
     {
         void OnPCockpitMainclick(InputAction.CallbackContext context);
         void OnPCockpitDirectional(InputAction.CallbackContext context);
+        void OnPCockpitSecondaryclick(InputAction.CallbackContext context);
     }
     public interface IAircraftcontrolsActions
     {

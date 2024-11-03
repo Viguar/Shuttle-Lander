@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.IO;
-using Viguar.EditorTooling.InspectorUITools.InspectorButton;
+using Viguar.Inspector.PropertyFields;
 
 namespace Viguar.EditorTooling.Utility.CameraRendering
 {

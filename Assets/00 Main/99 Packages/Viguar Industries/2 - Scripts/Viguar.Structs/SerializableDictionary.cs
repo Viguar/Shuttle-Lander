@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Viguar.Structs.SerializableDictionaries
-{
+namespace Viguar.Structs
+{ 
     public abstract class SerializableDictionary<K, V> : Dictionary<K, V>, ISerializationCallbackReceiver
     {
         [SerializeField] K[] keys;

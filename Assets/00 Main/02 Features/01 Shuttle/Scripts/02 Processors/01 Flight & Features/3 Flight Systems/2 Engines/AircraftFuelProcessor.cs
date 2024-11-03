@@ -5,16 +5,12 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftFuelProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
 
-        void Start()
-        {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            InitFuel();
-        }
+
+        
         private void Update()
         {
             PerformFuelCalculations();
@@ -27,8 +23,10 @@ namespace Viguar.Aircraft
             OnTankEmpty();
         }
 
-        public void InitFuel()
+        public void InitFuelProcessor(AircraftBaseProcessor baseProcessor)
         {
+            Debug.Log("Initializing Engine Fuel Processor Component");
+            _configBaseProcessor = baseProcessor;
             _configBaseProcessor._CurrentFuelAmount = 0;
         }
         public void ModifyFuelAmount(float amount)

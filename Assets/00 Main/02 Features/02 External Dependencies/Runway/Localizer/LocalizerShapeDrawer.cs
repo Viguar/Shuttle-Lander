@@ -18,33 +18,33 @@ namespace Viguar.Aircraft.Runways
             rwLocalizer = GetComponent<RunwayLocalizer>();
 
             _CenteredLocalizerObject = GameObject.FindGameObjectWithTag("runwayLocalizerOnGlideSlope");
-            _CenteredLocalizerObject.transform.localPosition = Vector3.zero;
-            _CenteredLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Center;            
-
             _OffsetLocalizerObject = GameObject.FindGameObjectWithTag("runwayLocalizerOffGlideSlope");
-            _OffsetLocalizerObject.transform.localPosition = Vector3.zero;
-            _OffsetLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Offset;
 
+            if (_CenteredLocalizerObject != null)
+            {
+                _CenteredLocalizerObject.transform.localPosition = Vector3.zero;
+                _CenteredLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Center;
+            }                      
+            if (_OffsetLocalizerObject != null)
+            {
+                _OffsetLocalizerObject.transform.localPosition = Vector3.zero;
+                _OffsetLocalizerObject.GetComponent<LocalizerZoneDetector>().LocalizerType = LocalizerZoneDetector.LocalizerTypes.Offset;
+            }
+            
             _CenteredLocalizerVertices = new Vector3[5];
             _OffsetLocalizerVertices = new Vector3[5];
 
             _CenteredLocalizerVertices[4] = new Vector3(0, 0, 0); // Initialize the apex at the game object's origin.
             _OffsetLocalizerVertices[4] = new Vector3(0, 0, 0);
 
-
-            if (_CenteredLocalizerVertices == null || _CenteredLocalizerVertices.Length != 5)
+            if (_CenteredLocalizerObject != null)
             {
-                
-                
+                DrawLocalizer(_CenteredLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter, rwLocalizer._CenteredLocalizerDebugMaterial);
             }
-            if (_OffsetLocalizerVertices == null || _OffsetLocalizerVertices.Length != 5)
+            if (_OffsetLocalizerObject != null)
             {
-                
-                
+                DrawLocalizer(_OffsetLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter + rwLocalizer._LocalizerVerticalWindowOffset, rwLocalizer._OffsetLocalizerDebugMaterial);
             }
-
-            DrawLocalizer(_CenteredLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter, rwLocalizer._CenteredLocalizerDebugMaterial);
-            DrawLocalizer(_OffsetLocalizerObject, rwLocalizer._LocalizerVerticalWindowCenter + rwLocalizer._LocalizerVerticalWindowOffset, rwLocalizer._OffsetLocalizerDebugMaterial);
         }
 
         public void DrawLocalizer(GameObject localizerOBJ, float vAngle, Material material)

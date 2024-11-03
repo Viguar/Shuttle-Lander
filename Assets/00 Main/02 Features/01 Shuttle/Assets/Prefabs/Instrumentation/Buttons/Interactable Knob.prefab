@@ -271,8 +271,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7627355627074522644}
   - component: {fileID: 3831795140143366555}
-  - component: {fileID: 6935898129654251763}
   - component: {fileID: 6292094295411619824}
+  - component: {fileID: 7608067720526455760}
   m_Layer: 0
   m_Name: Interactable Knob
   m_TagString: cockpitInteractableKnob
@@ -315,20 +315,40 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02492224, y: 0.026118077, z: 0.024543405}
-  m_Center: {x: -0.00009088777, y: 0.013295516, z: 0.00008082017}
---- !u!82 &6935898129654251763
+  m_Size: {x: 0.015, y: 0.026118077, z: 0.015}
+  m_Center: {x: 0, y: 0.013295516, z: 0}
+--- !u!114 &6292094295411619824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102773804445389998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58df23d846da63d44863dc061a296386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 10
+  OutputFactor: 1
+  ConnectedValue: 
+  DefaultValue: 0
+  ValueMinMaxClamp: {x: 0, y: 0}
+  hasConnectedDisplay: 0
+  ConnectedDisplay: {fileID: 0}
+  soundOnInteraction: 1
+--- !u!82 &7608067720526455760
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7102773804445389998}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5756318821561139655, guid: fb83db1932053a44ca9fbf83d669b286, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a211c14dbd9b3e8449d8700cdc5f80de, type: 3}
+  m_Resource: {fileID: 8300000, guid: a211c14dbd9b3e8449d8700cdc5f80de, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -339,7 +359,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -374,7 +394,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -414,19 +434,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6292094295411619824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7102773804445389998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58df23d846da63d44863dc061a296386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 10
-  ConnectedValue: 
-  ValueMinMaxClamp: {x: 0, y: 0}
-  ConnectedDisplay: {fileID: 0}

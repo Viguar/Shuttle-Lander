@@ -4,25 +4,22 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftControlSurfacesProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
 
-
-        private void Start()
+        public void InitControlSurfacesProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
+            Debug.Log("Initializing Aircraft Control Surface Processor Component");
+            _configBaseProcessor = baseProcessor;
         }
-
         public void PerformControlSurfaceCalculations(float pitchInput, float rollInput, float yawInput, float airbrakeInput, bool flapInput)
         {
             CalculateElevatorState(pitchInput);
             CalculateAileronState(rollInput);
             CalculateRudderState(yawInput);
             CalculateAirbrakeState(airbrakeInput);
-            CalculateFlapState(flapInput);
-            
+            CalculateFlapState(flapInput);            
         }
 
         private void ExecuteTrimOrSomething()

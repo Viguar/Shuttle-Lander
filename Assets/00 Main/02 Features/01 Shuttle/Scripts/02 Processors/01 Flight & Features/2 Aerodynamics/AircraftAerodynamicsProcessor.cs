@@ -5,32 +5,26 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftAerodynamicsProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
         private Rigidbody _aircraftRigidbody;
 
-        private void Start()
+        public void InitAerodynamicsProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Aircraft Aerodynamics Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
 
             _configBaseProcessor._DragStart = _aircraftRigidbody.drag;
             _configBaseProcessor._AngularDragStart = _aircraftRigidbody.angularDrag;
             _configBaseProcessor._LandingGearDragStart = _configBaseProcessor._LandingGearDrag;
-            if(_configBaseProcessor._CustomCenterOfMass != null && _configBaseProcessor._CustomCOM)
+            if (_configBaseProcessor._CustomCenterOfMass != null && _configBaseProcessor._CustomCOM)
             {
                 Vector3 centerofmass = _configBaseProcessor._CustomCenterOfMass.localPosition;
                 _aircraftRigidbody.centerOfMass = centerofmass;
             }
         }
-
-        private void Update()
-        {
-            PerformAircraftAerodynamicCalculations();
-        }
-
         public void PerformAircraftAerodynamicCalculations()
         {
             CalculateAircraftAerodynamicEffect();

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftEnginesProcessorMultiEngine : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
@@ -15,10 +14,11 @@ namespace Viguar.Aircraft
         private float TotalThrust;
 
 
-        void Start()
+        public void InitMultiEngineProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Multi Engine Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
             MasterSetMultiEngine(_configBaseProcessor._StartWithEngineRunning);
         }
 

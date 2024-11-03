@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 
 #if UNITY_EDITOR
 using UnityEditor;
 using System.Net;
-using Viguar.EditorTooling.DataContainers.Curve;
+using Viguar.EditorTooling.DataContainers;
 #endif
 
 namespace Viguar.Aircraft
@@ -40,12 +40,14 @@ namespace Viguar.Aircraft
 
         void Start()
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
             ConfigureAircraft();            
         }
 
         void ConfigureAircraft()
         {
+            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
+
+            Debug.Log("Configuration Processor: Setting Configuration Components.");
             if (_configAerodynamics) { ConfigApplyAerodynamics(); }
             if (_configControlSurfaces) { ConfigApplyControlSurfaces(); }
             if (_configEngines) { ConfigApplyEngines(); }
@@ -53,14 +55,23 @@ namespace Viguar.Aircraft
             if (_configLandingGear) { ConfigApplyLandingGear(); }        
             if (_configEnvironment) { ConfigApplyEnvironment(); }
             if (_configAutomatics) { ConfigApplyAutoFlightSystem(); }
-            
+
+            Debug.Log("Configuration Processor: Done. Setting Constraints.");
             ConfigApplyConstraints();
             ConfigApplyConstraintsFlightState();
             ConfigApplyConstraintsFlightStateCategories();
             ConfigApplyConstraintsAutomatics();
+
+            Debug.Log("Configuration Processor: Done. Setting Remaining Values.");
             ConfigApplyAnimations();
-            _configBaseProcessor.ProcessStartConfiguation(_cStart._cEngineOn, _cStart._cCustomFuelAmount, _cStart._cStartFuel, _cStart._cCustomFuelAmount, _cStart._cStartPos, _cStart._cVelocity, _cStart._cStartVelocity, _cStart._cGearDown);
             ConfigApplyEnvironmentFallback();
+
+            Debug.Log("Configuration Processor: Done. Setting Start Settings.");
+            _configBaseProcessor.ProcessStartConfiguation(_cStart._cEngineOn, _cStart._cCustomFuelAmount, _cStart._cStartFuel, _cStart._cCustomFuelAmount, _cStart._cStartPos, _cStart._cVelocity, _cStart._cStartVelocity, _cStart._cGearDown);
+
+            Debug.Log("Configuration Processor: Completed Configuration.");
+
+            _configBaseProcessor.BeginComponentInitialization();
         }
 
         void ConfigApplyAerodynamics()
@@ -126,7 +137,6 @@ namespace Viguar.Aircraft
         {
             _configBaseProcessor.ProcessConstraintsAutomatics(_cAutomatics._cAPVSpeedLimit, _cAutomatics._cAPPitchAngleLimit, _cAutomatics._cAPRollAngleLimit, _cAutomatics._cATForwardSpeedLimit);
         }
-
         void ConfigApplyAnimations()
         {
             _configBaseProcessor.ProcessAnimationConfiguration(_cControlSurfaces._cAnimateControlSurfaces, _cAvionics._cAnimateAvionics, _cCSAnimations, _cAvionics);
@@ -182,7 +192,7 @@ namespace Viguar.Aircraft
             EditorGUI.EndFoldoutHeaderGroup();
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             #endregion
-
+            //_________________________________________________________________________________________________________________________________________________________________________________________________________//
             #region Flight Config
             GUILayout.Label("Flight Configuration", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle      
             if (sts._configAerodynamics)
@@ -266,6 +276,7 @@ namespace Viguar.Aircraft
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             #endregion
+            //_________________________________________________________________________________________________________________________________________________________________________________________________________//
             #region Flight Controls Config
             GUILayout.Label("Flight Controls Configuration", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle      
             if (sts._configControlSurfaces)
@@ -388,13 +399,14 @@ namespace Viguar.Aircraft
                     sts._cLandingGear._cLandingGearMaxSteeringAngle = EditorGUILayout.Slider(new GUIContent("Maximum Steering Angle", "."), sts._cLandingGear._cLandingGearMaxSteeringAngle, 0f, 90f);
                     sts._cLandingGear._cLandingGearSteeringColumn = EditorGUILayout.ObjectField(new GUIContent("Steering Column", "."), sts._cLandingGear._cLandingGearSteeringColumn, typeof(GameObject), true) as GameObject;                                        
                     EditorGUI.indentLevel--;
-                    EditorGUILayout.Space();
-                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
                 }
                 EditorGUI.EndFoldoutHeaderGroup();
             }
+                    EditorGUILayout.Space();
+                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             #endregion
-
+            //_________________________________________________________________________________________________________________________________________________________________________________________________________//
+            #region Environment Configuration
             GUILayout.Label("Environment Configuration", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle      
             if (sts._configEnvironment)
             {
@@ -452,15 +464,18 @@ namespace Viguar.Aircraft
                     }
                     EditorGUI.EndFoldoutHeaderGroup();
                     EditorGUI.indentLevel--;
-                    EditorGUILayout.Space();
-                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
                 }
                 EditorGUI.EndFoldoutHeaderGroup();
-            }
-
-            GUILayout.Label("Automatic Flight Systems Configuration", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle                
+                                    EditorGUILayout.Space();
+                    EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            }          
+            #endregion
+            //_________________________________________________________________________________________________________________________________________________________________________________________________________//
+            #region Automatic Flight Systems Configuration                           
             if (sts._configAutomatics)
             {
+            GUILayout.Label("Automatic Flight Systems Configuration", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle 
                 showAutomatics = EditorGUILayout.Foldout(showAutomatics, "A/T, A/P & A/L Configuration");
                 if (showAutomatics)
                 {
@@ -469,34 +484,40 @@ namespace Viguar.Aircraft
                     sts._cAutomatics._cAPPitchAngleLimit = EditorGUILayout.Vector2Field(new GUIContent("A/P: Maximum Pitch Angles (Nose Up/Down)", "."), sts._cAutomatics._cAPPitchAngleLimit);
                     sts._cAutomatics._cAPRollAngleLimit = EditorGUILayout.Vector2Field(new GUIContent("A/P: Maximum Bank Angles (Bank Left/Right)", "."), sts._cAutomatics._cAPRollAngleLimit);
                     sts._cAutomatics._cATForwardSpeedLimit = EditorGUILayout.Vector2Field(new GUIContent("A/T: Alllowed Selectable Safe Speed Range (Min/Max)", "."), sts._cAutomatics._cATForwardSpeedLimit);
-                    EditorGUI.indentLevel--;
-                    EditorGUILayout.Space();                   
+                    EditorGUI.indentLevel--;                              
                 }
                 EditorGUI.EndFoldoutHeaderGroup();
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             }
-
+            EditorGUILayout.Space();       
+            #endregion
+            //_________________________________________________________________________________________________________________________________________________________________________________________________________//
+            #region Animation Settings
             GUILayout.Label("Animation Settings", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, fontSize = 12 }, GUILayout.ExpandWidth(true)); //Section SubTitle                
             if (sts._cControlSurfaces._cAnimateControlSurfaces)
             {
                 GUILayout.Label("Control Surface Animation Settings", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Normal, fontSize = 12 }, GUILayout.ExpandWidth(true));
-                EditorGUILayout.PropertyField(SerSTS.FindProperty("_cCSAnimations._cControlSurfacesAnimations"), true);
-                EditorGUILayout.Space();
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(SerSTS.FindProperty("_cCSAnimations._cControlSurfacesAnimations"), true);      
+                EditorGUI.indentLevel--;
             }
+            EditorGUILayout.Space();
             sts._cAvionics._cAnimateAvionics = EditorGUILayout.Toggle(new GUIContent("Animate Avionics", "."), sts._cAvionics._cAnimateAvionics);
             if (sts._cAvionics._cAnimateAvionics)
             {
+                EditorGUI.indentLevel++;
                 GUILayout.Label("Avionics Animation Settings", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Normal, fontSize = 12 }, GUILayout.ExpandWidth(true));
                 EditorGUILayout.PropertyField(SerSTS.FindProperty("_cAvionics._cAvionicsInstrument"), true);
-                EditorGUILayout.Space();
+                EditorGUI.indentLevel--;
             }      
-
+            EditorGUILayout.Space();
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(sts);
                 Undo.RecordObject(sts, "STS Change");
                 SerSTS.ApplyModifiedProperties();
             }
+            #endregion
         }
     }
 }

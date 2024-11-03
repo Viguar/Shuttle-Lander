@@ -5,29 +5,40 @@ using Viguar.WeatherDynamics;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(AircraftConfiguration))]
-    [RequireComponent(typeof(AircraftTrackingProcessor))]
-    [RequireComponent(typeof(AircraftStateProcessor))]
-    [RequireComponent(typeof(AircraftControlInputProcessor))]
-    [RequireComponent(typeof(AircraftLandingGearProcessor))]
     public class AircraftBaseProcessor : MonoBehaviour
     {
-        private AircraftConfiguration _configData;
-        private AircraftStateProcessor _aircraftStateProcessor;
-        private AircraftTrackingProcessor _aircraftTrackingProcessor;
-        private AircraftAerodynamicsProcessor _aircraftAerodynamicsProcessor;
-        private AircraftLandingGearProcessor _aircraftLandingGearProcessor;
+        #region Components
+        [HideInInspector] public AircraftConfiguration _configData;
+        [HideInInspector] public AircraftStateProcessor _aircraftStateProcessor;
+        [HideInInspector] public AircraftTrackingProcessor _aircraftTrackingProcessor;
+        [HideInInspector] public AircraftAerodynamicsProcessor _aircraftAerodynamicsProcessor;
+        [HideInInspector] public AircraftControlSurfacesProcessor _aircraftControlSurfacesProcessor;
+        [HideInInspector] public AircraftLandingGearProcessor _aircraftLandingGearProcessor;
+        [HideInInspector] public UserInputProcessor _userInputProcessor;
+        [HideInInspector] public AircraftControlInputProcessor _aircraftControlInputProcessor;
+        [HideInInspector] public Rigidbody _aircraftRigidbody;
+        [HideInInspector] public AircraftEnvironmentProcessor _aircraftEnvironmentProcessor;
+        [HideInInspector] public AircraftAutoFlightProcessor _aircraftAutomaticsProcessor;
+        [HideInInspector] public AircraftEnginesProcessorMultiEngine _aircraftMultiEngineProcessor;
+        [HideInInspector] public AircraftEnginesProcessorSingleEngine _aircraftSingleEngineProcessor;
+        [HideInInspector] public AircraftFuelProcessor _aircraftFuelProcessor;
+        [HideInInspector] public AircraftAnimationProcessor _aircraftAnimationProcessor;
+        [HideInInspector] public AircraftCockpitComponentProcessor _cockpitComponentProcessor;
+        [HideInInspector] public bool _aircraftInitComplete = false;
+        private GameObject ComponentsContainer;
+        private GameObject CockpitComponentsContainer;
+        #endregion
 
-        #region Configuration Partitions
-        private bool _AerodynamicConfig = false; //Configures aerodynamic settings if true.
-        private bool _ControlSurfaceConfig = false; //Configures control surface settings if true.
-        private bool _EngineConfig = false; //Configures engine settings if true.
-        private bool _FuelConfig = false; //Configures fuel settings if true.
-        private bool _LandingGearConfig = false; //Configures landing gear settings if true.
-        private bool _EnvironmentConfig = false; //Configures environmental effect settings if true.
-        private bool _AutoFlightConfig = false; //Configures autoflight settings if true.
-        private bool _AnimConfig = false; //Configures animation settings if true.
+        #region Configuration Setup
+        private bool _AerodynamicConfig = false;        //Configures aerodynamic settings if true.
+        private bool _ControlSurfaceConfig = false;     //Configures control surface settings if true.
+        private bool _EngineConfigSingle = false;       //Configures engine settings single if true.
+        private bool _EngineConfigMulti = false;        //Configures engine settings multi if true.
+        private bool _FuelConfig = false;               //Configures fuel settings if true.
+        private bool _LandingGearConfig = false;        //Configures landing gear settings if true.
+        private bool _EnvironmentConfig = false;        //Configures environmental effect settings if true.
+        private bool _AutoFlightConfig = false;         //Configures autoflight settings if true.
+        private bool _AnimConfig = false;               //Configures animation settings if true.
         #endregion
         #region Aircraft Configuration
         #region Configurable Values: Aerodynamics
@@ -399,21 +410,126 @@ namespace Viguar.Aircraft
         public Dictionary<string, string> DebugStringDict = new Dictionary<string, string>();
         #endregion
 
-        #region Configuration Methods
+
+        #region Start & Update Methods
         private void Start()
         {
             _configData = GetComponent<AircraftConfiguration>();
-            _aircraftStateProcessor = GetComponent<AircraftStateProcessor>();
-            _aircraftTrackingProcessor = GetComponent<AircraftTrackingProcessor>();
-            _aircraftLandingGearProcessor = GetComponent<AircraftLandingGearProcessor>();
-            _aircraftLandingGearProcessor.enabled = false;
         }
         private void Update()
         {
-            _aircraftStateProcessor.EvaluateAircraftStates();
-            _aircraftTrackingProcessor.PerformAircraftTrackingCalculations();           
+            if (_aircraftInitComplete)
+            {
+                CalculateAircraftSituation();
+                PerformInputCalculations();
+                PerformPhysicsCalculations();
+                PerformAircraftControlsCalculations();
+                PerformAircraftAVCalculations();
+            }
         }
-        #region Configuration Processing
+        private void FixedUpdate()
+        {
+            if (_aircraftInitComplete)
+            {
+                _cockpitComponentProcessor.PerformCockpitComponentsFixedUpdate();
+            }
+        }
+        #endregion
+
+        #region Aircraft Runtime Methods
+        private void CalculateAircraftSituation()
+        {
+            _aircraftStateProcessor.EvaluateAircraftStates();
+            _aircraftTrackingProcessor.PerformAircraftTrackingCalculations();
+        }
+        private void PerformInputCalculations()
+        {
+            _userInputProcessor.PerformUserInputCalculations();
+            _aircraftControlInputProcessor.PerformInputCalculations();
+        }
+        private void PerformPhysicsCalculations()
+        {
+            if (_AerodynamicConfig) { _aircraftAerodynamicsProcessor.PerformAircraftAerodynamicCalculations(); } 
+            if (_EnvironmentConfig) { _aircraftEnvironmentProcessor.PerformEnvironmentCalculations(); }
+        }
+        private void PerformAircraftControlsCalculations()
+        {
+            if (_ControlSurfaceConfig) { _aircraftControlSurfacesProcessor.PerformControlSurfaceCalculations(_YokePitchSetting, _YokeRollSetting, _PedalRudderSetting, _LeverAirbrakeSetting, _LeverFlapsSetting); }
+            if (_LandingGearConfig) { _aircraftLandingGearProcessor.PerformLandingGear(_OverrideLandingGearInput); }     
+            if (_AutoFlightConfig) { _aircraftAutomaticsProcessor.PerformAutoflightCalculations(); }
+        }
+        private void PerformAircraftAVCalculations()
+        {
+            if(_AnimConfig) { _aircraftAnimationProcessor.PerformAnimationCalculations(); }
+        }
+        #endregion
+
+        #region Configuration Processing Methods
+        public void BeginComponentInitialization()
+        {
+            Debug.Log("Core Processor: Starting Component Initialization.");
+            ComponentsContainer = GameObject.FindGameObjectWithTag("aircraftComponentsContainer");
+            CockpitComponentsContainer = GameObject.FindGameObjectWithTag("cockpitComponentsContainer");
+
+            Debug.Log("Core Processor: Adding Core Components.");
+            ComponentsContainer.AddComponent(typeof(AircraftStateProcessor));
+            ComponentsContainer.AddComponent(typeof(AircraftTrackingProcessor));
+            ComponentsContainer.AddComponent(typeof(UserInputProcessor));
+            ComponentsContainer.AddComponent(typeof(AircraftControlInputProcessor));
+            if (_AerodynamicConfig)     { ComponentsContainer.AddComponent(typeof(AircraftAerodynamicsProcessor)); } 
+            if (_ControlSurfaceConfig)  { ComponentsContainer.AddComponent(typeof(AircraftControlSurfacesProcessor)); } 
+            if (_LandingGearConfig)     { ComponentsContainer.AddComponent(typeof(AircraftLandingGearProcessor)); }
+            if (_EngineConfigSingle)    { ComponentsContainer.AddComponent(typeof(AircraftEnginesProcessorSingleEngine)); }
+            if (_EngineConfigMulti)     { ComponentsContainer.AddComponent(typeof(AircraftEnginesProcessorMultiEngine)); }
+            if (_FuelConfig)            { ComponentsContainer.AddComponent(typeof(AircraftFuelProcessor)); }
+            if (_EnvironmentConfig)     { ComponentsContainer.AddComponent(typeof(AircraftEnvironmentProcessor)); }
+            if (_AutoFlightConfig)      { ComponentsContainer.AddComponent(typeof(AircraftAutoFlightProcessor)); }
+            if (_AnimConfig)            { ComponentsContainer.AddComponent(typeof(AircraftAnimationProcessor)); }
+
+            Debug.Log("Core Processor: Added Components. Referencing...");
+            _aircraftRigidbody = GetComponent<Rigidbody>();
+            _aircraftStateProcessor = ComponentsContainer.GetComponent<AircraftStateProcessor>();
+            _aircraftTrackingProcessor = ComponentsContainer.GetComponent<AircraftTrackingProcessor>();
+            _userInputProcessor = ComponentsContainer.GetComponent<UserInputProcessor>();
+            _aircraftControlInputProcessor = ComponentsContainer.GetComponent<AircraftControlInputProcessor>();
+            if (_AerodynamicConfig)     { _aircraftAerodynamicsProcessor = ComponentsContainer.GetComponent<AircraftAerodynamicsProcessor>(); }
+            if (_ControlSurfaceConfig)  { _aircraftControlSurfacesProcessor = ComponentsContainer.GetComponent<AircraftControlSurfacesProcessor>(); }
+            if (_LandingGearConfig)     { _aircraftLandingGearProcessor = ComponentsContainer.GetComponent<AircraftLandingGearProcessor>(); }
+            if (_EngineConfigSingle)    { _aircraftSingleEngineProcessor = ComponentsContainer.GetComponent<AircraftEnginesProcessorSingleEngine>(); }
+            if (_EngineConfigMulti)     { _aircraftMultiEngineProcessor = ComponentsContainer.GetComponent<AircraftEnginesProcessorMultiEngine>(); }
+            if (_FuelConfig)            { _aircraftFuelProcessor = ComponentsContainer.GetComponent<AircraftFuelProcessor>(); }
+            if (_EnvironmentConfig)     { _aircraftEnvironmentProcessor = ComponentsContainer.GetComponent<AircraftEnvironmentProcessor>(); }
+            if (_AutoFlightConfig)      { _aircraftAutomaticsProcessor = ComponentsContainer.GetComponent<AircraftAutoFlightProcessor>(); }
+            if (_AnimConfig)            { _aircraftAnimationProcessor = ComponentsContainer.GetComponent<AircraftAnimationProcessor>(); }
+
+            Debug.Log("Core Processor: Done. Beginning Initialization Process...");
+            _aircraftStateProcessor.InitStateProcessor(this);
+            _aircraftTrackingProcessor.InitTrackingProcessor(this);
+            _userInputProcessor.InitUserInputProcessor(this);
+            _aircraftControlInputProcessor.InitControlInputProcessor(this);
+            if (_AerodynamicConfig)     { _aircraftAerodynamicsProcessor.InitAerodynamicsProcessor(this); }
+            if (_ControlSurfaceConfig)  { _aircraftControlSurfacesProcessor.InitControlSurfacesProcessor(this); }
+            if (_LandingGearConfig)     { _aircraftLandingGearProcessor.InitLandingGearProcessor(this); }
+            if (_EngineConfigSingle)    { _aircraftSingleEngineProcessor.InitSingleEngineProcessor(this); }
+            if (_EngineConfigMulti)     { _aircraftMultiEngineProcessor.InitMultiEngineProcessor(this); }
+            if (_FuelConfig)            { _aircraftFuelProcessor.InitFuelProcessor(this); }
+            if (_EnvironmentConfig)     { _aircraftEnvironmentProcessor.InitEnvironmentProcessor(this); }
+            if (_AutoFlightConfig)      { _aircraftAutomaticsProcessor.InitAutoFlightProcessor(this); }
+            if (_AnimConfig)            { _aircraftAnimationProcessor.InitAnimationProcessor(this); }
+
+            Debug.Log("Core Processor: Initialized Core Components. Adding Secondary Components.");
+            CockpitComponentsContainer.AddComponent<AircraftCockpitComponentProcessor>();
+
+            Debug.Log("Core Processor: Referencing Secondary Components.");
+            _cockpitComponentProcessor = CockpitComponentsContainer.GetComponent<AircraftCockpitComponentProcessor>();
+
+            Debug.Log("Core Processor: Initializing Secondary Components.");
+            _cockpitComponentProcessor.InitCockpitComponentProcessor(this);
+
+            Debug.Log("Core Processor: Completed Core Component Initialization.");
+            _aircraftInitComplete = true;
+        }       
+
         public void ProcessStartConfiguation(bool engine, bool fuel, float fuelAm, bool pos, Transform posAm, bool vel, Vector3 velAm, bool gear)
         {
             _StartWithEngineRunning = engine;
@@ -430,6 +546,7 @@ namespace Viguar.Aircraft
             if (_StartWithCustomFuelAmount) { _CurrentFuelAmount = fuelAm; }
             if (_StartAtCustomPosition) { gameObject.transform.position = posAm.transform.position; }
             if (_StartWithVelocity) { GetComponent<Rigidbody>().velocity = transform.InverseTransformDirection(velAm); }
+            if (_StartWithLandingGear) { _LandingGearExtended = true; }
             if (GetComponent<AircraftBaseMethods>()) { GetComponent<AircraftBaseMethods>().RecordOriginalValues(); }
             //GetComponent<AircraftEnginesProcessorMultiEngine>().MasterSetMultiEngine(_StartWithEngineRunning);
         }
@@ -441,12 +558,11 @@ namespace Viguar.Aircraft
             _MaximumLiftSpeed = maxLiftSpeed;
             _AerodynamicEffect = aerodynamicEffect;
             _Lift = lift;
-            _DragOverSpeed = dragOverSpeed;            
-            _AerodynamicConfig = true;
+            _DragOverSpeed = dragOverSpeed;                     
             _CustomCOM = customcom;
             _CustomCenterOfMass = customcompos;
             _LiftSpeedFactorCurve = liftSpeedFactor;
-            gameObject.AddComponent(typeof(AircraftAerodynamicsProcessor));
+            _AerodynamicConfig = true;
         }
         public void ProcessControlSurfaceConfiguration(bool hasElevator, float elevator, bool hasRudder, float rudder, bool hasAilerons, float ailerons, float rollTurn, bool hasAirbrakes, float airbrakes, bool hasFlaps, float flaps, int[] flapSteps, AnimationCurve liftOverSpeed, AnimationCurve dragOverSpeed)
         {
@@ -465,20 +581,16 @@ namespace Viguar.Aircraft
             _FlapLiftOverSpeed = liftOverSpeed;
             _FlapDragOverSpeed = dragOverSpeed;
             _ControlSurfaceConfig = true;
-            gameObject.AddComponent(typeof(AircraftControlSurfacesProcessor));
         }
         public void ProcessSingleEngineConfiguration(ConfigEngines._cEngineConfiguration engineLayout, ConfigEngines._cPropulsionType propulsionType, float maxThrust, float maxToga, AnimationCurve spoolRate, Transform singleEnginePos)
-        {
-            
+        {            
             _EngineLayout = engineLayout;
             _PropulsionType = propulsionType;
             _MaxEngineThrust = maxThrust;
             _MaxTogaThrust = maxToga;
             _EngineSpoolRate = spoolRate;
-            _SingleEnginePosition = singleEnginePos;
-            _EngineConfig = true;
-            if (_EngineLayout == ConfigEngines._cEngineConfiguration.SingleEngine) { gameObject.AddComponent(typeof(AircraftEnginesProcessorSingleEngine)); }
-            
+            _SingleEnginePosition = singleEnginePos;                                   
+            _EngineConfigSingle = true;
         }
         public void ProcessMultiEngineConfiguration(ConfigEngines._cEngineConfiguration engineLayout, ConfigEngines._cPropulsionType propulsionType, float maxThrust, float maxToga, AnimationCurve spoolRate, _configVarMultiEngineProperty[] engineProperties)
         {
@@ -488,18 +600,15 @@ namespace Viguar.Aircraft
             _MaxEngineThrust = maxThrust;
             _MaxTogaThrust = maxToga;
             _EngineSpoolRate = spoolRate;
-            _EngineProperties = engineProperties;
-            _EngineConfig = true;
-            if (_EngineLayout == ConfigEngines._cEngineConfiguration.MultiEngine) { gameObject.AddComponent(typeof(AircraftEnginesProcessorMultiEngine)); }
-            
+            _EngineProperties = engineProperties;                             
+            _EngineConfigMulti = true;
         }        
         public void ProcessFuelConfiguration(bool burnFuel, float maxCapacity, AnimationCurve fuelThrustRate)
         {
             _EnginesUseFuel = burnFuel;
             _MaximumFuelCapacity = maxCapacity;
-            _FuelConsumptionAtThrust = fuelThrustRate;
+            _FuelConsumptionAtThrust = fuelThrustRate;                                                
             _FuelConfig = true;
-            gameObject.AddComponent(typeof(AircraftFuelProcessor));
         }
         public void ProcessLandingGearConfiguration(ConfigLandingGear._cLandingGearTypes gearType, float gearDrag, float wheelBrake, float wheelSteerMax, GameObject steeringColumn, float brakeTempIncrease)
         {
@@ -509,8 +618,7 @@ namespace Viguar.Aircraft
             _LandingGearWheelMaxSteeringAngle = wheelSteerMax;
             _LandingGearSteeringColumn = steeringColumn;
             _WheelBrakeTemperatureIncreasePerSecond = brakeTempIncrease;
-            _LandingGearConfig = true;
-            _aircraftLandingGearProcessor.enabled = true;                      
+            _LandingGearConfig = true;                    
         }
         public void ProcessEnvironmentConfiguration(bool envEffect, bool atmEffect, bool wndEffect, bool prpEffect, float tempFalloff, float humFalloff, float windIncrease, float windFacor, AnimationCurve altEff, AnimationCurve tempEff, AnimationCurve densEff)
         {
@@ -525,8 +633,7 @@ namespace Viguar.Aircraft
             _AltitudeResponse = altEff;
             _AirTemperatureResponse = tempEff;
             _AirDensityResponse = densEff;
-            _EnvironmentConfig = true;
-            gameObject.AddComponent(typeof(AircraftEnvironmentProcessor));
+            _EnvironmentConfig = true;                       
         }
         public void ProcessEnvironmentFallbackConfiguration(float slTemp, float slPress, float slHum, float slWind)
         {
@@ -537,8 +644,15 @@ namespace Viguar.Aircraft
         }
         public void ProcessAutomaticsConfiguration()
         {
-            _AutoFlightConfig = true;
-            gameObject.AddComponent(typeof(AircraftAutoFlightProcessor));
+            _AutoFlightConfig = true;                                  
+        }
+        public void ProcessAnimationConfiguration(bool animateControlSurfaces, bool animateAvionics, ConfigControlSurfaceAnimations csa, ConfigAvionics caa)
+        {
+            _AnimateControlSurfaces = animateControlSurfaces;
+            _AnimateAvionics = animateAvionics;
+            _CSA = csa;
+            _CAA = caa;
+            _AnimConfig = true;
         }
 
         public void ProcessConstraintsConfiguration(float criticalPercentage, float maxStablePitch, float maxStableRoll, Vector2 maxStableSpeed, float maxStableVerticalSpeed, float minStableAlt)
@@ -572,18 +686,8 @@ namespace Viguar.Aircraft
             _APRollAngleLimits = minMaxRoll;
             _ATForwardSpeedLimits = minMaxSpeed;
         }
-
-        public void ProcessAnimationConfiguration(bool animateControlSurfaces, bool animateAvionics, ConfigControlSurfaceAnimations csa, ConfigAvionics caa)
-        {
-            _AnimateControlSurfaces = animateControlSurfaces;
-            _AnimateAvionics = animateAvionics;
-            _CSA = csa;
-            _CAA = caa;
-            _AnimConfig = true;
-            gameObject.AddComponent(typeof(AircraftAnimationProcessor));
-        }
         #endregion
-        #endregion
+        
         #region Dictionary Methods
         public void DefineControlTriggersDictionary()
         {

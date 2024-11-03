@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "pCockpit.Secondaryclick",
+                    "type": "Button",
+                    "id": "6bcffde0-cb32-426c-b861-1e075b63a4c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "pCockpit.Directional",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e93633ff-03bc-454f-b13a-01fdb527ab8f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pCockpit.Secondaryclick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -240,17 +260,6 @@
                     "name": "",
                     "id": "2384e315-b02f-48dc-88fd-36e63253cf0c",
                     "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "pDebug.Debugcontrols.Togglecursor",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5b521f6-4ed4-4c70-ae9f-c9f148f7af3c",
-                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

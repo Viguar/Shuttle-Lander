@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftEnginesProcessorSingleEngine : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
@@ -23,10 +22,11 @@ namespace Viguar.Aircraft
 
         private Transform EnginePosition;
 
-        void Start()
+        public void InitSingleEngineProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Single Engine Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
 
             EnginePosition = _configBaseProcessor._SingleEnginePosition;
             MaximumThrust = _configBaseProcessor._MaxEngineThrust;

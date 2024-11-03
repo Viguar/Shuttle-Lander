@@ -4,19 +4,18 @@ using UnityEngine;
 
 namespace Viguar.Aircraft
 {
-    [RequireComponent(typeof(AircraftBaseProcessor))]
     public class AircraftTrackingProcessor : MonoBehaviour
     {
         private AircraftBaseProcessor _configBaseProcessor;
         private Rigidbody _aircraftRigidbody;
         private float previousForwardSpeed;
 
-        void Start()
+        public void InitTrackingProcessor(AircraftBaseProcessor baseProcessor)
         {
-            _configBaseProcessor = GetComponent<AircraftBaseProcessor>();
-            _aircraftRigidbody = GetComponent<Rigidbody>();
+            Debug.Log("Initializing Aircraft Tracking Processor Component");
+            _configBaseProcessor = baseProcessor;
+            _aircraftRigidbody = _configBaseProcessor._aircraftRigidbody;
         }
-
         public void PerformAircraftTrackingCalculations()
         {
             CalculateAircraftCompassHeading();
