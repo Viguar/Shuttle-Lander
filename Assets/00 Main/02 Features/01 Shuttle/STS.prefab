@@ -2114,7 +2114,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249034158410871645}
-  m_Mesh: {fileID: 7227615027484509665, guid: d61196500ce75d74eb48d4cd91828292, type: 3}
+  m_Mesh: {fileID: -5733336130065528733, guid: d61196500ce75d74eb48d4cd91828292, type: 3}
 --- !u!23 &2811812499641014574
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2523,7 +2523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -58.619507, y: 0.049804688}
+  m_AnchoredPosition: {x: -58.61963, y: 0.049804688}
   m_SizeDelta: {x: -117.24, y: 0.1001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &79984438290142816
@@ -42428,7 +42428,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    _cOverrideSpoolCurve: {fileID: 11400000, guid: 51585ed798dece141b6f2524bbf3d095, type: 2}
+    _cOverrideSpoolCurve: {fileID: 11400000, guid: 271fb2543317aae4d908534c14db3c38, type: 2}
     _cSingleEnginePosition: {fileID: 4784977168900020585}
     _cMultiEngineProperties: []
   _cLandingGear:
@@ -42548,7 +42548,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     _cOverrideAltiCurve: {fileID: 11400000, guid: 1e2b7995b2b83dd44959d2d5af9a77b9, type: 2}
-    _cOverrideTempCurve: {fileID: 11400000, guid: 4a6474acc0e9f6844b6585f762c3b0c7, type: 2}
+    _cOverrideTempCurve: {fileID: 11400000, guid: 1e2b7995b2b83dd44959d2d5af9a77b9, type: 2}
     _cOverrideDensityCurve: {fileID: 11400000, guid: 4fe52c668d5970244b7611e2566a211a, type: 2}
     _cFallbackSeaLevelAirTemperature: 15
     _cFallbackSeaLevelAirPressure: 1013
@@ -45442,7 +45442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -57.69995, y: 23.3}
+  m_AnchoredPosition: {x: -57.69995, y: 23.300049}
   m_SizeDelta: {x: 84.436, y: 20.440613}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8220208113873182115

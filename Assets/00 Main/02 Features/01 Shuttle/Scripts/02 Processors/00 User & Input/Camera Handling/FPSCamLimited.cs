@@ -36,13 +36,12 @@ public class FPSCamLimited : MonoBehaviour
         if (attachedCamera.isActiveAndEnabled && !Cursor.visible && !_configBaseProcessor._PilotHIDSubmitInput)
         {
             RotateCamera();
-            ZoomCamera();
         }
         else if ( attachedCamera.isActiveAndEnabled && Cursor.visible && _configBaseProcessor._userInputProcessor._RightClick)
         {
             RotateCamera();
-            ZoomCamera();
         }
+        ZoomCamera();
     }
 
     private void RotateCamera()
