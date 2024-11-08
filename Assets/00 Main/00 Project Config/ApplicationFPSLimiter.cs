@@ -14,7 +14,6 @@ public class ApplicationFPSLimiter : MonoBehaviour
 
     void Update()
     {
-        if (Application.targetFrameRate != target) { Application.targetFrameRate = target; }
-            
+        if (Application.targetFrameRate != target) { Application.targetFrameRate = target; }          
     }
 }
