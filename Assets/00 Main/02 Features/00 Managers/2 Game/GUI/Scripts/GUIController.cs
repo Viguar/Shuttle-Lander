@@ -9,7 +9,7 @@ public class GUIController : MonoBehaviour
 
     public enum MenuTypes { MainMenu, PauseMenu, }
     
-    [ReadOnly] public MenuTypes _MenuType;
+    public MenuTypes _MenuType;
     [SerializeField, ReadOnly] private GameObject _CurrentMenu;
 
     public GUIMenuData _MenuSetup;

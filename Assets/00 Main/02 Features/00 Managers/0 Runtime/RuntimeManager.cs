@@ -20,6 +20,9 @@ public class RuntimeManager : MonoBehaviour
 
         _AppIOManager.InitComponent(this);
         _AppSettingsManager.InitComponent(this);
+
+
+
         _AppSettingsManager.LoadApplicationSettings();
     }
 }

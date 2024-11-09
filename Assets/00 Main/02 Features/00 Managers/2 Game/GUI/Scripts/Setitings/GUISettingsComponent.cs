@@ -5,6 +5,8 @@ using Viguar.Inspector.PropertyFields;
 using System;
 using System.Linq;
 using TMPro;
+using System.Reflection;
+using UnityEngine.UI;
 
 public class GUISettingsComponent : MonoBehaviour
 {
@@ -54,9 +56,20 @@ public class GUISettingsComponent : MonoBehaviour
     //
     //
     #endregion
+    public enum FieldTypes { type_bool, type_string, type_float, type_int, type_Vector2, type_Vector3, type_Vector4, type_enum}
 
     private GameObject settingsElement; //The matching configurable gameobject for the setting. (Slider, Toggle, etc.)
     private TMP_Text settingsDisplayText;
+    private AppSettingsManager appSettingsManager;
+
+    private FieldInfo fieldInfo;        //The variable (like Gameobject <myGameobject>)
+    private Type fieldType;             //The type of the variable (like bool, float, GameObject)
+    private object fieldValue;          //The value of the variable.
+    private FieldTypes eType;           //The type as an enum.
+
+    //UI Components
+    private Toggle UniToggleComponent;
+    private Slider SliderComponent;
 
     [Header("Setting Type Configuration")]
     public GUISettingElementTypes GUISettingElementType; //Compare to element types in the children configs. (Like a tag.)
@@ -85,23 +98,14 @@ public class GUISettingsComponent : MonoBehaviour
         ConfigureSettingComponentEditor();
     }
 
-
-
+    public void InitComponent(AppSettingsManager settingsManager)
+    {
+        appSettingsManager = settingsManager;
+    }
 
     public void ConfigureSettingComponentEditor()
     {
         ResetSettingConfigEditor();
-
-
-
-
-
-
-
-
-
-
-
 
         switch (GUISettingElementType)
         {
@@ -129,10 +133,109 @@ public class GUISettingsComponent : MonoBehaviour
                 break;
             case GUISettingElementTypes.Button: 
                 break;
+        }
+    }
+    public void ConfigureSettingComponentRuntime()
+    {
+        switch (GUISettingElementType)
+        {
+            case GUISettingElementTypes.None:
+                break;
+
+
+            case GUISettingElementTypes.Header:
+                break;
+            case GUISettingElementTypes.Spacer:
+                break;
+            case GUISettingElementTypes.Text:
+                break;
+
+
+            case GUISettingElementTypes.UniToggle:
+                ConfigUniToggle();
+                break;
+            case GUISettingElementTypes.SelectorToggle:
+                break;
+            case GUISettingElementTypes.Slider:
+                ConfigSlider();
+                break;
+            case GUISettingElementTypes.Dropdown:
+                break;
+            case GUISettingElementTypes.InputField:
+                break;
+            case GUISettingElementTypes.Button:
+                break;
 
         }
     }
 
+
+    private void ConfigUniToggle()
+    {
+        switch(eType)
+        {
+            case FieldTypes.type_bool:
+                UniToggleComponent = settingsElement.GetComponentInChildren<Toggle>();
+                UniToggleComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+                break;
+
+            default:
+                break;
+        }
+    }
+    private void ConfigSlider()
+    {
+        switch(eType)
+        {
+            case FieldTypes.type_float:
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>();
+                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+
+                SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
+                SliderComponent.minValue = SliderConfiguration.FloatSliderCapMin;
+                SliderComponent.maxValue = SliderConfiguration.FloatSliderCapMax;
+                SliderComponent.value = (float)fieldValue;               
+                break;
+
+            case FieldTypes.type_int:
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>();
+                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+
+                SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
+                SliderComponent.minValue = SliderConfiguration.IntSliderCapMin;
+                SliderComponent.maxValue = SliderConfiguration.IntSliderCapMax;
+                SliderComponent.value = (int)fieldValue;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+    private void OnSettingChanged<T>(T value) 
+    { 
+        fieldInfo.SetValue(appSettingsManager._AppSettings, value); //Set the value in the settings class (Making it essentially ready to be saved to .json);
+    }
+    private void ResolveConnectedSettingField(string connectedSetting)
+    {
+        fieldInfo = typeof(ApplicationSettings).GetField(connectedSetting, BindingFlags.Public | BindingFlags.Instance);
+        fieldType = fieldInfo.FieldType;
+        fieldValue = fieldInfo.GetValue(appSettingsManager._AppSettings);
+        ResolveTypeEnum(fieldType);
+    }
+    private void ResolveTypeEnum(Type type)
+    {
+        if(type == null) { }
+        else if(type == typeof(bool)) { eType = FieldTypes.type_bool; }
+        else if(type == typeof(string)) { eType = FieldTypes.type_string; }
+        else if(type == typeof(float)) { eType = FieldTypes.type_float; }
+        else if(type == typeof(int)) { eType = FieldTypes.type_int; }
+        else if(type == typeof(Vector2)) { eType = FieldTypes.type_Vector2; }
+        else if(type == typeof(Vector3)) { eType = FieldTypes.type_Vector3; }
+        else if(type == typeof(Vector4)) { eType = FieldTypes.type_Vector4; }
+        else if(type.IsEnum) { eType = FieldTypes.type_enum; }
+    }
     private void ResetSettingConfigEditor()
     {
         settingsElement = null;

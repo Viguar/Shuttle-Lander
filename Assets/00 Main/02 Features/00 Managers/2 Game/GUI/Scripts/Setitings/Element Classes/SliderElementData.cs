@@ -27,11 +27,9 @@ public class SliderElementData //Data taken by the SettingsComponent to fill the
         //On IntSlider
     [DrawIf("SliderType", SliderTypes.IntSlider)] public int IntSliderCapMin;
     [DrawIf("SliderType", SliderTypes.IntSlider)] public int IntSliderCapMax;
-    [DrawIf("SliderType", SliderTypes.IntSlider)] public int IntSliderDefaultValue;
         //On FloatSlider
     [DrawIf("SliderType", SliderTypes.FloatSlider)] public float FloatSliderCapMin;
     [DrawIf("SliderType", SliderTypes.FloatSlider)] public float FloatSliderCapMax;
-    [DrawIf("SliderType", SliderTypes.FloatSlider)] public float FloatSliderDefaultValue;
 
     [Space(20)]
     public DrawOnSliderCaseData[] ConditionalElements;

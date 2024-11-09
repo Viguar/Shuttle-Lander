@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b0a7af7992284408d971e95988114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GUISettingElementType: 6
+  GUISettingElementType: 3
   HeaderElementData:
     HeaderTitle: 
   UniToggleConfiguration:
@@ -1578,10 +1578,8 @@ MonoBehaviour:
     SliderType: 0
     IntSliderCapMin: 0
     IntSliderCapMax: 0
-    IntSliderDefaultValue: 0
     FloatSliderCapMin: 0
     FloatSliderCapMax: 0
-    FloatSliderDefaultValue: 0
     ConditionalElements: []
 --- !u!1 &467317997
 GameObject:
@@ -2676,7 +2674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
+  m_Color: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7406,7 +7404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1672123732
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8514,7 +8512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1911633886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8985,7 +8983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.48046875, y: -31.999878}
+  m_AnchoredPosition: {x: -0.48046875, y: -31.999939}
   m_SizeDelta: {x: -0.30004883, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122592416
