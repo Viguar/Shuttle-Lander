@@ -15,17 +15,32 @@ public class AppSettingsManager : MonoBehaviour
     }
     public void LoadApplicationSettings()
     {
-        if(!_RuntimeManager._AppIOManager.FileExists("Settings")) 
+        if (!_RuntimeManager._AppIOManager.FileExists("Settings"))
         {
             //If there is no settings file, let's make a new one and save it directly!
             Debug.Log("Could not find Settings File. Creating generic Settings file.");
             _AppSettings = new ApplicationSettings();
-            _RuntimeManager._AppIOManager.ExportToFile(_AppSettings, "Settings");
+            SaveApplicationSettings();
         }
         else
         {
             Debug.Log("Found Settings File.");
             _AppSettings = _RuntimeManager._AppIOManager.ImportFromFile<ApplicationSettings>("Settings");
         }
+    }
+    public void SaveApplicationSettings()
+    {
+        _RuntimeManager._AppIOManager.ExportToFile(_AppSettings, "Settings");
+    }
+    public void InitSettingsComponents()
+    {
+        foreach (GUISettingsComponent settingsElement in FindObjectsByType<GUISettingsComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None)) 
+        {
+            settingsElement.InitComponent(this);        
+        }
+    }
+    public void RefreshSettingsFeatures()
+    {
+        if (GetComponentInChildren<FPSCapping_SettingsFeature>() != null) { GetComponentInChildren<FPSCapping_SettingsFeature>().OnSettingsRefresh(_AppSettings); }
     }
 }

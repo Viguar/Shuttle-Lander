@@ -18,6 +18,6 @@ MonoBehaviour:
     MenuPageType: 0
     DefaultMenuPage: 1
   - MenuPageName: Settings Menu
-    MenuPagePrefab: {fileID: 7323699823024556879, guid: c700e9e1ca4c6e24881497a7df7d29a2, type: 3}
+    MenuPagePrefab: {fileID: 7258642568982210670, guid: 1d0c62b73c380d44ca08e381a0f6f08d, type: 3}
     MenuPageType: 0
     DefaultMenuPage: 0

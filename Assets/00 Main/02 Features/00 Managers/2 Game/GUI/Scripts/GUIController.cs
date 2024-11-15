@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Viguar.Inspector.PropertyFields;
+using UnityEngine.SceneManagement;
 
 public class GUIController : MonoBehaviour
 {
     //Main GUI Controller for the Main Menu
-
     public enum MenuTypes { MainMenu, PauseMenu, }
     
     public MenuTypes _MenuType;
     [SerializeField, ReadOnly] private GameObject _CurrentMenu;
 
     public GUIMenuData _MenuSetup;
+    public GUILevelData _LevelData;
+
+    [Space(10)]
     public GameObject _MainContentArea;
    
     private void Start() //Called once ever only.
@@ -47,4 +50,12 @@ public class GUIController : MonoBehaviour
             }
         }
     }
+    public void LoadLevel(string SceneName)
+    {
+        if(!string.IsNullOrEmpty(SceneName))
+        {
+            SceneManager.LoadScene(SceneName);
+        }
+    }
+
 }

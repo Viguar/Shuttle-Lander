@@ -58,13 +58,14 @@ public class GUISettingsComponent : MonoBehaviour
     #endregion
     public enum FieldTypes { type_bool, type_string, type_float, type_int, type_Vector2, type_Vector3, type_Vector4, type_enum}
 
-    private GameObject settingsElement; //The matching configurable gameobject for the setting. (Slider, Toggle, etc.)
+    [SerializeField,ReadOnly] private GameObject settingsElement; //The matching configurable gameobject for the setting. (Slider, Toggle, etc.)
     private TMP_Text settingsDisplayText;
-    private AppSettingsManager appSettingsManager;
+    [SerializeField] private bool hideSettingsDisplayText;
+    [SerializeField, ReadOnly] private AppSettingsManager appSettingsManager;
 
-    private FieldInfo fieldInfo;        //The variable (like Gameobject <myGameobject>)
-    private Type fieldType;             //The type of the variable (like bool, float, GameObject)
-    private object fieldValue;          //The value of the variable.
+    [SerializeField, ReadOnly] private FieldInfo fieldInfo;         //The variable (like Gameobject <myGameobject>)
+    [SerializeField, ReadOnly] private Type fieldType;              //The type of the variable (like bool, float, GameObject)
+    [SerializeField, ReadOnly] private object fieldValue;           //The value of the variable.
     private FieldTypes eType;           //The type as an enum.
 
     //UI Components
@@ -97,10 +98,20 @@ public class GUISettingsComponent : MonoBehaviour
     {
         ConfigureSettingComponentEditor();
     }
+    private void OnEnable()
+    {
+        //ConfigureSettingComponentRuntime();
+    }
+    private void OnDisable()
+    {
+        appSettingsManager.SaveApplicationSettings();
+    }
+
 
     public void InitComponent(AppSettingsManager settingsManager)
     {
         appSettingsManager = settingsManager;
+        ConfigureSettingComponentRuntime();
     }
 
     public void ConfigureSettingComponentEditor()
@@ -116,12 +127,14 @@ public class GUISettingsComponent : MonoBehaviour
             case GUISettingElementTypes.Header:
                 break;
             case GUISettingElementTypes.Spacer:
+                settingsDisplayText.gameObject.SetActive(false);
                 break;
-            case GUISettingElementTypes.Text: 
+            case GUISettingElementTypes.Text:
+                settingsDisplayText.gameObject.SetActive(false);
                 break;
 
 
-            case GUISettingElementTypes.UniToggle: 
+            case GUISettingElementTypes.UniToggle:                 
                 break;
             case GUISettingElementTypes.SelectorToggle: 
                 break;
@@ -175,8 +188,13 @@ public class GUISettingsComponent : MonoBehaviour
         switch(eType)
         {
             case FieldTypes.type_bool:
-                UniToggleComponent = settingsElement.GetComponentInChildren<Toggle>();
+                //Init the component
+                ResolveConnectedSettingField(UniToggleConfiguration.ConnectedVariable);
+                UniToggleComponent = settingsElement.GetComponentInChildren<Toggle>(true);              
                 UniToggleComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+
+                //Configure the component and set the gui to the read out value. 
+                UniToggleComponent.isOn = (bool)fieldValue;
                 break;
 
             default:
@@ -188,9 +206,12 @@ public class GUISettingsComponent : MonoBehaviour
         switch(eType)
         {
             case FieldTypes.type_float:
-                SliderComponent = settingsElement.GetComponentInChildren<Slider>();
+                //Init the component
+                ResolveConnectedSettingField(SliderConfiguration.ConnectedVariable);
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);
                 SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
 
+                //Set the value 
                 SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
                 SliderComponent.minValue = SliderConfiguration.FloatSliderCapMin;
                 SliderComponent.maxValue = SliderConfiguration.FloatSliderCapMax;
@@ -198,9 +219,12 @@ public class GUISettingsComponent : MonoBehaviour
                 break;
 
             case FieldTypes.type_int:
-                SliderComponent = settingsElement.GetComponentInChildren<Slider>();
+                //Init the component
+                ResolveConnectedSettingField(SliderConfiguration.ConnectedVariable);
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);
                 SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
 
+                //Configure the component and set the gui to the read out value. 
                 SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
                 SliderComponent.minValue = SliderConfiguration.IntSliderCapMin;
                 SliderComponent.maxValue = SliderConfiguration.IntSliderCapMax;
@@ -213,9 +237,13 @@ public class GUISettingsComponent : MonoBehaviour
     }
 
 
+
     private void OnSettingChanged<T>(T value) 
     { 
+        Debug.Log(value);
+        Debug.Log(fieldInfo);
         fieldInfo.SetValue(appSettingsManager._AppSettings, value); //Set the value in the settings class (Making it essentially ready to be saved to .json);
+        appSettingsManager.RefreshSettingsFeatures(); //Directly update all the changes that should happen live. (E.g. changing the audio volume should affect the audio mixer instantly)
     }
     private void ResolveConnectedSettingField(string connectedSetting)
     {
@@ -243,12 +271,11 @@ public class GUISettingsComponent : MonoBehaviour
         List<GUISettingsElement> list = GetComponentsInChildren<GUISettingsElement>(true).ToList();
         list.ForEach(obj => obj.gameObject.SetActive(false));
         settingsElement = list.Find(dat => dat.ElementType == GUISettingElementType)?.gameObject;
-        settingsDisplayText = GetComponentInChildren<GUISettingsDisplayText>()?.gameObject?.GetComponentInChildren<TMP_Text>();
-
+        settingsDisplayText = GetComponentInChildren<GUISettingsDisplayText>()?.gameObject?.GetComponentInChildren<TMP_Text>(true);
         
         if (settingsElement != null) 
         { 
-            settingsElement.SetActive(true); 
+            settingsElement.SetActive(true);
         }
         else
         {
