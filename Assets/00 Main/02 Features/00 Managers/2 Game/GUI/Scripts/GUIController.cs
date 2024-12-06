@@ -40,6 +40,7 @@ public class GUIController : MonoBehaviour
                 //Handle it as a new menu: Destroy old, Instantiate new.
                 case MenuPageInfo.MenuPageTypes.FullPage: 
                     if (_CurrentMenu != null) { Destroy(_CurrentMenu); }
+                    //_CurrentMenu = null;
                     _CurrentMenu = Instantiate(reqMenu.MenuPagePrefab, _MainContentArea.transform);
                     break;
 

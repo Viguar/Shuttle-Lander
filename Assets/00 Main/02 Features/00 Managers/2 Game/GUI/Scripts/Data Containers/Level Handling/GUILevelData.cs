@@ -10,6 +10,7 @@ using UnityEditor;
 public class GUILevelData : ScriptableObject
 {
     public GameObject _SpringboardElementPrefab;
+    public Texture2D _OnHoverOverlayImage;
     public List<SelectableLevelInfo> _Levels = new List<SelectableLevelInfo>();
 
 #if UNITY_EDITOR

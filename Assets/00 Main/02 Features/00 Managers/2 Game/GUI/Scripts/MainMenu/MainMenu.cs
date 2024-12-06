@@ -18,6 +18,9 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+
+
+    #region SPRINGBOARD HANDLING
     private void InstantiateLevelElements(SelectableLevelInfo dat)
     {
         if (dat._SceneName != null)
@@ -25,21 +28,56 @@ public class MainMenu : MonoBehaviour
             GameObject NewElement = Instantiate(GUIController._LevelData._SpringboardElementPrefab, GUISpringboard.transform);
             NewElement.name = dat._SceneDisplayName;
 
-            Button ElementButton = NewElement.GetComponentInChildren<GUISpringboardElement>().GetComponent<Button>();
-            TMP_Text ElementTitle = NewElement.GetComponentInChildren<GUISpringboardElementTitle>().GetComponent<TMP_Text>();
-            RawImage ElementImage = NewElement.GetComponentInChildren<GUISpringboardElementImage>().GetComponent<RawImage>();
-            RawImage ElementOverlay = NewElement.GetComponentInChildren<GUISpringboardElementImageOverlay>().GetComponent<RawImage>();
-            
+            //References of the element
+            Button ElementButton;
+            TMP_Text ElementTitle;
+            RawImage ElementImage;
+            RawImage ElementOverlay;
+            RawImage ElementHoverOverlay;
 
-            ElementTitle.text = dat._SceneDisplayName != null ? dat._SceneDisplayName : dat._SceneName;
-            if(dat._SceneDisplayImage != null) { ElementImage.texture = dat._SceneDisplayImage; }
-            if(dat._HasOverlayImage) 
+            //Set up springboard element components
+
+            //Button
+            if (NewElement.GetComponentInChildren<GUISpringboardElement>().GetComponent<Button>() != null)
             {
-                if (dat._SceneOverlayImage != null) { ElementOverlay.texture = dat._SceneOverlayImage; }
-                else { ElementOverlay.gameObject.SetActive(false); }
-
+                ElementButton = NewElement.GetComponentInChildren<GUISpringboardElement>().GetComponent<Button>();
+                ElementButton.onClick.AddListener(() => GUIController.LoadLevel(dat._SceneName));
             }
-            ElementButton.onClick.AddListener(() => GUIController.LoadLevel(dat._SceneName));
+
+            //Text
+            if(NewElement.GetComponentInChildren<GUISpringboardElementTitle>().GetComponent<TMP_Text>() != null)
+            {
+                ElementTitle = NewElement.GetComponentInChildren<GUISpringboardElementTitle>().GetComponent<TMP_Text>();
+                ElementTitle.text = dat._SceneDisplayName != null ? dat._SceneDisplayName : dat._SceneName;
+            }
+
+            //Main Image
+            if(NewElement.GetComponentInChildren<GUISpringboardElementImage>().GetComponent<RawImage>() != null)
+            {
+                ElementImage = NewElement.GetComponentInChildren<GUISpringboardElementImage>().GetComponent<RawImage>();
+                if (dat._SceneDisplayImage != null) { ElementImage.texture = dat._SceneDisplayImage; }
+            }
+
+            //Label Image Overlay
+            if(NewElement.GetComponentInChildren<GUISpringboardElementImageOverlay>().GetComponent<RawImage>() != null)
+            {
+                ElementOverlay = NewElement.GetComponentInChildren<GUISpringboardElementImageOverlay>().GetComponent<RawImage>();
+                if (dat._HasOverlayImage)
+                {
+                    if (dat._SceneOverlayImage != null) { ElementOverlay.texture = dat._SceneOverlayImage; } else { ElementOverlay.enabled = false; }
+                }
+                else { ElementOverlay.enabled = false; }
+            }
+
+            //Hover Image Overlay
+            if (NewElement.GetComponentInChildren<GUISpringboardHoverOverlayImage>().GetComponent<RawImage>() != null)
+            {
+                ElementHoverOverlay = NewElement.GetComponentInChildren<GUISpringboardHoverOverlayImage>().GetComponent<RawImage>();
+                ElementHoverOverlay.texture = GUIController._LevelData._OnHoverOverlayImage;
+                ElementHoverOverlay.enabled = false;
+            }                                   
         }
     }
+
+    #endregion
 }

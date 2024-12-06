@@ -16,10 +16,8 @@ public class SelectableLevelInfo
 #if UNITY_EDITOR
     [SerializeField] public SceneAsset _Scene;
 #endif
-    public bool _IsUnlocked;
     public string _SceneDisplayName;
     public Texture2D _SceneDisplayImage;
     [DrawIf("_HasOverlayImage", true)] public Texture2D _SceneOverlayImage;   
-    public bool _HasOverlayImage;
-    
+    public bool _HasOverlayImage;    
 }

@@ -9,7 +9,6 @@ namespace Viguar.Aircraft
     {
         //Base Components
         private AircraftBaseProcessor _configBaseProcessor;
-        private GlobalDebugManager _globalDebugManager;
 
         //Debug UI Toggling
         private bool foundDebugUICanvas;
@@ -31,6 +30,9 @@ namespace Viguar.Aircraft
         private string _currentConsoleString;
         private AircraftDebugConsoleLogger _loggerComponent;
 
+        //Mesh Handling
+        private DebugMeshManager[] debugMeshes;
+
         //Methods
         private void OnEnable()
         {
@@ -43,10 +45,11 @@ namespace Viguar.Aircraft
         private void Start()
         {
             _configBaseProcessor = FindAnyObjectByType<AircraftBaseProcessor>();
-            if (GameObject.FindGameObjectWithTag("managerDebugManager").GetComponent<GlobalDebugManager>() != null) { _globalDebugManager = GameObject.FindGameObjectWithTag("managerDebugManager").GetComponent<GlobalDebugManager>(); }
+            
             InitDebugValueDisplays();
             InitLogger();
             InitDebugPanels();
+            InitDebugMeshRendering();
         }
         private void Update()
         {
@@ -148,17 +151,34 @@ namespace Viguar.Aircraft
         }
 
         //Finding & Executing GlobalDebugManager
+        private void InitDebugMeshRendering()
+        {
+            debugMeshes = FindObjectsByType<DebugMeshManager>(FindObjectsSortMode.None);
+            foreach (DebugMeshManager debugMesh in debugMeshes)
+            {
+                debugMesh.InitDebugMeshManager();
+            }
+        }
         public void ShowDebugMeshes()
         {
-            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(true); }
-        }
+            foreach (DebugMeshManager debugMesh in debugMeshes)
+            {
+                debugMesh.ForceDebugMeshRendererState(true);
+            }
+        }        
         public void HideDebugMeshes()
         {
-            if (_globalDebugManager != null) { _globalDebugManager.ForceDebugMeshRenderingState(false); }
+            foreach (DebugMeshManager debugMesh in debugMeshes)
+            {
+                debugMesh.ForceDebugMeshRendererState(false);
+            }
         }
         public void ToggleDebugMeshes()
         {
-            if (_globalDebugManager != null) { _globalDebugManager.ToggleDebugMeshRenderingState(); }
+            foreach (DebugMeshManager debugMesh in debugMeshes)
+            {
+                debugMesh.ToggleDebugMeshRenderer();
+            }
         }
     }
 }

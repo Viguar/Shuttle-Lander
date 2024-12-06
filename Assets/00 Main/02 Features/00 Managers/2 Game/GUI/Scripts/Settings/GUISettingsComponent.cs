@@ -240,8 +240,7 @@ public class GUISettingsComponent : MonoBehaviour
 
     private void OnSettingChanged<T>(T value) 
     { 
-        Debug.Log(value);
-        Debug.Log(fieldInfo);
+        Debug.Log($"{fieldInfo} set to {value}");
         fieldInfo.SetValue(appSettingsManager._AppSettings, value); //Set the value in the settings class (Making it essentially ready to be saved to .json);
         appSettingsManager.RefreshSettingsFeatures(); //Directly update all the changes that should happen live. (E.g. changing the audio volume should affect the audio mixer instantly)
     }
