@@ -19,3 +19,5 @@ MonoBehaviour:
   _AppCustomFilePaths:
   - _FileName: Application Settings
     _FilePath: /Application/Config/
+  - _FileName: Loading Configuration
+    _FilePath: /Application/Config/

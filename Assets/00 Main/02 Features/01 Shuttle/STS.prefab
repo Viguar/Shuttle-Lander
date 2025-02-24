@@ -10013,8 +10013,8 @@ WheelCollider:
     spring: 100000
     damper: 50000
     targetPosition: 0
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.05
+  m_SuspensionDistance: 0.5
+  m_ForceAppPointDistance: 0.23
   m_Mass: 10
   m_WheelDampingRate: 1000
   m_ForwardFriction:
@@ -34748,8 +34748,8 @@ WheelCollider:
     spring: 100000
     damper: 50000
     targetPosition: 0
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.05
+  m_SuspensionDistance: 0.5
+  m_ForceAppPointDistance: 0.23
   m_Mass: 10
   m_WheelDampingRate: 1000
   m_ForwardFriction:
@@ -64829,8 +64829,8 @@ WheelCollider:
     spring: 100000
     damper: 50000
     targetPosition: 0.1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.05
+  m_SuspensionDistance: 0.5
+  m_ForceAppPointDistance: 0.23
   m_Mass: 10
   m_WheelDampingRate: 1000
   m_ForwardFriction:
@@ -83604,8 +83604,8 @@ WheelCollider:
     spring: 100000
     damper: 50000
     targetPosition: 0.1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.05
+  m_SuspensionDistance: 0.5
+  m_ForceAppPointDistance: 0.23
   m_Mass: 10
   m_WheelDampingRate: 1000
   m_ForwardFriction:

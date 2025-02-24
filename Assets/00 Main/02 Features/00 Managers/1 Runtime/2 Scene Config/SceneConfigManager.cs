@@ -5,6 +5,9 @@ using Viguar.Aircraft;
 
 public class SceneConfigManager : MonoBehaviour
 {
+    private RuntimeManager _RuntimeManager;
+    public LoadingConfiguration _LoadingConfiguration;
+
     [Header("Scene Configuration")]
     public bool bladibla;
     
@@ -17,4 +20,21 @@ public class SceneConfigManager : MonoBehaviour
     public GameObject _SceneConfig_WeatherSystemPrefab;
 
 
+    public void InitComponent(RuntimeManager runtimeManager)
+    {
+        _RuntimeManager = runtimeManager;
+    }
+
+    public void LoadSceneConfiguration()
+    {
+        if (!_RuntimeManager._AppIOManager.FileExists("Loading Configuration"))
+        {
+            _LoadingConfiguration = new LoadingConfiguration();
+            _RuntimeManager._AppIOManager.ExportToFile(_LoadingConfiguration, "Loading Configuration");
+        }
+        else 
+        { 
+            _LoadingConfiguration = _RuntimeManager._AppIOManager.ImportFromFile<LoadingConfiguration>("Loading Configuration");
+        }     
+    }
 }

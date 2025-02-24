@@ -45,7 +45,11 @@ namespace Viguar.Aircraft
                 //ADD LATER: ATHMOSPHERIC EFFECT.
                 //Also rotate the plane towards the direction of movement - this should be a very small effect, but means the plane ends up pointing downwards in a stall
                 //The if condition prevents the aircraft to spazz arond like some retard when stationary.
-                if (!_configBaseProcessor._StateGrounded) { _aircraftRigidbody.rotation = Quaternion.Slerp(_aircraftRigidbody.rotation, Quaternion.LookRotation(_aircraftRigidbody.velocity, transform.up), _configBaseProcessor._AerodynamicEffect * Time.deltaTime ); }
+                //TODO: Add a factor by how much we allow the plane to rotate towards its moving direction over speed?
+                print(_aircraftRigidbody.velocity.magnitude);
+                float stallRotationSpeedFactorTemporary = Mathf.InverseLerp(0, _configBaseProcessor._MinMaxStableForwardSpeed.x * 2, _aircraftRigidbody.velocity.magnitude);
+               // _configBaseProcessor._AerodynamicEffect *= stallRotationSpeedFactorTemporary;
+                if (!_configBaseProcessor._StateGrounded) { _aircraftRigidbody.rotation = Quaternion.Slerp(_aircraftRigidbody.rotation, Quaternion.LookRotation(_aircraftRigidbody.velocity, transform.up), _configBaseProcessor._AerodynamicEffect * Time.deltaTime * stallRotationSpeedFactorTemporary); }
             }
         }
         private void CalculateAircraftDrag()

@@ -150,6 +150,8 @@ public class GUISettingsComponent : MonoBehaviour
     }
     public void ConfigureSettingComponentRuntime()
     {
+        ConfigureSettingDisplayComponents();
+
         switch (GUISettingElementType)
         {
             case GUISettingElementTypes.None:
@@ -195,6 +197,7 @@ public class GUISettingsComponent : MonoBehaviour
 
                 //Configure the component and set the gui to the read out value. 
                 UniToggleComponent.isOn = (bool)fieldValue;
+                settingsDisplayText.text = UniToggleConfiguration.SettingDisplayName;
                 break;
 
             default:
@@ -280,6 +283,13 @@ public class GUISettingsComponent : MonoBehaviour
         {
             list.ForEach(obj => obj.gameObject.SetActive(false));
         }
+    }
+    private void ConfigureSettingDisplayComponents()
+    {
+        settingsDisplayText = GetComponentInChildren<GUISettingsDisplayText>().gameObject.GetComponent<TMP_Text>();
+
+        if(hideSettingsDisplayText) { settingsDisplayText.gameObject.SetActive(false); }
+
     }
 }
 
