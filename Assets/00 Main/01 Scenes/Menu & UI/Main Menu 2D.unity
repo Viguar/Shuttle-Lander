@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.7124685, y: 0.5}
-  m_AnchoredPosition: {x: -20.996094, y: 300}
+  m_AnchoredPosition: {x: -20.999268, y: 300}
   m_SizeDelta: {x: -225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188313645
@@ -2935,7 +2935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.7124685, y: 0.5}
-  m_AnchoredPosition: {x: -20.996094, y: 300}
+  m_AnchoredPosition: {x: -20.999268, y: 300}
   m_SizeDelta: {x: -225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112536284
@@ -3370,7 +3370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.7124685, y: 0.5}
-  m_AnchoredPosition: {x: -20.996094, y: 300}
+  m_AnchoredPosition: {x: -20.999268, y: 300}
   m_SizeDelta: {x: -225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398297241
@@ -4148,6 +4148,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469962544}
   m_CullTransparentMesh: 1
+--- !u!1 &1575806820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575806821}
+  - component: {fileID: 1575806822}
+  m_Layer: 0
+  m_Name: IO Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575806821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575806820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1686516357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575806822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575806820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8671d6a54a9309c41a0c1974c27f74cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _FilePathsInfo: {fileID: 11400000, guid: ebfc8978f0f5b4e4993a8fb3ecf36f70, type: 2}
 --- !u!1 &1577694696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,27 +4499,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1686516357}
   - component: {fileID: 1686516356}
-  - component: {fileID: 1686516355}
+  - component: {fileID: 1686516358}
   m_Layer: 0
-  m_Name: Runtime Manager
+  m_Name: Runtime Manager (DontDestroyOnLoad)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &1686516355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686516354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8671d6a54a9309c41a0c1974c27f74cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _FilePathsInfo: {fileID: 11400000, guid: ebfc8978f0f5b4e4993a8fb3ecf36f70, type: 2}
 --- !u!114 &1686516356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4502,10 +4534,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1575806821}
   - {fileID: 902165226}
   - {fileID: 601911583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686516358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686516354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1eae7fb5c09f94291852f8299d9cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: "-------------------------------------------------------------------------------------\nThe
+    runtime manager is always active in the game.\nIt and its children do not get
+    destroyed during scene switches.\n\nThe runtime manager (and its children) handle
+    main runtime of the game. \nIt is not a game manager, however:\n\nIt commands
+    game managers when to execute, pause or other.\n\n-------------------------------------------------------------------------------------\nThe
+    runtime manager finds and inits:\n\nIO Manager\nAppSettingsManager\n\n-------------------------------------------------------------------------------------\nIO
+    Manager:\n\nThe IO Manager is the component, which imports and exports information
+    to text files. (e.g. settings, preferences, etc.)\n\n-------------------------------------------------------------------------------------\nAppSettingsManager\n\nThe
+    AppSettingsManager \n\n\n\n\n"
 --- !u!1 &1691298091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5293,7 +5347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.48046875, y: -31.999939}
+  m_AnchoredPosition: {x: -0.4804077, y: -31.999939}
   m_SizeDelta: {x: -0.30004883, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122592416

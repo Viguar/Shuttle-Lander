@@ -16,7 +16,7 @@ public class SliderElementData //Data taken by the SettingsComponent to fill the
     [Header("Appearance")]
     public bool HasValueInputDisplayBox;
     [DrawIf("HasValueInputDisplayBox", true)] public bool IsEditableInputDisplay;
-    public bool HasUnitDisplayTextBox;
+    [DrawIf("HasValueInputDisplayBox", true)] public bool HasUnitDisplayTextBox;
     [DrawIf("HasUnitDisplayTextBox", true)] public string DisplayedUnitText;
 
     [Space(10)]

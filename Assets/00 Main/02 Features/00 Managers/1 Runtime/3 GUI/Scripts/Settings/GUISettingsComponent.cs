@@ -66,7 +66,7 @@ public class GUISettingsComponent : MonoBehaviour
     [SerializeField, ReadOnly] private FieldInfo fieldInfo;         //The variable (like Gameobject <myGameobject>)
     [SerializeField, ReadOnly] private Type fieldType;              //The type of the variable (like bool, float, GameObject)
     [SerializeField, ReadOnly] private object fieldValue;           //The value of the variable.
-    private FieldTypes eType;           //The type as an enum.
+    private FieldTypes eType;                                       //The type as an enum.
 
     //UI Components
     private Toggle UniToggleComponent;
@@ -134,11 +134,13 @@ public class GUISettingsComponent : MonoBehaviour
                 break;
 
 
-            case GUISettingElementTypes.UniToggle:                 
+            case GUISettingElementTypes.UniToggle:
+                ConfigUniToggleEditor();
                 break;
             case GUISettingElementTypes.SelectorToggle: 
                 break;
-            case GUISettingElementTypes.Slider:
+            case GUISettingElementTypes.Slider:                
+                ConfigSliderEditor();
                 break;
             case GUISettingElementTypes.Dropdown:
                 break;
@@ -187,7 +189,8 @@ public class GUISettingsComponent : MonoBehaviour
 
     private void ConfigUniToggle()
     {
-        switch(eType)
+        eType = FieldTypes.type_bool;
+        switch (eType)
         {
             case FieldTypes.type_bool:
                 //Init the component
@@ -204,46 +207,105 @@ public class GUISettingsComponent : MonoBehaviour
                 break;
         }
     }
+    private void ConfigUniToggleEditor()
+    {
+        eType = FieldTypes.type_bool;
+        settingsDisplayText.text = UniToggleConfiguration.SettingDisplayName;
+    }
+
+
+
     private void ConfigSlider()
     {
-        switch(eType)
+        eType = SliderConfiguration.SliderType == SliderElementData.SliderTypes.FloatSlider ? FieldTypes.type_float : FieldTypes.type_int;
+        switch (eType)
         {
             case FieldTypes.type_float:
                 //Init the component
                 ResolveConnectedSettingField(SliderConfiguration.ConnectedVariable);
-                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);
-                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
-
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);                
+                
                 //Set the value 
                 SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
+                SliderComponent.wholeNumbers = false;
                 SliderComponent.minValue = SliderConfiguration.FloatSliderCapMin;
                 SliderComponent.maxValue = SliderConfiguration.FloatSliderCapMax;
-                SliderComponent.value = (float)fieldValue;               
+                SliderComponent.value = (float)fieldValue;
+                SliderComponent.gameObject.GetComponentInChildren<TMP_Text>().text = SliderComponent.value.ToString();
+
+                settingsDisplayText.text = SliderConfiguration.SettingDisplayName;
+
+                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+
                 break;
 
             case FieldTypes.type_int:
                 //Init the component
                 ResolveConnectedSettingField(SliderConfiguration.ConnectedVariable);
-                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);
-                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged(value));
+                SliderComponent = settingsElement.GetComponentInChildren<Slider>(true);               
+                
 
                 //Configure the component and set the gui to the read out value. 
-                SliderConfiguration.SliderType = SliderElementData.SliderTypes.FloatSlider;
+                SliderConfiguration.SliderType = SliderElementData.SliderTypes.IntSlider;
+                SliderComponent.wholeNumbers = true;
                 SliderComponent.minValue = SliderConfiguration.IntSliderCapMin;
                 SliderComponent.maxValue = SliderConfiguration.IntSliderCapMax;
                 SliderComponent.value = (int)fieldValue;
+                SliderComponent.gameObject.GetComponentInChildren<TMP_Text>().text = SliderComponent.value.ToString();
+
+                SliderComponent.onValueChanged.AddListener(value => OnSettingChanged((int)value));
                 break;
 
             default:
                 break;
         }
     }
+    private void ConfigSliderEditor()
+    {
+        eType = SliderConfiguration.SliderType == SliderElementData.SliderTypes.FloatSlider ? FieldTypes.type_float : FieldTypes.type_int;
+        settingsDisplayText.text = SliderConfiguration.SettingDisplayName;
+    }
 
 
+    private void HandleConditionalAndExtraElements<T>(T value)
+    {
+        switch (GUISettingElementType)
+        {
+            case GUISettingElementTypes.UniToggle:
+                //Conditional Elements
+                foreach (DrawOnUniToggleData DrawSetting in UniToggleConfiguration.ConditionalElements)
+                {
+                    switch (DrawSetting.DrawOnCase)
+                    {
+                        case DrawOnUniToggleData.DrawCases.IsOn:
+                            if (UniToggleComponent.isOn) { DrawSetting.Element.SetActive(true); }
+                            else { DrawSetting.Element.SetActive(false); }
+                            break;
+                        case DrawOnUniToggleData.DrawCases.IsOff:
+                            if (UniToggleComponent.isOn) { DrawSetting.Element.SetActive(false); }
+                            else { DrawSetting.Element.SetActive(true); }
+                            break;
+                    }
+                }
+                break;
+            case GUISettingElementTypes.SelectorToggle:
+                break;
+            case GUISettingElementTypes.Slider:
+                SliderComponent.gameObject.GetComponentInChildren<TMP_Text>().text = value.ToString();
+                break;
+            case GUISettingElementTypes.Dropdown:
+                break;
+            case GUISettingElementTypes.InputField:
+                break;
+            case GUISettingElementTypes.Button:
+                break;
+        }
+    }
 
     private void OnSettingChanged<T>(T value) 
     { 
         Debug.Log($"{fieldInfo} set to {value}");
+        HandleConditionalAndExtraElements(value);
         fieldInfo.SetValue(appSettingsManager._AppSettings, value); //Set the value in the settings class (Making it essentially ready to be saved to .json);
         appSettingsManager.RefreshSettingsFeatures(); //Directly update all the changes that should happen live. (E.g. changing the audio volume should affect the audio mixer instantly)
     }

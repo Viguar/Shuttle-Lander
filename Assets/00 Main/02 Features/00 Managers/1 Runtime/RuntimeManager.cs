@@ -6,8 +6,8 @@ public class RuntimeManager : MonoBehaviour
 {
     //Info:
     //The runtime manager is always active in the game: It does not get destroyed during scene switches.
-    //The runtime manager (and its children) handle main runtime of the game. It is not a game manager, however,
-    //it commands game managers in certain cases to execute, pause or other.
+    //The runtime manager (and its children) handle main runtime of the game. It is not a game manager, however!
+    //It commands game managers in certain cases to execute, pause or other.
     //
 
     [ReadOnly]public AppIOManager _AppIOManager;

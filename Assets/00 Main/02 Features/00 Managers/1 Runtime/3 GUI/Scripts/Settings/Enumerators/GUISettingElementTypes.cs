@@ -18,5 +18,7 @@ public enum GUISettingElementTypes
     InputField,
     Button,
 
-    //Add more as we go.
+    //Sub-Identifiers
+    AdjustmentField,
+    UnitDisplayText,
 }

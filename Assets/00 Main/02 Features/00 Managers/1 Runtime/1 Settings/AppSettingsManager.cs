@@ -36,7 +36,7 @@ public class AppSettingsManager : MonoBehaviour
     {
         foreach (GUISettingsComponent settingsElement in FindObjectsByType<GUISettingsComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None)) 
         {
-            settingsElement.InitComponent(this);        
+            settingsElement.InitComponent(this);
         }
     }
     public void RefreshSettingsFeatures()
