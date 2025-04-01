@@ -2,5 +2,5 @@
   "appinfo_version": "0.1",
   "appinfo_lastshutdown": "Never",
   "video_capframerate": true,
-  "video_maxframerate": 20
+  "video_maxframerate": 40
 }
