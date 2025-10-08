@@ -132,7 +132,7 @@ namespace Viguar.Aircraft
         //Debug UI Console Handling
         private void InitLogger()
         {
-            if (GameObject.FindAnyObjectByType<AircraftDebugConsoleLogger>().GetComponent<AircraftDebugConsoleLogger>() != null) { _loggerComponent = GameObject.FindAnyObjectByType<AircraftDebugConsoleLogger>().GetComponent<AircraftDebugConsoleLogger>(); }
+            if (GameObject.FindAnyObjectByType<AircraftDebugConsoleLogger>(FindObjectsInactive.Include).GetComponent<AircraftDebugConsoleLogger>() != null) { _loggerComponent = GameObject.FindAnyObjectByType<AircraftDebugConsoleLogger>(FindObjectsInactive.Include).GetComponent<AircraftDebugConsoleLogger>(); }
         }
         private void LogCallback(string logString, string stackTrace, LogType type)
         {
@@ -147,7 +147,8 @@ namespace Viguar.Aircraft
                 _currentLogMessageCount = 0;
                 _currentConsoleString = "[" + _currentLogMessageCountTotal + "] " + logString + "\r\n";
             }
-            _loggerComponent.UpdateConsole(_currentConsoleString);
+            if (_loggerComponent != null) { _loggerComponent.UpdateConsole(_currentConsoleString); } else { Debug.Log("Didnt find a logger COmponent"); }
+            //_loggerComponent.UpdateConsole(_currentConsoleString);
         }
 
         //Finding & Executing GlobalDebugManager
